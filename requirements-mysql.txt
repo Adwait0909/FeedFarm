@@ -1,0 +1,3 @@
+# Optional: only needed if you set DB_TYPE=mysql in .env.
+# The default (DB_TYPE=sqlite) does not need this.
+mysql-connector-python>=8.4,<10

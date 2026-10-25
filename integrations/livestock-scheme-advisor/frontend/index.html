@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pashu Yojana Sahayak — Livestock Scheme Advisor</title>
+<meta name="description" content="Find which Maharashtra and Central government livestock schemes your household is eligible for.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Tiro+Devanagari+Marathi:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-lang="en">
+
+<!-- ========================= TOP BAR ========================= -->
+<header class="topbar">
+  <a class="brand" href="#top">
+    <span class="brand__mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9c0-2 1.5-3 3-3 2.5 0 3.5 2 3.5 4"/>
+        <path d="M26 9c0-2-1.5-3-3-3-2.5 0-3.5 2-3.5 4"/>
+        <path d="M8 13c0-3 3.6-5 8-5s8 2 8 5c0 5-2.2 11-8 11S8 18 8 13Z"/>
+        <path d="M13.5 15h.01M18.5 15h.01"/>
+      </svg>
+    </span>
+    <span class="brand__text">
+      <strong data-i18n="brandName">Pashu Yojana Sahayak</strong>
+      <small data-i18n="brandTagline">Livestock scheme advisor</small>
+    </span>
+  </a>
+
+  <!-- Language toggle -->
+  <div class="langswitch" role="group" data-i18n-aria-label="langSwitchLabel" aria-label="Change language">
+    <button type="button" class="langswitch__btn is-active" data-set-lang="en" aria-pressed="true">English</button>
+    <button type="button" class="langswitch__btn" data-set-lang="mr" aria-pressed="false">मराठी</button>
+  </div>
+</header>
+
+<!-- ========================= HERO ========================= -->
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <h1 class="hero__title" data-i18n="heroTitle">Find the livestock schemes your household can actually claim</h1>
+    <p class="hero__lead" data-i18n="heroLead">Photograph your animal, answer six questions about your household, and see which Maharashtra and Central government schemes you qualify for — with a link to apply.</p>
+
+    <a class="btn btn--onDark" href="#step-breed" data-i18n="heroCta">Start with your animal</a>
+
+    <dl class="facts">
+      <div class="facts__item">
+        <dt data-i18n="heroFact1Num">66</dt>
+        <dd data-i18n="heroFact1Label">schemes checked</dd>
+      </div>
+      <div class="facts__item">
+        <dt data-i18n="heroFact2Num">34</dt>
+        <dd data-i18n="heroFact2Label">districts covered</dd>
+      </div>
+      <div class="facts__item">
+        <dt data-i18n="heroFact3Num">2</dt>
+        <dd data-i18n="heroFact3Label">state and central</dd>
+      </div>
+    </dl>
+  </div>
+  <div class="hero__ridge" aria-hidden="true"></div>
+</section>
+
+<p class="notice" id="offlineNotice" hidden data-i18n="offlineNote"></p>
+
+<main class="page">
+
+  <!-- ========================= STEP 1 ========================= -->
+  <section class="panel" id="step-breed">
+    <div class="panel__head">
+      <span class="stepnum" data-i18n="stepNum1">1</span>
+      <div>
+        <p class="panel__kicker" data-i18n="step1Kicker">Step 1</p>
+        <h2 data-i18n="step1Title">Identify the breed</h2>
+      </div>
+    </div>
+
+    <p class="panel__hint" data-i18n="step1Hint">Upload a clear photo of the animal.</p>
+
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" data-i18n-aria-label="dropzoneAria" aria-label="Upload a photo of your animal">
+      <input type="file" id="fileInput" accept="image/*" hidden>
+      <div class="dropzone__idle" id="dropzoneIdle">
+        <svg class="dropzone__icon" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="15" rx="2.5"/>
+          <circle cx="12" cy="12.5" r="3.5"/>
+          <path d="M8 5l1.4-2h5.2L16 5"/>
+        </svg>
+        <p class="dropzone__title" data-i18n="dropzoneTitle">Drop a photo here, or tap to choose one</p>
+        <p class="dropzone__hint" data-i18n="dropzoneHint">JPG or PNG. One animal, side view, good daylight.</p>
+      </div>
+      <div class="dropzone__preview" id="dropzonePreview" hidden>
+        <img id="previewImg" alt="">
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn--solid" id="analyzeBtn" disabled data-i18n="analyzeBtn">Identify breed from photo</button>
+      <button class="btn btn--quiet" id="clearPhotoBtn" hidden data-i18n="clearPhotoBtn">Remove photo</button>
+    </div>
+
+    <div class="breedcard" id="breedResult" hidden>
+      <p class="breedcard__label" data-i18n="breedResultLabel">Breed identified</p>
+      <p class="breedcard__value"><span id="predictedBreed">—</span><span class="breedcard__conf" id="predictedConfidence"></span></p>
+      <div class="breedcard__alts" id="breedAltsWrap" hidden>
+        <p class="breedcard__altslabel" data-i18n="breedAltsLabel">Other close matches</p>
+        <div id="breedAlts"></div>
+      </div>
+    </div>
+
+    <p class="status" id="breedStatus" hidden></p>
+
+    <button class="linkbtn" id="manualToggleBtn" type="button" data-i18n="manualToggle">Choose the breed by hand instead</button>
+
+    <div class="field" id="manualBreedWrap" hidden>
+      <label for="manualBreedSelect" data-i18n="manualBreedLabel">Breed or species</label>
+      <select id="manualBreedSelect"></select>
+    </div>
+  </section>
+
+  <!-- ========================= STEP 2 ========================= -->
+  <section class="panel" id="step-profile">
+    <div class="panel__head">
+      <span class="stepnum" data-i18n="stepNum2">2</span>
+      <div>
+        <p class="panel__kicker" data-i18n="step2Kicker">Step 2</p>
+        <h2 data-i18n="step2Title">Your household details</h2>
+      </div>
+    </div>
+
+    <p class="panel__hint" data-i18n="step2Hint">Each answer changes the result.</p>
+
+    <form id="profileForm" class="grid" novalidate>
+      <div class="field">
+        <label for="animalsOwned" data-i18n="animalsOwnedLabel">Animals of this species you already own</label>
+        <input type="number" id="animalsOwned" min="0" step="1" value="0" inputmode="numeric" required>
+        <p class="field__note" data-i18n="animalsOwnedNote">Some schemes are for buying animals.</p>
+      </div>
+
+      <div class="field">
+        <label for="socialCategory" data-i18n="socialCategoryLabel">Social category</label>
+        <select id="socialCategory" required></select>
+      </div>
+
+      <div class="field">
+        <label for="landHolding" data-i18n="landHoldingLabel">Land holding</label>
+        <select id="landHolding" required></select>
+      </div>
+
+      <div class="field">
+        <label for="employmentStatus" data-i18n="employmentLabel">Employment or beneficiary status</label>
+        <select id="employmentStatus" required></select>
+      </div>
+
+      <div class="field">
+        <label for="gender" data-i18n="genderLabel">Gender</label>
+        <select id="gender" required></select>
+      </div>
+
+      <div class="field">
+        <label for="district" data-i18n="districtLabel">District</label>
+        <select id="district" required></select>
+      </div>
+    </form>
+
+    <div class="actions">
+      <button class="btn btn--solid btn--wide" id="submitBtn" data-i18n="submitBtn">Show my schemes</button>
+    </div>
+    <p class="status" id="formStatus" hidden></p>
+  </section>
+
+  <!-- ========================= STEP 3 ========================= -->
+  <section class="panel panel--results" id="step-results" hidden>
+    <div class="panel__head">
+      <span class="stepnum" data-i18n="stepNum3">3</span>
+      <div>
+        <p class="panel__kicker" data-i18n="step3Kicker">Step 3</p>
+        <h2 data-i18n="step3Title">Schemes you may be eligible for</h2>
+      </div>
+    </div>
+
+    <div class="toppick" id="topPick">
+      <p class="toppick__label" data-i18n="topPickLabel">Suggested starting point — verify before applying</p>
+      <p class="toppick__name" id="topSchemeName">—</p>
+      <p class="toppick__alt" id="topSchemeAlt"></p>
+      <p class="toppick__count" id="eligibleCount"></p>
+    </div>
+
+    <h3 class="listhead" id="eligibleHeading" data-i18n="eligibleHeading" hidden>You qualify for these</h3>
+    <div class="cards" id="eligibleList"></div>
+
+    <button class="linkbtn" id="toggleIneligibleBtn" type="button" hidden data-i18n="showIneligible">Show the schemes you are not eligible for</button>
+
+    <div id="ineligibleWrap" hidden>
+      <h3 class="listhead listhead--muted" data-i18n="ineligibleHeading">You do not qualify for these</h3>
+      <div class="cards" id="ineligibleList"></div>
+    </div>
+
+    <section class="unscored" id="unscoredWrap" hidden>
+      <h3 class="listhead listhead--muted" data-i18n="unscoredHeading">Not evaluated by the supplied model</h3>
+      <p class="unscored__note" data-i18n="unscoredNote">These catalogue entries have no supported result; they are not marked as ineligible.</p>
+      <div class="cards" id="unscoredList"></div>
+    </section>
+
+    <p class="caveat" data-i18n="caveat">Amounts and rules come from Government Resolutions.</p>
+
+    <div class="actions">
+      <button class="btn btn--quiet" id="restartBtn" data-i18n="restartBtn">Check another animal</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="sitefoot">
+  <p data-i18n="footerNote">Pashu Yojana Sahayak is a student project. It is not an official government service.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

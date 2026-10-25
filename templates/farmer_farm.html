@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Farm Profile{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Farm Profile</p>
+    <h1>{{ farm.farm_name if farm else 'Create Farm Profile' }}</h1>
+  </div>
+</section>
+
+<form method="post" action="{{ url_for('farmer_farm') }}" class="form-sheet">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="form-grid">
+    <label>Farm name
+      <input type="text" name="farm_name" value="{{ farm.farm_name if farm else '' }}" required>
+    </label>
+    <label>Farm ID
+      <input type="text" value="{{ farm.farm_id if farm else 'Will be created automatically' }}" readonly>
+    </label>
+    <label>Village
+      <input type="text" name="village" value="{{ farm.village if farm else '' }}" required>
+    </label>
+    <label>Taluka
+      <input type="text" name="taluka" value="{{ farm.taluka if farm else '' }}" required>
+    </label>
+    <label>District
+      <input type="text" name="district" value="{{ farm.district if farm else '' }}" required>
+    </label>
+    <label>State
+      <input type="text" name="state" value="{{ farm.state if farm else '' }}" required>
+    </label>
+    <label class="span-2">Service area / support zone
+      <input type="text" name="service_area" value="{{ farm.service_area if farm else '' }}" placeholder="Pune, Baramati, etc.">
+    </label>
+  </div>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Save Farm Profile</button>
+    <a href="{{ url_for('farmer_dashboard') }}" class="btn btn-outline">Back to dashboard</a>
+  </div>
+</form>
+{% endblock %}

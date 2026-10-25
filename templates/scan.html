@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Scan Cow QR{% endblock %}
+{% block head %}
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Field Verification</p>
+    <h1>Scan Cow QR</h1>
+  </div>
+</section>
+
+<section class="scan-wrap">
+  <p class="scan-instructions">
+    Point the camera at the QR tag on the cow's ear tag or collar. The passport
+    opens automatically once a tag is recognized.
+  </p>
+
+  <div id="qr-reader"></div>
+  <div id="qr-reader-status" class="scan-status">Waiting for camera permission&hellip;</div>
+
+  <noscript>
+    <p class="flash flash-error">JavaScript is required to use the camera scanner.</p>
+  </noscript>
+</section>
+
+<script src="{{ url_for('static', filename='js/scanner.js') }}"></script>
+{% endblock %}

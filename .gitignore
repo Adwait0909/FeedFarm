@@ -1,0 +1,17 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+kisanreact_app/node_modules/
+kisanreact_app/.cache/
+integrations/vet-app/frontend/node_modules/
+integrations/vet-app/backend/veterinary.sqlite3
+cow_qr_demo.sqlite3
+server/data.json
+uploads/marketplace/
+
+# Backups and credentials produced by the helper scripts
+*.sqlite3.bak-*
+doctor_credentials*

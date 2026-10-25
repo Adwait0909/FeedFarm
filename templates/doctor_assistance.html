@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Veterinary Assistance Requests{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Farm support</p>
+    <h1>Assistance Requests</h1>
+  </div>
+  <a href="{{ url_for('doctor_dashboard') }}" class="btn btn-outline">Back to dashboard</a>
+</section>
+
+<p class="live-status" id="assist-live" role="status" aria-live="polite" data-state="info" hidden
+   data-api="{{ url_for('doctor_dashboard_api') }}" data-version="{{ request_version or '' }}">
+  New or updated requests are available. <a href="{{ url_for('doctor_assistance') }}">Refresh the list</a>
+</p>
+
+{% if requests %}
+<section class="request-list">
+  {% for req in requests %}
+  <article class="passport-card request-card">
+    <div class="request-header">
+      <div>
+        <h2>{{ req.cow_name or req.cow_id or 'Unknown cow' }}</h2>
+        <p class="muted">{{ req.farmer_name or 'Farmer' }} &middot; {{ req.created_at }}</p>
+      </div>
+      <span class="pill pill-{{ 'good' if req.status == 'resolved' else ('mid' if req.status == 'in_progress' else 'low') }}">{{ req.status or 'pending' }}</span>
+    </div>
+
+    <dl>
+      <div><dt>Cow UID</dt><dd>{{ req.cow_id }}</dd></div>
+      <div><dt>Request Type</dt><dd>{{ req.request_type or 'General support' }}</dd></div>
+      <div><dt>Farmer Contact</dt><dd>{{ req.farmer_contact or '—' }}</dd></div>
+      <div><dt>Description</dt><dd>{{ req.description or 'No description' }}</dd></div>
+      <div><dt>Doctor Response</dt><dd>{{ req.doctor_response or 'No response yet' }}</dd></div>
+    </dl>
+
+    <div class="request-actions">
+      <form method="post" action="{{ url_for('doctor_assistance') }}" class="inline-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="request_id" value="{{ req.id }}">
+        <select name="status">
+          <option value="pending" {% if req.status == 'pending' %}selected{% endif %}>Pending</option>
+          <option value="in_progress" {% if req.status == 'in_progress' %}selected{% endif %}>In progress</option>
+          <option value="resolved" {% if req.status == 'resolved' %}selected{% endif %}>Resolved</option>
+          <option value="rejected" {% if req.status == 'rejected' %}selected{% endif %}>Rejected</option>
+        </select>
+        <input type="text" name="doctor_response" placeholder="Doctor response / contact note" value="{{ req.doctor_response or '' }}">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+      <form method="post" action="{{ url_for('doctor_contact_farmer', request_id=req.id) }}" class="inline-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="text" name="doctor_response" placeholder="Contact message to farmer" value="{{ req.doctor_response or '' }}">
+        <button type="submit" class="btn btn-outline">Contact farmer</button>
+      </form>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+{% else %}
+<div class="empty-state">
+  <p>No assistance requests are available.</p>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{ url_for('static', filename='js/doctor_live.js') }}" defer></script>
+{% endblock %}

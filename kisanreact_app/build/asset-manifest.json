@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/kisaath/static/css/main.6f298957.css",
+    "main.js": "/kisaath/static/js/main.68b38917.js",
+    "static/js/453.567cbd9d.chunk.js": "/kisaath/static/js/453.567cbd9d.chunk.js",
+    "static/media/ai_crop.png": "/kisaath/static/media/ai_crop.f6812771c3151059aac7.png",
+    "static/media/Mod_far.png": "/kisaath/static/media/Mod_far.c156db7538f675e3e185.png",
+    "static/media/crop.webp": "/kisaath/static/media/crop.62e1cf885fe9e1e99b0f.webp",
+    "static/media/mk.jpg": "/kisaath/static/media/mk.24a0bbfa6e5e7a508b1a.jpg",
+    "static/media/drip.jpg": "/kisaath/static/media/drip.a0781f35c304cbaa1398.jpg",
+    "static/media/gov.jpg": "/kisaath/static/media/gov.f4fec664266fea76e4ef.jpg",
+    "static/media/modern_farming_hero.jpg": "/kisaath/static/media/modern_farming_hero.29550b88ad843c0f970d.jpg",
+    "static/media/weather.jpg": "/kisaath/static/media/weather.acd417f25f16cfc72725.jpg",
+    "static/media/hydroponics.jpg": "/kisaath/static/media/hydroponics.3a5e1455e4b8da161f92.jpg",
+    "static/media/img_3.jpg": "/kisaath/static/media/img_3.425243583724734d245d.jpg",
+    "static/media/cows_1.jfif": "/kisaath/static/media/cows_1.01be980a40a4e6117320.jfif",
+    "static/media/sensor.jfif": "/kisaath/static/media/sensor.512676f8deb615c306b5.jfif",
+    "static/media/drone.jfif": "/kisaath/static/media/drone.e99f5ca384c3aa57e95e.jfif",
+    "index.html": "/kisaath/index.html",
+    "main.6f298957.css.map": "/kisaath/static/css/main.6f298957.css.map",
+    "main.68b38917.js.map": "/kisaath/static/js/main.68b38917.js.map",
+    "453.567cbd9d.chunk.js.map": "/kisaath/static/js/453.567cbd9d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f298957.css",
+    "static/js/main.68b38917.js"
+  ]
+}

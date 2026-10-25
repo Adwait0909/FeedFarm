@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}Cow Medical Record{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Veterinary profile</p>
+    <h1>{{ cow.cow_name }} ({{ cow.cow_id }})</h1>
+  </div>
+  <div class="header-actions">
+    <a href="{{ url_for('doctor_update', cow_id=cow.cow_id) }}" class="btn btn-primary">Add/Update Record</a>
+    <a href="{{ url_for('doctor_dashboard') }}" class="btn btn-outline">Back to dashboard</a>
+  </div>
+</section>
+
+<section class="passport-grid">
+  <div class="passport-card cow-photo-card">
+    <h2>Photo</h2>
+    {% set photo = cow_photo_url(cow.image_path) %}
+    {% if photo %}
+    <img src="{{ photo }}" alt="Photo of {{ cow.cow_name }}">
+    {% elif cow.image_path %}
+    <p class="photo-missing">A photo was recorded for this cow, but the image file is not available on this server.</p>
+    {% else %}
+    <p class="photo-missing">No photo has been uploaded for this cow.</p>
+    {% endif %}
+  </div>
+  <div class="passport-card">
+    <h2>Permanent Identity</h2>
+    <dl>
+      <div><dt>Cow UID</dt><dd>{{ cow.cow_id }}</dd></div>
+      <div><dt>Local Cow Number</dt><dd>{{ cow.local_cow_number or '—' }}</dd></div>
+      <div><dt>Farm Identity</dt><dd>{{ cow.farm_identity or '—' }}</dd></div>
+      <div><dt>QR Code</dt><dd>{{ cow.qr_code_value or '—' }}</dd></div>
+      <div><dt>Owner</dt><dd>{{ cow.owner_name or '—' }}</dd></div>
+      <div><dt>Contact</dt><dd>{{ cow.owner_contact or '—' }}</dd></div>
+    </dl>
+  </div>
+
+  <div class="passport-card">
+    <h2>Current Health</h2>
+    <dl>
+      <div><dt>Status</dt><dd>{{ cow.health_status or 'Unknown' }}</dd></div>
+      <div><dt>Health Score</dt><dd>{{ cow.health_score or 0 }} / 100</dd></div>
+      <div><dt>Last Health Check</dt><dd>{{ cow.last_health_check or '—' }}</dd></div>
+      <div><dt>Next Checkup</dt><dd>{{ cow.next_checkup_date or '—' }}</dd></div>
+      <div><dt>Temperature</dt><dd>{{ (cow.body_temperature ~ ' °C') if cow.body_temperature is not none else '—' }}</dd></div>
+      <div><dt>Weight</dt><dd>{{ (cow.weight_kg ~ ' kg') if cow.weight_kg is not none else '—' }}</dd></div>
+    </dl>
+  </div>
+
+  <div class="passport-card">
+    <h2>Vaccination</h2>
+    <dl>
+      <div><dt>Status</dt><dd>{{ cow.vaccination_status or 'Unknown' }}</dd></div>
+      <div><dt>Last Vaccination</dt><dd>{{ cow.last_vaccination_date or '—' }}</dd></div>
+      <div><dt>Next Vaccination</dt><dd>{{ cow.next_vaccination_date or '—' }}</dd></div>
+    </dl>
+  </div>
+
+  <div class="passport-card">
+    <h2>Professional Notes</h2>
+    <dl>
+      <div><dt>Doctor</dt><dd>{{ cow.doctor_name or 'Not assigned' }}</dd></div>
+      <div><dt>Medical Record</dt><dd>{{ cow.medical_record or 'No recent medical notes' }}</dd></div>
+      <div><dt>Disease History</dt><dd>{{ cow.disease_history or 'No illness reported' }}</dd></div>
+      <div><dt>Treatment History</dt><dd>{{ cow.treatment_history or 'No treatment history' }}</dd></div>
+      <div><dt>Notes</dt><dd>{{ cow.notes or 'No additional notes' }}</dd></div>
+      <div><dt>Pregnancy Status</dt><dd>{{ cow.pregnancy_status or '—' }}</dd></div>
+    </dl>
+  </div>
+
+  <div class="passport-card span-full">
+    <h2>AI-Assisted Health Screening</h2>
+    <p class="health-note"><strong>Supporting Information Only:</strong> {{ screening.note }}</p>
+    <dl>
+      <div><dt>Risk Level</dt><dd>{{ screening.risk_level }}</dd></div>
+      <div><dt>Risk Score</dt><dd>{{ screening.score }} / 100</dd></div>
+      <div><dt>Reasons</dt><dd>{{ screening.reasons | join('; ') }}</dd></div>
+      <div><dt>Recommendations</dt><dd>{{ screening.recommendations | join(' ') }}</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="passport-card span-full">
+  <h2>Medical History Timeline</h2>
+  {% if history %}
+  <div class="history-list">
+    {% for row in history %}
+    <article class="history-item">
+      <div class="history-meta">
+        <strong>{{ row.record_type|replace('_', ' ')|title }}</strong>
+        <span>{{ row.created_at }}</span>
+      </div>
+      <h3>{{ row.title }}</h3>
+      <p><strong>Doctor:</strong> {{ row.doctor_name or '—' }}</p>
+      <p><strong>Summary:</strong> {{ row.summary or '—' }}</p>
+      <p><strong>Diagnosis:</strong> {{ row.diagnosis or '—' }}</p>
+      <p><strong>Treatment:</strong> {{ row.treatment or '—' }}</p>
+      <p><strong>Medications:</strong> {{ row.medications or '—' }}</p>
+      <p><strong>Vitals:</strong> {{ row.vitals or '—' }}</p>
+      <p><strong>Follow-up:</strong> {{ row.next_follow_up or '—' }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No previous medical history recorded yet.</p>
+  {% endif %}
+</section>
+{% endblock %}

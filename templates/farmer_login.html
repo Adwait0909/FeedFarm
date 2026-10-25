@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Farmer Login{% endblock %}
+{% block content %}
+<section class="auth-shell">
+  <div class="auth-card">
+    <p class="page-kicker">Farmer Access</p>
+    <h1>Log in to your farm</h1>
+    <form method="post" action="{{ url_for('farmer_login') }}" class="form-sheet compact">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label>Email
+        <input type="email" name="email" required>
+      </label>
+      <label>Password
+        <input type="password" name="password" required>
+      </label>
+      <button type="submit" class="btn btn-primary wide">Login</button>
+    </form>
+    <p class="auth-switch">New farmer? <a href="{{ url_for('farmer_register') }}">Create account</a></p>
+  </div>
+</section>
+{% endblock %}

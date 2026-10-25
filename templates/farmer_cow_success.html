@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Cow Registered{% endblock %}
+{% block content %}
+<section class="farmer-shell narrow-shell">
+  <div class="success-card">
+    <div class="success-mark">✓</div>
+    <p class="page-kicker">Cow Registered Successfully</p>
+    <h1>{{ cow.cow_name }}</h1>
+    <div class="success-grid">
+      <div>
+        <span>Cow ID</span>
+        <strong>{{ cow.cow_id }}</strong>
+      </div>
+      <div>
+        <span>QR Code</span>
+        <strong>Generated</strong>
+      </div>
+    </div>
+    <div class="form-actions form-actions-spread">
+      <a href="{{ url_for('farmer_cow_detail', cow_id=cow.cow_id) }}" class="btn btn-primary">View Cow Profile</a>
+      <a href="{{ url_for('show_qr', cow_id=cow.cow_id) }}" class="btn btn-outline">View QR Code</a>
+    </div>
+    <div class="success-secondary">
+      <a href="{{ url_for('farmer_register_cow') }}" class="text-link">Register Another Cow</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

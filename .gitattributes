@@ -1,0 +1,11 @@
+* text=auto
+*.sh text eol=lf
+*.bat text eol=crlf
+*.pth binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ttf binary
+*.joblib binary
+*.pt binary
+*.sqlite3 binary

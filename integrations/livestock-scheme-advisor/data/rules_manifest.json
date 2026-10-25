@@ -1,0 +1,198 @@
+{
+  "generated_rows": 20000,
+  "seed": 42,
+  "features": [
+    "breed",
+    "animals_owned",
+    "social_category",
+    "land_holding",
+    "employment_status",
+    "gender",
+    "district"
+  ],
+  "labels": [
+    {
+      "code": "MH_DL_2MILCH",
+      "name": "2 Milch Cow/Buffalo Unit - District Level (SC/TSP/OTSP)",
+      "level": "state",
+      "kind": "asset",
+      "basis": "dahd.maharashtra.gov.in/en/scheme/district-level-schemes/ (retrieved). 2-milch unit: for SC, TSP and OTSP category, 75% subsidy; unit price Rs.70,000/cow, Rs.80,000/buffalo; 2-cow unit Rs.1,56,850; 2-buffalo unit Rs.1,79,258. Goat/sheep: 10 + 1 buck/ram, SC/ST 75%; Osmanabadi/Sangamneri goat Rs.1,03,545, local goat Rs.78,231, Madgyal sheep Rs.1,28,850, Deccani/local sheep Rs.1,03,545. Poultry: 100 day-old chicks Rs.29,500 and 25+3 pullets Rs.10,840, both 50% for ALL categories. Beneficiary classes: BPL, marginal/small landholders, educated unemployed, women SHG members. Apply: ah.mahabms.com"
+    },
+    {
+      "code": "MH_SL_2MILCH",
+      "name": "2 Milch Cow/Buffalo Unit - State Level Innovative",
+      "level": "state",
+      "kind": "asset",
+      "basis": "Livestock_Government_Schemes_Maharashtra.docx (user-supplied): central scheme table (RGM/NLM/PKCC/DEDS/DIDF/LIS/NADCP/AHIDF), state-level innovative 2-milch scheme at 50% general / 75% SC-ST, RajyaMata-GauMata goshala subsidy Rs.50/day/cow (goshalas only), sex-sorted semen access, July 2025 'agricultural status' for animal husbandry, and the breed -> scheme map."
+    },
+    {
+      "code": "MH_GOAT_SHEEP_10_1",
+      "name": "Goat/Sheep Rearing Unit (10+1, semi-stall fed)",
+      "level": "state",
+      "kind": "asset",
+      "basis": "dahd.maharashtra.gov.in/en/scheme/district-level-schemes/ (retrieved). 2-milch unit: for SC, TSP and OTSP category, 75% subsidy; unit price Rs.70,000/cow, Rs.80,000/buffalo; 2-cow unit Rs.1,56,850; 2-buffalo unit Rs.1,79,258. Goat/sheep: 10 + 1 buck/ram, SC/ST 75%; Osmanabadi/Sangamneri goat Rs.1,03,545, local goat Rs.78,231, Madgyal sheep Rs.1,28,850, Deccani/local sheep Rs.1,03,545. Poultry: 100 day-old chicks Rs.29,500 and 25+3 pullets Rs.10,840, both 50% for ALL categories. Beneficiary classes: BPL, marginal/small landholders, educated unemployed, women SHG members. Apply: ah.mahabms.com"
+    },
+    {
+      "code": "MH_CHICKS_100",
+      "name": "100 Day-Old Chicks Distribution",
+      "level": "state",
+      "kind": "asset",
+      "basis": "dahd.maharashtra.gov.in/en/scheme/district-level-schemes/ (retrieved). 2-milch unit: for SC, TSP and OTSP category, 75% subsidy; unit price Rs.70,000/cow, Rs.80,000/buffalo; 2-cow unit Rs.1,56,850; 2-buffalo unit Rs.1,79,258. Goat/sheep: 10 + 1 buck/ram, SC/ST 75%; Osmanabadi/Sangamneri goat Rs.1,03,545, local goat Rs.78,231, Madgyal sheep Rs.1,28,850, Deccani/local sheep Rs.1,03,545. Poultry: 100 day-old chicks Rs.29,500 and 25+3 pullets Rs.10,840, both 50% for ALL categories. Beneficiary classes: BPL, marginal/small landholders, educated unemployed, women SHG members. Apply: ah.mahabms.com"
+    },
+    {
+      "code": "MH_PULLETS_25_3",
+      "name": "25+3 Pullet Distribution",
+      "level": "state",
+      "kind": "asset",
+      "basis": "dahd.maharashtra.gov.in/en/scheme/district-level-schemes/ (retrieved). 2-milch unit: for SC, TSP and OTSP category, 75% subsidy; unit price Rs.70,000/cow, Rs.80,000/buffalo; 2-cow unit Rs.1,56,850; 2-buffalo unit Rs.1,79,258. Goat/sheep: 10 + 1 buck/ram, SC/ST 75%; Osmanabadi/Sangamneri goat Rs.1,03,545, local goat Rs.78,231, Madgyal sheep Rs.1,28,850, Deccani/local sheep Rs.1,03,545. Poultry: 100 day-old chicks Rs.29,500 and 25+3 pullets Rs.10,840, both 50% for ALL categories. Beneficiary classes: BPL, marginal/small landholders, educated unemployed, women SHG members. Apply: ah.mahabms.com"
+    },
+    {
+      "code": "MH_GOSHALA",
+      "name": "RajyaMata-GauMata Goshala Subsidy",
+      "level": "state",
+      "kind": "institutional",
+      "basis": "Livestock_Government_Schemes_Maharashtra.docx (user-supplied): central scheme table (RGM/NLM/PKCC/DEDS/DIDF/LIS/NADCP/AHIDF), state-level innovative 2-milch scheme at 50% general / 75% SC-ST, RajyaMata-GauMata goshala subsidy Rs.50/day/cow (goshalas only), sex-sorted semen access, July 2025 'agricultural status' for animal husbandry, and the breed -> scheme map."
+    },
+    {
+      "code": "MH_SEXED_SEMEN",
+      "name": "Sex-Sorted Semen AI Access",
+      "level": "state",
+      "kind": "service",
+      "basis": "Livestock_Government_Schemes_Maharashtra.docx (user-supplied): central scheme table (RGM/NLM/PKCC/DEDS/DIDF/LIS/NADCP/AHIDF), state-level innovative 2-milch scheme at 50% general / 75% SC-ST, RajyaMata-GauMata goshala subsidy Rs.50/day/cow (goshalas only), sex-sorted semen access, July 2025 'agricultural status' for animal husbandry, and the breed -> scheme map."
+    },
+    {
+      "code": "MH_AGRI_STATUS",
+      "name": "Animal Husbandry 'Agricultural' Status benefits",
+      "level": "state",
+      "kind": "policy",
+      "basis": "Livestock_Government_Schemes_Maharashtra.docx (user-supplied): central scheme table (RGM/NLM/PKCC/DEDS/DIDF/LIS/NADCP/AHIDF), state-level innovative 2-milch scheme at 50% general / 75% SC-ST, RajyaMata-GauMata goshala subsidy Rs.50/day/cow (goshalas only), sex-sorted semen access, July 2025 'agricultural status' for animal husbandry, and the breed -> scheme map."
+    },
+    {
+      "code": "C_RGM",
+      "name": "Rashtriya Gokul Mission",
+      "level": "central",
+      "kind": "service",
+      "basis": "Livestock_Government_Schemes_Maharashtra.docx (user-supplied): central scheme table (RGM/NLM/PKCC/DEDS/DIDF/LIS/NADCP/AHIDF), state-level innovative 2-milch scheme at 50% general / 75% SC-ST, RajyaMata-GauMata goshala subsidy Rs.50/day/cow (goshalas only), sex-sorted semen access, July 2025 'agricultural status' for animal husbandry, and the breed -> scheme map."
+    },
+    {
+      "code": "C_NLM_SLED",
+      "name": "NLM - Sub-Mission on Livestock Entrepreneurship",
+      "level": "central",
+      "kind": "asset",
+      "basis": "nlm.udyamimitra.in + PIB (retrieved): NLM entrepreneurship sub-mission gives 50% capital subsidy up to Rs.50 lakh for poultry / sheep / goat / pig (also horse, camel, donkey) breeding farms."
+    },
+    {
+      "code": "C_KCC_AH",
+      "name": "Kisan Credit Card - Animal Husbandry (PKCC)",
+      "level": "central",
+      "kind": "credit",
+      "basis": "PIB press release (retrieved): collateral-free KCC limit raised from Rs.1.6 lakh to Rs.2 lakh per borrower w.e.f. 01-Jan-2025. DAHD AHDF-KCC guidelines (retrieved): overall limit Rs.3 lakh per annum. NOTE: this SUPERSEDES the Rs.1.6 lakh figure in the uploaded doc."
+    },
+    {
+      "code": "C_DEDS",
+      "name": "Dairy Entrepreneurship Development Scheme (NABARD)",
+      "level": "central",
+      "kind": "asset",
+      "basis": "Livestock_Government_Schemes_Maharashtra.docx (user-supplied): central scheme table (RGM/NLM/PKCC/DEDS/DIDF/LIS/NADCP/AHIDF), state-level innovative 2-milch scheme at 50% general / 75% SC-ST, RajyaMata-GauMata goshala subsidy Rs.50/day/cow (goshalas only), sex-sorted semen access, July 2025 'agricultural status' for animal husbandry, and the breed -> scheme map."
+    },
+    {
+      "code": "C_LIVESTOCK_INS",
+      "name": "Livestock Insurance Scheme (under NLM)",
+      "level": "central",
+      "kind": "insurance",
+      "basis": "Livestock_Government_Schemes_Maharashtra.docx (user-supplied): central scheme table (RGM/NLM/PKCC/DEDS/DIDF/LIS/NADCP/AHIDF), state-level innovative 2-milch scheme at 50% general / 75% SC-ST, RajyaMata-GauMata goshala subsidy Rs.50/day/cow (goshalas only), sex-sorted semen access, July 2025 'agricultural status' for animal husbandry, and the breed -> scheme map."
+    },
+    {
+      "code": "C_NADCP",
+      "name": "National Animal Disease Control Programme",
+      "level": "central",
+      "kind": "service",
+      "basis": "Livestock_Government_Schemes_Maharashtra.docx (user-supplied): central scheme table (RGM/NLM/PKCC/DEDS/DIDF/LIS/NADCP/AHIDF), state-level innovative 2-milch scheme at 50% general / 75% SC-ST, RajyaMata-GauMata goshala subsidy Rs.50/day/cow (goshalas only), sex-sorted semen access, July 2025 'agricultural status' for animal husbandry, and the breed -> scheme map."
+    },
+    {
+      "code": "C_DIDF",
+      "name": "Dairy Processing & Infrastructure Development Fund",
+      "level": "central",
+      "kind": "institutional",
+      "basis": "Livestock_Government_Schemes_Maharashtra.docx (user-supplied): central scheme table (RGM/NLM/PKCC/DEDS/DIDF/LIS/NADCP/AHIDF), state-level innovative 2-milch scheme at 50% general / 75% SC-ST, RajyaMata-GauMata goshala subsidy Rs.50/day/cow (goshalas only), sex-sorted semen access, July 2025 'agricultural status' for animal husbandry, and the breed -> scheme map."
+    },
+    {
+      "code": "C_AHIDF",
+      "name": "Animal Husbandry Infrastructure Development Fund",
+      "level": "central",
+      "kind": "institutional",
+      "basis": "Livestock_Government_Schemes_Maharashtra.docx (user-supplied): central scheme table (RGM/NLM/PKCC/DEDS/DIDF/LIS/NADCP/AHIDF), state-level innovative 2-milch scheme at 50% general / 75% SC-ST, RajyaMata-GauMata goshala subsidy Rs.50/day/cow (goshalas only), sex-sorted semen access, July 2025 'agricultural status' for animal husbandry, and the breed -> scheme map."
+    }
+  ],
+  "sources": {
+    "GR_DISTRICT_LEVEL": "dahd.maharashtra.gov.in/en/scheme/district-level-schemes/ (retrieved). 2-milch unit: for SC, TSP and OTSP category, 75% subsidy; unit price Rs.70,000/cow, Rs.80,000/buffalo; 2-cow unit Rs.1,56,850; 2-buffalo unit Rs.1,79,258. Goat/sheep: 10 + 1 buck/ram, SC/ST 75%; Osmanabadi/Sangamneri goat Rs.1,03,545, local goat Rs.78,231, Madgyal sheep Rs.1,28,850, Deccani/local sheep Rs.1,03,545. Poultry: 100 day-old chicks Rs.29,500 and 25+3 pullets Rs.10,840, both 50% for ALL categories. Beneficiary classes: BPL, marginal/small landholders, educated unemployed, women SHG members. Apply: ah.mahabms.com",
+    "DOC_UPLOAD": "Livestock_Government_Schemes_Maharashtra.docx (user-supplied): central scheme table (RGM/NLM/PKCC/DEDS/DIDF/LIS/NADCP/AHIDF), state-level innovative 2-milch scheme at 50% general / 75% SC-ST, RajyaMata-GauMata goshala subsidy Rs.50/day/cow (goshalas only), sex-sorted semen access, July 2025 'agricultural status' for animal husbandry, and the breed -> scheme map.",
+    "NLM_SUBSIDY_CAP": "nlm.udyamimitra.in + PIB (retrieved): NLM entrepreneurship sub-mission gives 50% capital subsidy up to Rs.50 lakh for poultry / sheep / goat / pig (also horse, camel, donkey) breeding farms.",
+    "KCC_LIMIT": "PIB press release (retrieved): collateral-free KCC limit raised from Rs.1.6 lakh to Rs.2 lakh per borrower w.e.f. 01-Jan-2025. DAHD AHDF-KCC guidelines (retrieved): overall limit Rs.3 lakh per annum. NOTE: this SUPERSEDES the Rs.1.6 lakh figure in the uploaded doc.",
+    "DISTRICTS": "Wikipedia 'List of districts of Maharashtra' (retrieved): 36 districts, 6 divisions, 2011 Census population and urban %. Renames confirmed via news sources (retrieved): Aurangabad -> Chhatrapati Sambhajinagar, Osmanabad -> Dharashiv.",
+    "SMALL_MARGINAL_SHARE": "Agriculture Census commentary (retrieved): small & marginal holdings are ~86% of Indian operational holdings; marginal = <1 ha, small = 1-2 ha (PIB categorisation). Maharashtra-specific split was NOT verified - see ASSUMPTION_PRIORS.",
+    "SC_ST_SHARE": "Wikipedia / Census 2011 (retrieved): SC ~16.6% and ST ~8.6% of India's population. Maharashtra-specific SC/ST shares were NOT verified - the defaults below are therefore CONFIGURABLE PRIORS, not official state figures."
+  },
+  "assumptions": [
+    "Social-category, land-holding, gender and employment marginals are plausible priors for a rural applicant pool, not verified Maharashtra statistics. Edit PRIORS before quoting any distributional claim.",
+    "Asset-transfer schemes (2-milch unit, goat/sheep unit, chicks, pullets) are treated as ACQUISITION schemes: an applicant who already owns many animals of that species is down-ranked, and above OWN_CAP is treated as not a target beneficiary. The GRs do not state such a cap.",
+    "OBC is treated as eligible for the state-level (general) 2-milch scheme at 50%, and as a 'backward class' for the poultry schemes, but NOT for the district-level SC/TSP/OTSP 2-milch and goat/sheep components. Verify against the current GR / district office.",
+    "Breed is sampled independently of district by default. Breed-tract geography (e.g. which division a breed is concentrated in) was NOT verified here, so USE_REGION_TILT defaults to False."
+  ],
+  "priors": {
+    "social_category": [
+      0.46,
+      0.29,
+      0.16,
+      0.09
+    ],
+    "land_holding": [
+      0.1,
+      0.55,
+      0.23,
+      0.12
+    ],
+    "employment": [
+      0.18,
+      0.14,
+      0.13,
+      0.17,
+      0.3,
+      0.08
+    ],
+    "gender": [
+      0.42,
+      0.58
+    ],
+    "animals_owned": {
+      "0": 0.22,
+      "1": 0.24,
+      "2": 0.19,
+      "3": 0.13,
+      "5": 0.12,
+      "9": 0.07,
+      "20": 0.03
+    }
+  },
+  "unit_costs": {
+    "milch_2_animal_unit": {
+      "cow": 156850,
+      "buffalo": 179258
+    },
+    "per_animal_price": {
+      "cow": 70000,
+      "buffalo": 80000
+    },
+    "chicks_100": 29500,
+    "pullets_25_3": 10840,
+    "goat_sheep_by_breed": {
+      "Osmanabadi": 103545,
+      "Sangamneri": 103545,
+      "Local goat": 78231,
+      "Madgyal": 128850,
+      "Deccani": 103545,
+      "Local sheep": 103545
+    }
+  },
+  "caveat": "Rupee figures come from GRs of 2021-2023 as republished by the Maharashtra Animal Husbandry Department. Confirm on ah.mahabms.com or with the district Animal Husbandry office before any real application."
+}

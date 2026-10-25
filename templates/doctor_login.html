@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Doctor Login{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Secure access</p>
+    <h1>Veterinarian/Login</h1>
+  </div>
+</section>
+
+<section class="auth-layout">
+  <form class="form-sheet auth-card" method="post" action="{{ url_for('doctor_login') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <fieldset>
+      <legend>Doctor credentials</legend>
+      <div class="form-grid single-column">
+        <label>Email address
+          <input type="email" name="email" placeholder="doctor@farmcare.local" required>
+        </label>
+        <label>Password
+          <input type="password" name="password" placeholder="Enter password" required>
+        </label>
+      </div>
+    </fieldset>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Login</button>
+      <a href="{{ url_for('index') }}" class="btn btn-outline">Back to home</a>
+    </div>
+  </form>
+</section>
+{% endblock %}

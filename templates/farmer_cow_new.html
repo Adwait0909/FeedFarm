@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}Register Cow{% endblock %}
+{% block content %}
+{% set lang = session.get('lang', 'en') %}
+<section class="farmer-shell narrow-shell">
+  <div class="page-head compact-head">
+    <div>
+      <p class="page-kicker">{% if lang == 'mr' %}गाय नोंदणी{% else %}Cow Registration{% endif %}</p>
+      <h1>{% if lang == 'mr' %}नवीन गाय नोंदणी करा{% else %}Register a new cow{% endif %}</h1>
+    </div>
+    <div class="lang-toggle">
+      <a href="{{ url_for('set_language', lang='en') }}" class="chip {% if lang != 'mr' %}active{% endif %}">EN</a>
+      <a href="{{ url_for('set_language', lang='mr') }}" class="chip {% if lang == 'mr' %}active{% endif %}">मराठी</a>
+    </div>
+  </div>
+
+  <div class="progress-steps" aria-label="Registration progress">
+    <span class="step done">1</span>
+    <span class="step-line"></span>
+    <span class="step active">2</span>
+    <span class="step-line"></span>
+    <span class="step">3</span>
+    <span class="step-line"></span>
+    <span class="step">4</span>
+  </div>
+  <div class="progress-labels">
+    <span>{% if lang == 'mr' %}मूलभूत माहिती{% else %}Basic Info{% endif %}</span>
+    <span>{% if lang == 'mr' %}गाय तपशील{% else %}Cow Details{% endif %}</span>
+    <span>{% if lang == 'mr' %}फोटो{% else %}Photo{% endif %}</span>
+    <span>{% if lang == 'mr' %}पुनरावलोकन{% else %}Review{% endif %}</span>
+  </div>
+
+  <form method="post" action="{{ url_for('farmer_register_cow') }}" enctype="multipart/form-data" class="form-sheet register-form" data-live-review data-lang="{{ lang }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="register-section">
+      <h2>{% if lang == 'mr' %}स्टेप १: मूलभूत माहिती{% else %}Step 1: Basic information{% endif %}</h2>
+      <div class="form-grid">
+        <label>{% if lang == 'mr' %}गायीचे नाव{% else %}Cow Name{% endif %} <span class="required-mark">*</span>
+          <input type="text" name="cow_name" placeholder="{% if lang == 'mr' %}उदा. गौरी{% else %}e.g. Gauri{% endif %}" required>
+        </label>
+        <label>{% if lang == 'mr' %}स्थानिक गाय क्रमांक{% else %}Local Cow Number{% endif %}
+          <input type="text" name="local_cow_number" placeholder="{% if lang == 'mr' %}उदा. 001{% else %}e.g. 001{% endif %}">
+        </label>
+        <label>{% if lang == 'mr' %}गाव/शेत{% else %}Farm{% endif %} <span class="required-mark">*</span>
+          <input type="text" value="{{ farm.farm_name if farm else 'Farm profile required' }}" readonly>
+        </label>
+        <label>{% if lang == 'mr' %}गायीचा आयडी{% else %}Cow ID{% endif %}
+          <input type="text" value="{% if lang == 'mr' %}आपोआप तयार होईल{% else %}Will be created automatically{% endif %}" readonly>
+        </label>
+      </div>
+    </div>
+
+    <div class="register-section">
+      <h2>{% if lang == 'mr' %}स्टेप २: गाय तपशील{% else %}Step 2: Cow details{% endif %}</h2>
+      <div class="form-grid">
+        <label>{% if lang == 'mr' %}जात{% else %}Breed{% endif %} <span class="required-mark">*</span>
+          <select name="breed" required>
+            <option value="">{% if lang == 'mr' %}निवडा{% else %}Select{% endif %}</option>
+            <option value="Gir">Gir</option>
+            <option value="Sahiwal">Sahiwal</option>
+            <option value="Holstein Friesian">Holstein Friesian</option>
+            <option value="Jersey">Jersey</option>
+            <option value="Red Sindhi">Red Sindhi</option>
+          </select>
+        </label>
+        <label>{% if lang == 'mr' %}प्रकार{% else %}Type{% endif %} <span class="required-mark">*</span>
+          <select name="cow_type" required>
+            <option value="">{% if lang == 'mr' %}निवडा{% else %}Select{% endif %}</option>
+            <option value="Dairy">{% if lang == 'mr' %}दुग्धप्रकार{% else %}Dairy{% endif %}</option>
+            <option value="Draught">{% if lang == 'mr' %}रंभा{% else %}Draught{% endif %}</option>
+            <option value="Dual Purpose">{% if lang == 'mr' %}दोन्ही उपयोग{% else %}Dual Purpose{% endif %}</option>
+          </select>
+        </label>
+        <label>{% if lang == 'mr' %}लिंग{% else %}Gender{% endif %} <span class="required-mark">*</span>
+          <select name="gender" required>
+            <option value="">{% if lang == 'mr' %}निवडा{% else %}Select{% endif %}</option>
+            <option value="Female">{% if lang == 'mr' %}मादी{% else %}Female{% endif %}</option>
+            <option value="Male">{% if lang == 'mr' %}नर{% else %}Male{% endif %}</option>
+          </select>
+        </label>
+        <label>{% if lang == 'mr' %}जन्मतारीख{% else %}Date of Birth{% endif %}
+          <input type="date" name="date_of_birth">
+        </label>
+        <label>{% if lang == 'mr' %}वय (वर्षे){% else %}Age (years){% endif %}
+          <input type="number" name="age" min="0" max="25" placeholder="5">
+        </label>
+        <label>{% if lang == 'mr' %}रंग{% else %}Color{% endif %}
+          <select name="color">
+            <option value="">{% if lang == 'mr' %}निवडा{% else %}Select{% endif %}</option>
+            <option value="Brown">{% if lang == 'mr' %}तपकिरी{% else %}Brown{% endif %}</option>
+            <option value="Black">{% if lang == 'mr' %}काळा{% else %}Black{% endif %}</option>
+            <option value="White">{% if lang == 'mr' %}पांढरा{% else %}White{% endif %}</option>
+            <option value="Spotted">{% if lang == 'mr' %}खेड्याचे ठिपके{% else %}Spotted{% endif %}</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="register-section">
+      <h2>{% if lang == 'mr' %}स्टेप ३: फोटो{% else %}Step 3: Photo{% endif %}</h2>
+      <div class="upload-box">
+        <label class="upload-label">
+          <input type="file" name="cow_image" accept=".png,.jpg,.jpeg">
+          <span>{% if lang == 'mr' %}फोटो अपलोड करा{% else %}Upload a cow photo{% endif %}</span>
+          <small>{% if lang == 'mr' %}PNG किंवा JPG, 4 MB पर्यंत{% else %}PNG or JPG, up to 4 MB{% endif %}</small>
+        </label>
+        <div class="photo-feedback" data-photo-feedback>
+          <img data-photo-img alt="" hidden>
+          <span data-photo-name></span>
+          <button type="button" data-photo-remove hidden>{% if lang == 'mr' %}फोटो काढा{% else %}Remove photo{% endif %}</button>
+          <span class="photo-error" data-photo-error role="alert"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="register-section review-box">
+      <h2>{% if lang == 'mr' %}स्टेप ४: पुनरावलोकन{% else %}Step 4: Review{% endif %}</h2>
+      <p class="review-note">{% if lang == 'mr' %}तुमची माहिती तपासा आणि नोंदणी करा.{% else %}Review the details before completing registration.{% endif %}</p>
+      <p class="review-progress" data-review-progress aria-live="polite"></p>
+      <div class="review-grid">
+        <div><span>{% if lang == 'mr' %}गायीचे नाव{% else %}Cow name{% endif %}</span><strong data-review="cow_name">—</strong></div>
+        <div><span>{% if lang == 'mr' %}स्थानिक क्रमांक{% else %}Local number{% endif %}</span><strong data-review="local_cow_number">—</strong></div>
+        <div><span>{% if lang == 'mr' %}जात{% else %}Breed{% endif %}</span><strong data-review="breed">—</strong></div>
+        <div><span>{% if lang == 'mr' %}प्रकार{% else %}Type{% endif %}</span><strong data-review="cow_type">—</strong></div>
+        <div><span>{% if lang == 'mr' %}लिंग{% else %}Gender{% endif %}</span><strong data-review="gender">—</strong></div>
+        <div><span>{% if lang == 'mr' %}रंग{% else %}Color{% endif %}</span><strong data-review="color">—</strong></div>
+        <div><span>{% if lang == 'mr' %}वय{% else %}Age{% endif %}</span><strong data-review="age">—</strong></div>
+        <div><span>{% if lang == 'mr' %}जन्मतारीख{% else %}Date of birth{% endif %}</span><strong data-review="date_of_birth">—</strong></div>
+        <div><span>{% if lang == 'mr' %}फोटो{% else %}Photo{% endif %}</span><strong data-review-photo>—</strong></div>
+      </div>
+    </div>
+
+    <div class="form-actions form-actions-spread">
+      <a href="{{ url_for('farmer_dashboard') }}" class="btn btn-outline">{% if lang == 'mr' %}रद्द करा{% else %}Cancel{% endif %}</a>
+      <button type="submit" class="btn btn-primary">{% if lang == 'mr' %}गाय नोंदणी करा{% else %}Register Cow{% endif %}</button>
+    </div>
+  </form>
+</section>
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{ url_for('static', filename='js/cow_register.js') }}" defer></script>
+{% endblock %}

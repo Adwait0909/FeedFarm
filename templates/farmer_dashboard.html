@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block title %}Farmer Dashboard{% endblock %}
+{% block content %}
+{% set lang = session.get('lang', 'en') %}
+<section class="farmer-shell">
+  <div class="farmer-topbar">
+    <div>
+      <p class="page-kicker">{% if lang == 'mr' %}शेतकरी डॅशबोर्ड{% else %}Farmer Dashboard{% endif %}</p>
+      <h1>{% if lang == 'mr' %}पुन्हा स्वागत, {{ farmer.full_name }}{% else %}Welcome back, {{ farmer.full_name }}{% endif %}</h1>
+      <p class="subtle-copy">
+        {% if lang == 'mr' %}तुमची गायींची स्थिती, आरोग्य सूचना आणि पुढील पावले येथे दिसतात.{% else %}Your cows, herd health, and next actions are all in one place.{% endif %}
+      </p>
+    </div>
+    <div class="lang-toggle">
+      <a href="{{ url_for('set_language', lang='en') }}" class="chip {% if lang != 'mr' %}active{% endif %}">EN</a>
+      <a href="{{ url_for('set_language', lang='mr') }}" class="chip {% if lang == 'mr' %}active{% endif %}">मराठी</a>
+    </div>
+  </div>
+
+  <nav class="farmer-nav" aria-label="Farmer navigation">
+    <a href="{{ url_for('farmer_dashboard') }}" class="nav-pill active">{% if lang == 'mr' %}डॅशबोर्ड{% else %}Dashboard{% endif %}</a>
+    <a href="{{ url_for('farmer_dashboard') }}" class="nav-pill">{% if lang == 'mr' %}माझ्या गायी{% else %}My Cows{% endif %}</a>
+    <a href="{{ url_for('farmer_help') }}" class="nav-pill">{% if lang == 'mr' %}पशुवैद्यकीय मदत{% else %}Veterinary Help{% endif %}</a>
+    <a href="{{ url_for('farmer_help') }}" class="nav-pill">{% if lang == 'mr' %}मदत{% else %}Assistance{% endif %}</a>
+    <a href="{{ url_for('farmer_farm') }}" class="nav-pill">{% if lang == 'mr' %}प्रोफाइल{% else %}Profile{% endif %}</a>
+  </nav>
+
+  <section class="action-grid">
+    <a class="action-card primary" href="{{ url_for('farmer_register_cow') }}">
+      <span class="action-icon">＋</span>
+      <div>
+        <strong>{% if lang == 'mr' %}गाय नोंदणी करा{% else %}Register Cow{% endif %}</strong>
+        <small>{% if lang == 'mr' %}नवीन गाय जोडण्यासाठी{% else %}Add a new cow{% endif %}</small>
+      </div>
+    </a>
+    <a class="action-card" href="{{ url_for('farmer_dashboard') }}">
+      <span class="action-icon">🐄</span>
+      <div>
+        <strong>{% if lang == 'mr' %}माझ्या गायी{% else %}My Cows{% endif %}</strong>
+        <small>{{ total }} {% if lang == 'mr' %}नोंदणीकृत गाय{% else %}registered{% endif %}</small>
+      </div>
+    </a>
+    <a class="action-card" href="{{ url_for('scan') }}">
+      <span class="action-icon">◉</span>
+      <div>
+        <strong>{% if lang == 'mr' %}क्यूआर स्कॅन{% else %}Scan QR{% endif %}</strong>
+        <small>{% if lang == 'mr' %}गाय माहिती तपासताच{% else %}Check a cow record{% endif %}</small>
+      </div>
+    </a>
+    <a class="action-card" href="{{ url_for('farmer_help') }}">
+      <span class="action-icon">✚</span>
+      <div>
+        <strong>{% if lang == 'mr' %}वैद्यकीय मदत{% else %}Get Veterinary Help{% endif %}</strong>
+        <small>{% if lang == 'mr' %}तक्रार किंवा तपासणीसाठी{% else %}Request support{% endif %}</small>
+      </div>
+    </a>
+    <a class="action-card" href="{{ url_for('animal_health.index') }}">
+      <span class="action-icon">🐄</span>
+      <div>
+        <strong>{% if lang == 'mr' %}AI पशु आरोग्य तपासणी{% else %}Animal Health AI{% endif %}</strong>
+        <small>{% if lang == 'mr' %}फोटोद्वारे प्राथमिक तपासणी{% else %}Screen a cow photo{% endif %}</small>
+      </div>
+    </a>
+    <a class="action-card" href="/farmer/schemes/">
+      <span class="action-icon">🏛️</span>
+      <div>
+        <strong>{% if lang == 'mr' %}शासकीय योजना सल्लागार{% else %}Livestock Scheme Advisor{% endif %}</strong>
+        <small>{% if lang == 'mr' %}तुमच्या पशुधनासाठी पात्र योजना शोधा{% else %}Find schemes that may fit your farm{% endif %}</small>
+      </div>
+    </a>
+    <a class="action-card" href="/veterinary/">
+      <span class="action-icon">🩺</span>
+      <div>
+        <strong>{% if lang == 'mr' %}पशुवैद्यकीय केंद्र शोधा{% else %}Find Veterinary Care{% endif %}</strong>
+        <small>{% if lang == 'mr' %}जवळील पशुवैद्यकीय दवाखाने शोधा{% else %}Browse public veterinary facilities{% endif %}</small>
+      </div>
+    </a>
+  </section>
+
+  <section class="summary-grid">
+    <div class="summary-card highlight">
+      <span class="summary-label">{% if lang == 'mr' %}एकूण गाय{% else %}Cows{% endif %}</span>
+      <strong>{{ total }}</strong>
+      <small>{% if lang == 'mr' %}नोंदणीकृत गाय{% else %}registered{% endif %}</small>
+    </div>
+    <div class="summary-card warning">
+      <span class="summary-label">{% if lang == 'mr' %}लक्ष देण्याची गरज{% else %}Need attention{% endif %}</span>
+      <strong>{{ alerts|length }}</strong>
+      <small>{% if lang == 'mr' %}गायींना लक्ष द्यावे लागेल{% else %}cows need review{% endif %}</small>
+    </div>
+    <div class="summary-card neutral">
+      <span class="summary-label">{% if lang == 'mr' %}लसीकरण बाकी{% else %}Vaccinations due{% endif %}</span>
+      <strong>{{ cows|selectattr('vaccination_status', 'in', ['Pending', 'Overdue'])|list|length }}</strong>
+      <small>{% if lang == 'mr' %}वाढती लसीकरणे{% else %}scheduled checks{% endif %}</small>
+    </div>
+  </section>
+
+  {% if alerts %}
+  <section class="farmer-panel">
+    <div class="section-heading">
+      <h2>{% if lang == 'mr' %}आरोग्य सूचना{% else %}Health attention{% endif %}</h2>
+      <span class="status-badge danger">{{ alerts|length }} {% if lang == 'mr' %}गायी{% else %}cows{% endif %}</span>
+    </div>
+    <div class="alert-list">
+      {% for alert in alerts %}
+      <div class="alert-item">
+        <span class="warning-mark">⚠</span>
+        <div>
+          <strong>{{ alert.cow_name or alert.cow_id }}</strong>
+          <p>{{ alert.message }}</p>
+        </div>
+        <a href="{{ url_for('farmer_cow_detail', cow_id=alert.cow_id) }}" class="text-link">{% if lang == 'mr' %}तपशील पहा{% else %}View details{% endif %}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="farmer-panel">
+    <div class="section-heading">
+      <h2>{% if lang == 'mr' %}अलीकडील गायी{% else %}Recent cows{% endif %}</h2>
+      <a href="{{ url_for('farmer_register_cow') }}" class="text-link">{% if lang == 'mr' %}गाय नोंदणी करा{% else %}Register Cow{% endif %}</a>
+    </div>
+
+    {% if cows %}
+      <div class="cow-list">
+        {% for cow in cows[:4] %}
+        <article class="cow-row">
+          <div class="cow-avatar">{{ (cow.cow_name or 'C')[0]|upper }}</div>
+          <div class="cow-main">
+            <div class="cow-name-row">
+              <strong>{{ cow.cow_name or 'Cow' }}</strong>
+              <span class="status-badge {% if (cow.health_status or 'Healthy') in ['Under Observation', 'Sick'] %}danger{% elif (cow.health_status or 'Healthy') in ['Healthy'] %}healthy{% else %}neutral{% endif %}">{{ cow.health_status or 'Healthy' }}</span>
+            </div>
+            <p>{{ cow.local_cow_number or 'Local number not set' }} · {{ cow.breed or 'Breed not set' }}</p>
+          </div>
+          <div class="cow-actions">
+            <a class="small-btn" href="{{ url_for('farmer_cow_detail', cow_id=cow.cow_id) }}">{% if lang == 'mr' %}प्रोफाइल{% else %}View profile{% endif %}</a>
+            <a class="small-btn subtle" href="{{ url_for('show_qr', cow_id=cow.cow_id) }}">{% if lang == 'mr' %}क्यूआर{% else %}QR{% endif %}</a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-panel">
+        <p>{% if lang == 'mr' %}अद्याप कोणतीही गाय नोंदणी झाली नाही. पहिल्या गायची नोंदणी करा.{% else %}No cows registered yet. Start by adding your first cow.{% endif %}</p>
+        <a class="btn btn-primary" href="{{ url_for('farmer_register_cow') }}">{% if lang == 'mr' %}गाय नोंदणी करा{% else %}Register Cow{% endif %}</a>
+      </div>
+    {% endif %}
+  </section>
+</section>
+{% endblock %}

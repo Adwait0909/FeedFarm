@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}{{ cow.cow_name }} &mdash; Digital Passport{% endblock %}
+{% block content %}
+<section class="passport">
+
+  <div class="passport-header">
+    <div class="passport-photo">
+      {% if cow_photo_url(cow.image_path) %}
+      <img src="{{ cow_photo_url(cow.image_path) }}" alt="Photo of {{ cow.cow_name }}">
+      {% else %}
+      <div class="photo-placeholder" aria-hidden="true">&#128021;</div>
+      {% endif %}
+    </div>
+    <div class="passport-title">
+      <p class="page-kicker">Cow Digital Passport</p>
+      <h1>{{ cow.cow_name }}</h1>
+      <p class="passport-id">ID <strong>{{ cow.cow_id }}</strong> &middot; {{ cow.breed }} &middot; {{ cow.gender }}</p>
+    </div>
+  </div>
+
+  <div class="passport-grid">
+
+    <div class="passport-card">
+      <h2>Basic Information</h2>
+      <dl>
+        <div><dt>Cow ID</dt><dd>{{ cow.cow_id }}</dd></div>
+        <div><dt>Name</dt><dd>{{ cow.cow_name }}</dd></div>
+        <div><dt>Breed</dt><dd>{{ cow.breed }}</dd></div>
+        <div><dt>Type</dt><dd>{{ cow.cow_type or '—' }}</dd></div>
+        <div><dt>Gender</dt><dd>{{ cow.gender }}</dd></div>
+        <div><dt>Age</dt><dd>{{ (cow.age ~ ' years') if cow.age else '—' }}</dd></div>
+        <div><dt>Color</dt><dd>{{ cow.color or '—' }}</dd></div>
+      </dl>
+    </div>
+
+    <div class="passport-card">
+      <h2>Registration</h2>
+      <dl>
+        <div><dt>Registered Location</dt><dd>{{ cow.registered_location or '—' }}</dd></div>
+        <div><dt>Owner Name</dt><dd>{{ cow.owner_name }}</dd></div>
+        <div><dt>Owner Contact</dt><dd>Available via "Found This Cow?" below</dd></div>
+      </dl>
+    </div>
+
+    <div class="passport-card">
+      <h2>Health</h2>
+      <dl>
+        <div><dt>Status</dt>
+          <dd>
+            <span class="pill pill-{{ 'good' if (cow.health_score or 0) >= 80 else ('mid' if (cow.health_score or 0) >= 50 else 'low') }}">
+              {{ cow.health_status or 'Unknown' }}
+            </span>
+          </dd>
+        </div>
+        <div><dt>Health Score</dt>
+          <dd>
+            <div class="score-bar" title="{{ cow.health_score or 0 }} / 100">
+              <div class="score-fill" style="width: {{ cow.health_score or 0 }}%;"></div>
+            </div>
+            <span class="score-number">{{ cow.health_score or 0 }} / 100</span>
+          </dd>
+        </div>
+        <div><dt>Last Health Check</dt><dd>{{ cow.last_health_check or '—' }}</dd></div>
+        <div><dt>Disease History</dt><dd>{{ cow.disease_history or 'None reported' }}</dd></div>
+      </dl>
+    </div>
+
+    <div class="passport-card">
+      <h2>Vaccination</h2>
+      <dl>
+        <div><dt>Status</dt><dd>{{ cow.vaccination_status or 'Unknown' }}</dd></div>
+        <div><dt>Last Vaccination</dt><dd>{{ cow.last_vaccination_date or '—' }}</dd></div>
+      </dl>
+    </div>
+
+    <div class="passport-card">
+      <h2>Production</h2>
+      <dl>
+        <div><dt>Milk Production</dt><dd>{{ (cow.milk_production ~ ' L / day') if cow.milk_production else '—' }}</dd></div>
+      </dl>
+    </div>
+
+    {% if cow.notes %}
+    <div class="passport-card span-full">
+      <h2>Additional Notes</h2>
+      <p class="notes-text">{{ cow.notes }}</p>
+    </div>
+    {% endif %}
+
+  </div>
+
+  <div class="passport-card span-full doctor-card">
+    <h2>Doctor &amp; Medical Record</h2>
+    <dl>
+      <div><dt>Doctor in Charge</dt><dd>{{ cow.doctor_name or 'Not assigned' }}</dd></div>
+      <div><dt>Medical Record</dt><dd>{{ cow.medical_record or 'No recent medical notes' }}</dd></div>
+      <div><dt>Treatment History</dt><dd>{{ cow.treatment_history or 'No treatment history recorded' }}</dd></div>
+      <div><dt>Last Treatment Date</dt><dd>{{ cow.last_treatment_date or '—' }}</dd></div>
+      <div><dt>Next Checkup</dt><dd>{{ cow.next_checkup_date or '—' }}</dd></div>
+      <div><dt>Body Temperature</dt><dd>{{ (cow.body_temperature ~ ' °C') if cow.body_temperature is not none else '—' }}</dd></div>
+      <div><dt>Weight</dt><dd>{{ (cow.weight_kg ~ ' kg') if cow.weight_kg is not none else '—' }}</dd></div>
+      <div><dt>Pregnancy Status</dt><dd>{{ cow.pregnancy_status or '—' }}</dd></div>
+    </dl>
+    <div class="doctor-actions">
+      <a class="btn btn-primary" href="{{ url_for('doctor_update', cow_id=cow.cow_id) }}">Update Medical Record</a>
+    </div>
+  </div>
+
+  <div class="found-panel">
+    <details>
+      <summary>Found this cow?</summary>
+      <div class="found-panel-body">
+        <p>This cow is registered at <strong>{{ cow.registered_location or 'a registered farm' }}</strong>.
+           Please do not attempt to move the animal far from where you found it.</p>
+        <a class="btn btn-primary" href="{{ url_for('report_found', cow_id=cow.cow_id) }}">Report Found Cow</a>
+        <p class="found-note">The owner's private contact details are not shown publicly. Submitting the form
+           below notifies the farm directly.</p>
+      </div>
+    </details>
+  </div>
+
+</section>
+{% endblock %}

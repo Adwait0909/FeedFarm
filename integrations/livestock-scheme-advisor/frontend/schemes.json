@@ -1,0 +1,730 @@
+{
+  "_readme": "Keys are the scheme codes the backend returns (SchemeResult.code, taken from rules_manifest.json). 'url' is the page the arrow button on each scheme card opens. This file covers all 66 codes in the September-2026 rules_manifest.json. 34 of the 66 are general-agriculture schemes (crop insurance, irrigation, PM-KISAN, etc.) that are not livestock-specific and that this app's 6-question form cannot fully gate correctly yet -- see FRONTEND-README.md for the full breakdown before you demo this. Check every link once before you demo -- government portals move pages.",
+  "_fallback_url": "https://dahd.gov.in/schemes-programmes",
+  "MH_DL_2MILCH": {
+    "url": "https://ah.mahabms.com",
+    "en": {
+      "name": "Two milch cows or buffaloes — district level",
+      "short": "A unit of two milch animals at 75% subsidy for SC, TSP and OTSP beneficiaries. Applications run through the district Animal Husbandry office."
+    },
+    "mr": {
+      "name": "दोन दुधाळ गाई किंवा म्हशींचा गट — जिल्हास्तर",
+      "short": "अनुसूचित जाती, TSP व OTSP लाभार्थ्यांसाठी ७५% अनुदानावर दोन दुधाळ जनावरांचा गट. अर्ज जिल्हा पशुसंवर्धन कार्यालयामार्फत केले जातात."
+    }
+  },
+  "MH_SL_2MILCH": {
+    "url": "https://ah.mahabms.com",
+    "en": {
+      "name": "Two milch cows or buffaloes — state innovative scheme",
+      "short": "The same two-animal unit run at state level: 50% subsidy for general category and 75% for SC and ST beneficiaries."
+    },
+    "mr": {
+      "name": "दोन दुधाळ गाई किंवा म्हशींचा गट — राज्यस्तरीय नाविन्यपूर्ण योजना",
+      "short": "हाच दोन जनावरांचा गट राज्यस्तरावर: सर्वसाधारण प्रवर्गासाठी ५०% आणि अनुसूचित जाती व जमातीसाठी ७५% अनुदान."
+    }
+  },
+  "MH_GOAT_SHEEP_10_1": {
+    "url": "https://ah.mahabms.com",
+    "en": {
+      "name": "Goat or sheep rearing unit — 10 females with 1 male",
+      "short": "A semi-stall-fed unit of ten goats or sheep with one buck or ram, at 75% subsidy for SC and ST beneficiaries."
+    },
+    "mr": {
+      "name": "शेळी किंवा मेंढी पालन गट — १० माद्या व १ नर",
+      "short": "दहा शेळ्या किंवा मेंढ्या आणि एक बोकड किंवा नर मेंढा यांचा अर्ध-बंदिस्त गट, अनुसूचित जाती व जमातीसाठी ७५% अनुदान."
+    }
+  },
+  "MH_CHICKS_100": {
+    "url": "https://ah.mahabms.com",
+    "en": {
+      "name": "One hundred day-old chicks",
+      "short": "A starter poultry unit of 100 day-old chicks at 50% subsidy, open to every social category."
+    },
+    "mr": {
+      "name": "१०० एकदिवसीय पिल्लांचे वाटप",
+      "short": "१०० एकदिवसीय पिल्लांचा सुरुवातीचा कुक्कुटपालन गट, ५०% अनुदान, सर्व प्रवर्गांसाठी खुला."
+    }
+  },
+  "MH_PULLETS_25_3": {
+    "url": "https://ah.mahabms.com",
+    "en": {
+      "name": "Twenty-five pullets with three cockerels",
+      "short": "A small backyard poultry unit of grown pullets at 50% subsidy, open to every social category."
+    },
+    "mr": {
+      "name": "२५ तलंगा व ३ नर पक्ष्यांचा गट",
+      "short": "वाढलेल्या तलंगांचा लहान परसातील कुक्कुटपालन गट, ५०% अनुदान, सर्व प्रवर्गांसाठी खुला."
+    }
+  },
+  "MH_GOSHALA": {
+    "url": "https://dahd.maharashtra.gov.in/",
+    "en": {
+      "name": "Rajyamata-Gaumata goshala subsidy",
+      "short": "Rs 50 per cow per day for registered goshalas. This one is for institutions, not for individual households."
+    },
+    "mr": {
+      "name": "राज्यमाता-गोमाता गोशाळा अनुदान",
+      "short": "नोंदणीकृत गोशाळांसाठी प्रति गाय प्रति दिवस ५० रुपये. ही योजना संस्थांसाठी आहे, वैयक्तिक कुटुंबांसाठी नाही."
+    }
+  },
+  "MH_SEXED_SEMEN": {
+    "url": "https://dahd.maharashtra.gov.in/",
+    "en": {
+      "name": "Sex-sorted semen for artificial insemination",
+      "short": "Subsidised sex-sorted semen so that cows and buffaloes are far more likely to produce female calves."
+    },
+    "mr": {
+      "name": "कृत्रिम रेतनासाठी लिंग-निर्धारित वीर्य",
+      "short": "अनुदानित लिंग-निर्धारित वीर्य, ज्यामुळे गाई व म्हशींना कालवड होण्याची शक्यता खूप वाढते."
+    }
+  },
+  "MH_AGRI_STATUS": {
+    "url": "https://dahd.maharashtra.gov.in/",
+    "en": {
+      "name": "Agricultural status for animal husbandry",
+      "short": "Animal husbandry now carries agricultural status in Maharashtra, which brings farm rates for electricity, water and loans."
+    },
+    "mr": {
+      "name": "पशुपालनास कृषी दर्जा",
+      "short": "महाराष्ट्रात पशुपालनास आता कृषी दर्जा मिळाला आहे, त्यामुळे वीज, पाणी व कर्जासाठी शेतीचे दर लागू होतात."
+    }
+  },
+  "C_RGM": {
+    "url": "https://dahd.gov.in/schemes/programmes/rashtriya_gokul_mission",
+    "en": {
+      "name": "Rashtriya Gokul Mission",
+      "short": "Central programme to conserve and improve indigenous cattle breeds, including free artificial insemination and breed improvement services."
+    },
+    "mr": {
+      "name": "राष्ट्रीय गोकुळ मिशन",
+      "short": "देशी गोवंशाचे संवर्धन व सुधारणा करणारी केंद्रीय योजना, ज्यात मोफत कृत्रिम रेतन व जातसुधार सेवा समाविष्ट आहेत."
+    }
+  },
+  "C_NLM_SLED": {
+    "url": "https://nlm.udyamimitra.in",
+    "en": {
+      "name": "National Livestock Mission — livestock entrepreneurship",
+      "short": "A 50% capital subsidy of up to Rs 50 lakh for setting up poultry, sheep, goat or pig breeding farms."
+    },
+    "mr": {
+      "name": "राष्ट्रीय पशुधन अभियान — पशुधन उद्योजकता",
+      "short": "कुक्कुट, मेंढी, शेळी किंवा वराह पैदास प्रकल्प उभारण्यासाठी ५० लाख रुपयांपर्यंत ५०% भांडवली अनुदान."
+    }
+  },
+  "C_KCC_AH": {
+    "url": "https://dahd.gov.in/schemes-programmes",
+    "en": {
+      "name": "Kisan Credit Card for animal husbandry",
+      "short": "Working capital for feed, medicine and labour at a subsidised interest rate. Apply at any bank branch."
+    },
+    "mr": {
+      "name": "पशुसंवर्धनासाठी किसान क्रेडिट कार्ड",
+      "short": "खाद्य, औषधे व मजुरीसाठी सवलतीच्या व्याजदरात खेळते भांडवल. कोणत्याही बँक शाखेत अर्ज करता येतो."
+    }
+  },
+  "C_DEDS": {
+    "url": "https://www.nabard.org/",
+    "en": {
+      "name": "Dairy Entrepreneurship Development Scheme",
+      "short": "NABARD back-ended capital subsidy for small dairy units. Fresh sanctions appear to have paused in recent years and the scheme no longer appears on DAHD's current scheme list — confirm with your bank before relying on it."
+    },
+    "mr": {
+      "name": "दुग्ध उद्योजकता विकास योजना",
+      "short": "लहान दुग्ध प्रकल्पांसाठी नाबार्डचे भांडवली अनुदान. अलीकडच्या काळात नवीन मंजुऱ्या थांबलेल्या दिसतात आणि DAHD च्या सध्याच्या योजना यादीत ही योजना दिसत नाही — बँकेकडून सद्यस्थिती तपासा."
+    }
+  },
+  "C_LIVESTOCK_INS": {
+    "url": "https://dahd.gov.in/schemes/programmes/national_livestock_mission",
+    "en": {
+      "name": "Livestock Insurance Scheme",
+      "short": "Subsidised insurance cover for your animals against death, run as a component of the National Livestock Mission."
+    },
+    "mr": {
+      "name": "पशुधन विमा योजना",
+      "short": "जनावरांच्या मृत्यूपासून संरक्षण देणारे अनुदानित विमा कवच, राष्ट्रीय पशुधन अभियानाचा एक घटक."
+    }
+  },
+  "C_NADCP": {
+    "url": "https://dahd.gov.in/schemes-programmes",
+    "en": {
+      "name": "National Animal Disease Control Programme",
+      "short": "Free vaccination against foot-and-mouth disease and brucellosis, delivered through village vaccination camps."
+    },
+    "mr": {
+      "name": "राष्ट्रीय पशु रोग नियंत्रण कार्यक्रम",
+      "short": "लाळ्या-खुरकूत व ब्रुसेलोसिस विरुद्ध मोफत लसीकरण, गावपातळीवरील लसीकरण शिबिरांमार्फत."
+    }
+  },
+  "C_DIDF": {
+    "url": "https://dahd.gov.in/schemes-programmes",
+    "en": {
+      "name": "Dairy Processing and Infrastructure Development Fund",
+      "short": "Soft loans for chilling plants and processing infrastructure. Meant for cooperatives and milk unions rather than individual farmers."
+    },
+    "mr": {
+      "name": "दुग्ध प्रक्रिया व पायाभूत सुविधा विकास निधी",
+      "short": "शीतकरण केंद्रे व प्रक्रिया सुविधांसाठी सवलतीच्या दरात कर्ज. ही योजना वैयक्तिक शेतकऱ्यांऐवजी सहकारी संस्था व दूध संघांसाठी आहे."
+    }
+  },
+  "C_AHIDF": {
+    "url": "https://ahidf.udyamimitra.in/",
+    "en": {
+      "name": "Animal Husbandry Infrastructure Development Fund",
+      "short": "Loans covering up to 90% of project cost with 3% interest subvention, for dairy, meat and feed processing units."
+    },
+    "mr": {
+      "name": "पशुसंवर्धन पायाभूत सुविधा विकास निधी",
+      "short": "दुग्ध, मांस व पशुखाद्य प्रक्रिया प्रकल्पांसाठी प्रकल्प खर्चाच्या ९०% पर्यंत कर्ज आणि ३% व्याज सवलत."
+    }
+  },
+  "MH_GOVARDHAN_GOVANSH": {
+    "url": "https://dahd.maharashtra.gov.in/en/scheme/revised-govardhan-govansh-seva-kendra-yojana/",
+    "en": {
+      "name": "Govardhan Govansh Seva Kendra Yojana",
+      "short": "A grant of Rs 15–25 lakh to build one goshala per taluka. This is a one-time institutional grant to registered goshalas, not a payment to individual farmers."
+    },
+    "mr": {
+      "name": "गोवर्धन गोवंश सेवा केंद्र योजना",
+      "short": "एका तालुक्यात एक गोशाळा उभारण्यासाठी १५–२५ लाख रुपयांचे अनुदान. हे नोंदणीकृत गोशाळांसाठी एकवेळचे संस्थात्मक अनुदान आहे, वैयक्तिक शेतकऱ्यांसाठी नाही."
+    }
+  },
+  "MH_CM_ANIMAL_HEALTH": {
+    "url": "https://dahd.maharashtra.gov.in/en/scheme/chief-minister-animal-health-scheme/",
+    "en": {
+      "name": "Chief Minister Animal Health Scheme",
+      "short": "Free doorstep veterinary care through mobile clinics — call the 1962 toll-free number or use the Pashudhan Sanjivani app. Open to every livestock owner."
+    },
+    "mr": {
+      "name": "मुख्यमंत्री पशु आरोग्य योजना",
+      "short": "फिरत्या दवाखान्यांमार्फत मोफत घरपोच पशुवैद्यकीय सेवा — 1962 या टोल-फ्री क्रमांकावर संपर्क साधा किंवा पशुधन संजीवनी अॅप वापरा. सर्व पशुपालकांसाठी खुली."
+    }
+  },
+  "MH_CM_RURAL_LIVESTOCK_ENTRE": {
+    "url": "https://dahd.maharashtra.gov.in/",
+    "en": {
+      "name": "Chief Minister Rural Livestock Entrepreneurship Scheme",
+      "short": "A larger livestock-entrepreneurship unit — dairy animals with a shed, goat/sheep, or poultry — at 50–75% subsidy. The subsidy rate and land requirement were not confirmed from the official GR at the time of writing; verify on the portal before applying."
+    },
+    "mr": {
+      "name": "मुख्यमंत्री ग्रामीण पशुधन उद्योजकता योजना",
+      "short": "शेडसह दुधाळ जनावरे, शेळी-मेंढी किंवा कुक्कुटपालनाचा मोठा उद्योजकता गट, ५०–७५% अनुदानावर. अनुदान दर व जमिनीची अट अधिकृत शासन निर्णयावरून अद्याप पडताळलेली नाही — अर्ज करण्यापूर्वी पोर्टलवर खात्री करा."
+    }
+  },
+  "MH_MAHAMESH": {
+    "url": "https://mhsgc.org/en/schemes/",
+    "en": {
+      "name": "Raje Yashwantrao Holkar Mahamesh Yojana",
+      "short": "A unit of 20 sheep with 1 ram at 75% subsidy for Nomadic Tribes-C (Dhangar and related shepherd communities), run by the Maharashtra Sheep and Goat Development Corporation."
+    },
+    "mr": {
+      "name": "राजे यशवंतराव होळकर महामेष योजना",
+      "short": "भटक्या जमाती-क (धनगर व तत्सम मेंढपाळ समाज) साठी २० मेंढ्या व १ नर मेंढ्याचा गट, ७५% अनुदानावर — महाराष्ट्र मेंढी व शेळी विकास महामंडळामार्फत."
+    }
+  },
+  "MH_SHEEP_GRAZING_SUBSIDY": {
+    "url": "https://mhsgc.org/en/schemes/",
+    "en": {
+      "name": "Grazing subsidy for sheep-rearing families",
+      "short": "Rs 6,000 a month for four months (June–September) to Nomadic Tribes-C Dhangar shepherd families with at least 20 sheep and 1 ram. This app does not currently ask whether you belong to this category, so treat any result for this scheme as indicative only — confirm at your nearest MHSGC office."
+    },
+    "mr": {
+      "name": "मेंढीपालनासाठी चराई अनुदान",
+      "short": "किमान २० मेंढ्या व १ नर मेंढा असलेल्या भटक्या जमाती-क धनगर मेंढपाळ कुटुंबांना जून ते सप्टेंबर या चार महिन्यांसाठी दरमहा ६,००० रुपये. हे अॅप सध्या तुम्ही या प्रवर्गातील आहात का हे विचारत नाही, त्यामुळे या योजनेचा निकाल केवळ सूचक समजा — जवळच्या MHSGC कार्यालयात खात्री करा."
+    }
+  },
+  "MH_SHEEP_LAND_SUBSIDY": {
+    "url": "https://mhsgc.org/en/schemes/",
+    "en": {
+      "name": "Land purchase or lease subsidy for sheep and goat rearing",
+      "short": "For landless Nomadic Tribes-C Dhangar shepherd families: 75% of the cost of one guntha of land, or 75% of a 30-year lease, up to Rs 50,000 one-time."
+    },
+    "mr": {
+      "name": "शेळी-मेंढी पालनासाठी जमीन खरेदी किंवा भाडेपट्टा अनुदान",
+      "short": "भूमिहीन भटक्या जमाती-क धनगर मेंढपाळ कुटुंबांसाठी: एक गुंठा जमिनीच्या किमतीच्या ७५% किंवा ३० वर्षांच्या भाडेपट्ट्याच्या ७५%, कमाल ५०,००० रुपये एकवेळ."
+    }
+  },
+  "MH_GOAT_SEMEN_LAB": {
+    "url": "https://mhsgc.org/en/schemes/",
+    "en": {
+      "name": "Goat and sheep semen production laboratory, Tirtha",
+      "short": "A divisional semen-production laboratory near Tuljapur. This is infrastructure the state is building, not a payment or unit an individual farmer applies for."
+    },
+    "mr": {
+      "name": "शेळी-मेंढी वीर्य उत्पादन प्रयोगशाळा, तीर्थ",
+      "short": "तुळजापूरजवळील विभागीय वीर्य-उत्पादन प्रयोगशाळा. ही राज्य उभारत असलेली पायाभूत सुविधा आहे, वैयक्तिक शेतकऱ्याला मिळणारे अनुदान किंवा गट नाही."
+    }
+  },
+  "MH_GOAT_SHEEP_AI": {
+    "url": "https://mhsgc.org/en/schemes/",
+    "en": {
+      "name": "Artificial insemination scale-up in goats and sheep",
+      "short": "AI materials are being supplied to around 1,666 veterinary clinics so that goat and sheep owners can access artificial insemination through the same network used for cows and buffaloes."
+    },
+    "mr": {
+      "name": "शेळी-मेंढीमध्ये कृत्रिम रेतन सेवेचा विस्तार",
+      "short": "सुमारे १,६६६ पशुवैद्यकीय दवाखान्यांना कृत्रिम रेतन साहित्य पुरवले जात आहे, जेणेकरून शेळी-मेंढीपालकांना गाई-म्हशींसाठी वापरल्या जाणाऱ्या त्याच यंत्रणेतून कृत्रिम रेतन सेवा मिळेल."
+    }
+  },
+  "C_NLM_BREED": {
+    "url": "https://nlm.udyamimitra.in/Home/SubmissionOnBreed",
+    "en": {
+      "name": "NLM — Breed Development of Livestock and Poultry",
+      "short": "A separate 50% capital subsidy, capped at Rs 25 lakh per unit, for entrepreneurs setting up poultry, sheep, goat or pig breeding units. This cap is lower than the Rs 50 lakh entrepreneurship sub-mission (C_NLM_SLED) — check which one fits your project."
+    },
+    "mr": {
+      "name": "राष्ट्रीय पशुधन अभियान — पशुधन व कुक्कुट जातसुधार उपअभियान",
+      "short": "कुक्कुट, मेंढी, शेळी किंवा वराह पैदास घटक उभारणाऱ्या उद्योजकांसाठी स्वतंत्र ५०% भांडवली अनुदान, कमाल २५ लाख रुपये प्रति घटक. हे प्रमाण ५० लाखांच्या उद्योजकता उपअभियानापेक्षा (C_NLM_SLED) कमी आहे — तुमच्या प्रकल्पासाठी कोणते लागू होते ते तपासा."
+    }
+  },
+  "C_NLM_FODDER": {
+    "url": "https://nlm.udyamimitra.in",
+    "en": {
+      "name": "NLM — Feed and Fodder Development",
+      "short": "Capital support for entrepreneurs setting up silage-making, fodder-block or feed units, so that fodder shortage is less of a constraint on how many animals a household can keep."
+    },
+    "mr": {
+      "name": "राष्ट्रीय पशुधन अभियान — वैरण व पशुखाद्य विकास",
+      "short": "मुरघास (सायलेज), वैरण-गोळी किंवा पशुखाद्य निर्मिती घटक उभारणाऱ्या उद्योजकांसाठी भांडवली सहाय्य, जेणेकरून वैरणटंचाई हा जनावरे पाळण्यातील अडथळा कमी होईल."
+    }
+  },
+  "C_LHDCP": {
+    "url": "https://dahd.gov.in/schemes-programmes/lhdcp",
+    "en": {
+      "name": "Livestock Health and Disease Control Programme",
+      "short": "Doorstep veterinary care through mobile veterinary units, state-prioritised disease vaccination, and affordable generic medicine under the Pashu Aushadhi component — open to every livestock owner, no category restriction."
+    },
+    "mr": {
+      "name": "पशुधन आरोग्य व रोग नियंत्रण कार्यक्रम",
+      "short": "फिरत्या पशुवैद्यकीय पथकांमार्फत घरपोच सेवा, राज्यास प्राधान्य असलेल्या रोगांचे लसीकरण, आणि पशु औषधी घटकाअंतर्गत परवडणारी सर्वसाधारण औषधे — कोणत्याही प्रवर्गाचे बंधन नसलेली, सर्व पशुपालकांसाठी खुली."
+    }
+  },
+  "C_NPDD": {
+    "url": "https://dahd.gov.in/schemes/programmes/npdd",
+    "en": {
+      "name": "National Programme for Dairy Development",
+      "short": "Central funding for milk chilling plants, testing labs and dairy cooperative societies. The applicant is the cooperative federation or milk union, not an individual farmer — relevant if your village dairy society applies, not to you directly."
+    },
+    "mr": {
+      "name": "राष्ट्रीय दुग्धविकास कार्यक्रम",
+      "short": "दूध शीतकरण केंद्रे, तपासणी प्रयोगशाळा व दुग्ध सहकारी संस्थांसाठी केंद्रीय निधी. अर्जदार सहकारी संघ किंवा दूध संघ असतो, वैयक्तिक शेतकरी नाही — हे तुमच्या गावातील दूध संस्थेला लागू होते, तुम्हाला थेट नाही."
+    }
+  },
+  "C_SDCFPO": {
+    "url": "https://dahd.gov.in/schemes/programmes/sdcfpo",
+    "en": {
+      "name": "Supporting Dairy Cooperatives and Farmer Producer Organizations",
+      "short": "Interest subvention on working-capital loans so dairy cooperatives and milk-producer companies can keep paying farmers on time during a market crisis. The benefit flows to the cooperative or FPO, not to an individual farmer directly."
+    },
+    "mr": {
+      "name": "दुग्ध सहकारी संस्था व शेतकरी उत्पादक संस्थांना सहाय्य",
+      "short": "बाजारातील अडचणीच्या काळात दुग्ध सहकारी संस्था व दूध उत्पादक कंपन्यांना शेतकऱ्यांचे पैसे वेळेत देता यावेत यासाठी खेळत्या भांडवलावरील कर्जावर व्याज सवलत. हा लाभ सहकारी संस्था किंवा FPO ला मिळतो, वैयक्तिक शेतकऱ्याला थेट नाही."
+    }
+  },
+  "C_NGRA": {
+    "url": "https://dahd.gov.in/schemes/programmes/ngra",
+    "en": {
+      "name": "National Gopal Ratna Award",
+      "short": "A competitive national award — not a subsidy — for the best indigenous-breed dairy farmers, AI technicians and dairy cooperatives. You would nominate yourself for recognition, not apply for a payment."
+    },
+    "mr": {
+      "name": "राष्ट्रीय गोपाल रत्न पुरस्कार",
+      "short": "देशी जातींचे संगोपन करणारे उत्कृष्ट दुग्धपालक, कृत्रिम रेतन तंत्रज्ञ व दुग्ध सहकारी संस्थांसाठी राष्ट्रीय स्पर्धात्मक पुरस्कार — हे अनुदान नाही. यासाठी तुम्ही सन्मानार्थ नामांकन करता, पैशासाठी अर्ज करत नाही."
+    }
+  },
+  "C_LCISS": {
+    "url": "https://dahd.gov.in/schemes/programmes/animal-husbandry-statistics",
+    "en": {
+      "name": "Livestock Census and Integrated Sample Survey",
+      "short": "A government data-collection exercise that counts livestock across the country — this is a survey your animals may be counted in, not a scheme you apply to or a benefit you receive."
+    },
+    "mr": {
+      "name": "पशुगणना व एकात्मिक नमुना सर्वेक्षण",
+      "short": "देशभरातील पशुधनाची मोजणी करणारा शासकीय सर्वेक्षण उपक्रम — ही तुमची जनावरे मोजली जाणारी गणना आहे, तुम्ही अर्ज करावा अशी योजना किंवा मिळणारा लाभ नाही."
+    }
+  },
+  "MH_NAMO_SHETKARI": {
+    "url": "https://krishi.maharashtra.gov.in/",
+    "en": {
+      "name": "Namo Shetkari Mahasanman Nidhi Yojana",
+      "short": "A Maharashtra state top-up of Rs 6,000 a year for landholding farmers, paid alongside the central PM-KISAN transfer. About land, not about livestock."
+    },
+    "mr": {
+      "name": "नमो शेतकरी महासन्मान निधी योजना",
+      "short": "जमीनधारक शेतकऱ्यांना केंद्राच्या PM-KISAN रकमेसोबत मिळणारे महाराष्ट्र शासनाचे वार्षिक ६,००० रुपयांचे अतिरिक्त सहाय्य. हे जमिनीशी संबंधित आहे, पशुधनाशी नाही."
+    }
+  },
+  "MH_GOPINATH_MUNDE": {
+    "url": "https://krishi.maharashtra.gov.in/",
+    "en": {
+      "name": "Gopinath Munde Shetkari Apghat Suraksha Sanugrah Anudan Yojana",
+      "short": "A grant of up to Rs 2 lakh to a farming family after the accidental death or disability of a farmer — 24-hour accident cover, not tied to owning animals."
+    },
+    "mr": {
+      "name": "गोपीनाथ मुंडे शेतकरी अपघात सुरक्षा सानुग्रह अनुदान योजना",
+      "short": "शेतकऱ्याचा अपघाती मृत्यू किंवा अपंगत्व आल्यास कुटुंबाला मिळणारे कमाल २ लाख रुपयांचे अनुदान — २४ तास अपघात संरक्षण, जनावरे असण्याशी संबंधित नाही."
+    }
+  },
+  "MH_AMBEDKAR_KRISHI_SWAVALAMBAN": {
+    "url": "https://mahadbt.maharashtra.gov.in/Farmer/Login/Login",
+    "en": {
+      "name": "Dr. Babasaheb Ambedkar Krushi Swavalamban Yojana",
+      "short": "Assistance for wells, borewells, pump-sets and irrigation for SC and Navbouddha farmers, applied for through the MahaDBT portal. An irrigation-asset scheme, not a livestock one."
+    },
+    "mr": {
+      "name": "डॉ. बाबासाहेब आंबेडकर कृषी स्वावलंबन योजना",
+      "short": "अनुसूचित जाती व नवबौद्ध शेतकऱ्यांसाठी विहीर, बोअरवेल, पंपसंच व सिंचनासाठी सहाय्य, MahaDBT पोर्टलवरून अर्ज करावा लागतो. ही सिंचन-साधन योजना आहे, पशुधनाची नाही."
+    }
+  },
+  "MH_BIRSA_MUNDA": {
+    "url": "https://mahadbt.maharashtra.gov.in/Farmer/Login/Login",
+    "en": {
+      "name": "Birsa Munda Krishi Kranti Yojana",
+      "short": "Irrigation assistance for Scheduled Tribe farmers (Tribal Sub Plan / Outside Tribal Sub Plan), applied for through MahaDBT. Land and irrigation focused, not livestock."
+    },
+    "mr": {
+      "name": "बिरसा मुंडा कृषी क्रांती योजना",
+      "short": "अनुसूचित जमाती शेतकऱ्यांसाठी (आदिवासी उपयोजना / आदिवासी उपयोजनाबाह्य) सिंचन सहाय्य, MahaDBT पोर्टलवरून अर्ज. ही जमीन व सिंचनावर केंद्रित योजना आहे, पशुधनावर नाही."
+    }
+  },
+  "MH_MAGEL_TYALA_SAUR_PUMP": {
+    "url": "https://www.mahadiscom.in/solar_MTSKPY/",
+    "en": {
+      "name": "Magel Tyala Saur Krushi Pump Yojana",
+      "short": "Solar agricultural pumps where a general-category farmer pays about 10% of the cost and the government covers the rest. Requires an assured irrigation water source — nothing to do with animals."
+    },
+    "mr": {
+      "name": "मागेल त्याला सौर कृषी पंप योजना",
+      "short": "सर्वसाधारण प्रवर्गातील शेतकऱ्याला किमतीच्या सुमारे १०% रक्कम भरून मिळणारा सौर कृषी पंप, उर्वरित खर्च शासन उचलते. यासाठी खात्रीशीर सिंचन जलस्रोत आवश्यक — जनावरांशी संबंध नाही."
+    }
+  },
+  "MH_SHASHWAT_SINCHAN": {
+    "url": "https://mahadbt.maharashtra.gov.in/Farmer/Login/Login",
+    "en": {
+      "name": "Mukhyamantri Shashwat Krishi Sinchan Yojana",
+      "short": "A state top-up on top of the central micro-irrigation subsidy (drip and sprinkler). Irrigation infrastructure, not livestock."
+    },
+    "mr": {
+      "name": "मुख्यमंत्री शाश्वत कृषी सिंचन योजना",
+      "short": "केंद्राच्या सूक्ष्म सिंचन (ठिबक व तुषार) अनुदानावर राज्याकडून मिळणारे अतिरिक्त सहाय्य. ही सिंचन पायाभूत सुविधा आहे, पशुधन नाही."
+    }
+  },
+  "MH_STATE_AGRI_MECHANIZATION": {
+    "url": "https://mahadbt.maharashtra.gov.in/Farmer/Login/Login",
+    "en": {
+      "name": "State Agriculture Mechanization Scheme",
+      "short": "Subsidy on farm machinery for farmers who hold land records (7/12 and 8-A extracts) — so landless applicants are not eligible. About equipment for cultivation, not animals."
+    },
+    "mr": {
+      "name": "राज्य कृषी यांत्रिकीकरण योजना",
+      "short": "जमिनीचे ७/१२ व ८-अ उतारे असलेल्या शेतकऱ्यांसाठी शेती यंत्रसामग्रीवरील अनुदान — त्यामुळे भूमिहीन अर्जदार पात्र नाहीत. हे शेती अवजारांसाठी आहे, जनावरांसाठी नाही."
+    }
+  },
+  "MH_KARJMUKTI": {
+    "url": "https://krishi.maharashtra.gov.in/",
+    "en": {
+      "name": "Mahatma Jyotirao Phule Shetkari Karjmukti Yojana",
+      "short": "A crop-loan waiver scheme. Requires an existing crop loan — this is not a standing, always-open entitlement, and its current open/closed status was not confirmed. Check with your bank."
+    },
+    "mr": {
+      "name": "महात्मा जोतिराव फुले शेतकरी कर्जमुक्ती योजना",
+      "short": "पीक कर्जमाफी योजना. यासाठी आधीपासून पीक कर्ज असणे आवश्यक आहे — ही कायमस्वरूपी खुली योजना नाही, आणि सध्याची सुरू/बंद स्थिती पडताळलेली नाही. बँकेकडे खात्री करा."
+    }
+  },
+  "MH_NANAJI_DESHMUKH_POCRA": {
+    "url": "https://dpmu.mahapocra.gov.in/",
+    "en": {
+      "name": "Nanaji Deshmukh Krishi Sanjivani Prakalp (PoCRA)",
+      "short": "A climate-resilient farming project that only operates in selected project villages. Whether your village is covered cannot be checked from this app — confirm with your local agriculture office."
+    },
+    "mr": {
+      "name": "नानाजी देशमुख कृषी संजीवनी प्रकल्प (PoCRA)",
+      "short": "हवामान-अनुकूल शेतीचा प्रकल्प, जो केवळ निवडक प्रकल्प गावांमध्ये राबवला जातो. तुमचे गाव यात समाविष्ट आहे का, हे या अॅपवरून तपासता येत नाही — स्थानिक कृषी कार्यालयात खात्री करा."
+    }
+  },
+  "C_PM_KISAN": {
+    "url": "https://pmkisan.gov.in",
+    "en": {
+      "name": "PM-KISAN",
+      "short": "Rs 6,000 a year to landholding farmer families in three instalments, direct to your bank account. Income-tax payers and a few other categories are excluded — check the current exclusion list on the portal."
+    },
+    "mr": {
+      "name": "पीएम-किसान",
+      "short": "जमीनधारक शेतकरी कुटुंबांना वर्षाला ६,००० रुपये, तीन हप्त्यांत थेट बँक खात्यात. आयकर भरणारे व काही इतर प्रवर्ग वगळलेले आहेत — पोर्टलवर सध्याची वगळणी यादी तपासा."
+    }
+  },
+  "C_PM_KMY": {
+    "url": "https://nfwpis.da.gov.in",
+    "en": {
+      "name": "PM Kisan Maandhan Yojana",
+      "short": "A contributory pension for small and marginal farmers: pay Rs 55–200 a month between age 18–40, and receive Rs 3,000 a month after turning 60. Not linked to owning animals."
+    },
+    "mr": {
+      "name": "पीएम किसान मानधन योजना",
+      "short": "अल्प व सीमांत शेतकऱ्यांसाठी अंशदायी निवृत्तिवेतन: वयाच्या १८ ते ४० व्या वर्षादरम्यान दरमहा ५५–२०० रुपये भरा, वयाच्या ६० नंतर दरमहा ३,००० रुपये मिळतात. जनावरे असण्याशी संबंध नाही."
+    }
+  },
+  "C_PMFBY": {
+    "url": "https://pmfby.gov.in",
+    "en": {
+      "name": "Pradhan Mantri Fasal Bima Yojana",
+      "short": "Crop insurance against natural risks from sowing to harvest, open to every farmer with a crop to insure. Covers crops, not the animals themselves."
+    },
+    "mr": {
+      "name": "प्रधानमंत्री फसल विमा योजना",
+      "short": "पेरणीपासून काढणीपर्यंत नैसर्गिक धोक्यांपासून पिकांना विमा संरक्षण, पीक असलेल्या प्रत्येक शेतकऱ्यासाठी खुली. हे पिकांसाठी आहे, जनावरांसाठी नाही."
+    }
+  },
+  "C_MISS": {
+    "url": "https://agriwelfare.gov.in",
+    "en": {
+      "name": "Modified Interest Subvention Scheme",
+      "short": "A lower effective interest rate — around 4% with prompt repayment — on short-term loans up to Rs 3 lakh, which explicitly covers animal husbandry and dairying alongside crop loans. Requires a Kisan Credit Card."
+    },
+    "mr": {
+      "name": "सुधारित व्याज सवलत योजना",
+      "short": "३ लाख रुपयांपर्यंतच्या अल्पमुदत कर्जावर कमी परिणामी व्याजदर — वेळेवर परतफेड केल्यास सुमारे ४% — ज्यात पीक कर्जासोबत पशुसंवर्धन व दुग्धव्यवसायाचाही स्पष्ट समावेश आहे. किसान क्रेडिट कार्ड आवश्यक."
+    }
+  },
+  "C_AIF": {
+    "url": "https://agriinfra.dac.gov.in",
+    "en": {
+      "name": "Agriculture Infrastructure Fund",
+      "short": "Medium-to-long-term loans with 3% interest subvention for post-harvest and farm infrastructure projects, open to farmers, FPOs, cooperatives and agri-entrepreneurs. Needs a bankable project, not just animal ownership."
+    },
+    "mr": {
+      "name": "कृषी पायाभूत सुविधा निधी",
+      "short": "काढणीपश्चात व शेती पायाभूत सुविधा प्रकल्पांसाठी ३% व्याज सवलतीसह मध्यम ते दीर्घ मुदतीचे कर्ज, शेतकरी, FPO, सहकारी संस्था व कृषी-उद्योजकांसाठी खुले. यासाठी बँकयोग्य प्रकल्प आवश्यक, केवळ जनावरे असणे पुरेसे नाही."
+    }
+  },
+  "C_FPO_10K": {
+    "url": "https://sfacindia.com",
+    "en": {
+      "name": "Formation and Promotion of 10,000 FPOs",
+      "short": "Grants and a matching equity contribution to help farmers form a Farmer Producer Organisation. The benefit goes to the FPO, not to an individual member directly."
+    },
+    "mr": {
+      "name": "१०,००० शेतकरी उत्पादक संस्थांची स्थापना",
+      "short": "शेतकऱ्यांना शेतकरी उत्पादक संस्था (FPO) स्थापन करण्यासाठी अनुदान व समभाग सहाय्य. हा लाभ FPO ला मिळतो, वैयक्तिक सदस्याला थेट नाही."
+    }
+  },
+  "C_NBHM": {
+    "url": "https://nbb.gov.in",
+    "en": {
+      "name": "National Beekeeping and Honey Mission",
+      "short": "Support for scientific beekeeping and honey-testing infrastructure. This app has no beekeeping question, so it cannot tell you whether you qualify — treat this card as informational only."
+    },
+    "mr": {
+      "name": "राष्ट्रीय मधुमक्षिका पालन व मध अभियान",
+      "short": "शास्त्रीय मधुमक्षिका पालन व मध-तपासणी पायाभूत सुविधांसाठी सहाय्य. या अॅपमध्ये मधुमक्षिकापालनाबाबत प्रश्न नाही, त्यामुळे तुम्ही पात्र आहात की नाही हे सांगता येत नाही — हे कार्ड केवळ माहितीसाठी समजा."
+    }
+  },
+  "C_MIS_PSS": {
+    "url": "https://agriwelfare.gov.in",
+    "en": {
+      "name": "Market Intervention Scheme and Price Support Scheme",
+      "short": "Government procurement to protect growers of pulses, oilseeds and perishables from distress prices. About crop prices, not livestock."
+    },
+    "mr": {
+      "name": "बाजार हस्तक्षेप योजना व किंमत आधार योजना",
+      "short": "डाळी, तेलबिया व नाशवंत मालाच्या उत्पादकांना कमी भावापासून संरक्षण देणारी शासकीय खरेदी. हे पिकांच्या किमतीशी संबंधित आहे, पशुधनाशी नाही."
+    }
+  },
+  "C_NAMO_DRONE_DIDI": {
+    "url": "https://agriwelfare.gov.in",
+    "en": {
+      "name": "Namo Drone Didi",
+      "short": "Drones supplied to women's Self Help Groups, with 80% central assistance up to Rs 8 lakh, for renting out spraying services to farmers. Open only to selected women SHGs, not to an individual farmer."
+    },
+    "mr": {
+      "name": "नमो ड्रोन दीदी",
+      "short": "महिला बचत गटांना ड्रोन पुरवठा, कमाल ८ लाख रुपयांपर्यंत ८०% केंद्रीय सहाय्यासह, शेतकऱ्यांना फवारणी सेवा भाड्याने देण्यासाठी. हे फक्त निवडक महिला बचत गटांसाठी आहे, वैयक्तिक शेतकऱ्यासाठी नाही."
+    }
+  },
+  "C_RKVY": {
+    "url": "https://rkvy.nic.in",
+    "en": {
+      "name": "Rashtriya Krishi Vikas Yojana",
+      "short": "State-designed agriculture and allied-sector infrastructure projects, including an agri-startup grant route. Applied for at state/project level, not directly by an individual farmer."
+    },
+    "mr": {
+      "name": "राष्ट्रीय कृषी विकास योजना",
+      "short": "राज्यस्तरावर आखलेले कृषी व संलग्न क्षेत्रातील पायाभूत सुविधा प्रकल्प, कृषी-स्टार्टअप अनुदान मार्गासह. राज्य/प्रकल्प पातळीवर अर्ज होतो, वैयक्तिक शेतकऱ्याकडून थेट नाही."
+    }
+  },
+  "C_SHC": {
+    "url": "https://soilhealth.dac.gov.in",
+    "en": {
+      "name": "Soil Health Card",
+      "short": "A free soil test with fertiliser-dosage recommendations for anyone who cultivates land. About soil, not livestock."
+    },
+    "mr": {
+      "name": "मृदा आरोग्य पत्रिका",
+      "short": "जमीन कसणाऱ्या कोणत्याही शेतकऱ्यासाठी मोफत माती परीक्षण व खत मात्रेच्या शिफारशी. हे जमिनीशी संबंधित आहे, पशुधनाशी नाही."
+    }
+  },
+  "C_RAD": {
+    "url": "https://rkvy.nic.in",
+    "en": {
+      "name": "Rainfed Area Development",
+      "short": "Support for an integrated farming system on rainfed land that explicitly includes livestock alongside horticulture and fishery — one of the few crop-side central schemes genuinely relevant to a livestock keeper on rainfed land."
+    },
+    "mr": {
+      "name": "कोरडवाहू क्षेत्र विकास",
+      "short": "कोरडवाहू जमिनीवरील एकात्मिक शेती पद्धतीसाठी सहाय्य, ज्यात फळबाग व मत्स्यव्यवसायासोबत पशुधनाचाही स्पष्ट समावेश आहे — कोरडवाहू जमिनीवरील पशुपालकांसाठी खरोखर उपयुक्त असलेल्या मोजक्या पीक-आधारित केंद्रीय योजनांपैकी एक."
+    }
+  },
+  "C_PDMC": {
+    "url": "https://pmksy.gov.in",
+    "en": {
+      "name": "Per Drop More Crop (micro-irrigation)",
+      "short": "Subsidy for drip and sprinkler irrigation — 55% for small and marginal farmers in Maharashtra, 45% for others. Requires land and an assured water source; not a livestock scheme."
+    },
+    "mr": {
+      "name": "पर ड्रॉप मोअर क्रॉप (सूक्ष्म सिंचन)",
+      "short": "ठिबक व तुषार सिंचनासाठी अनुदान — महाराष्ट्रात अल्प व सीमांत शेतकऱ्यांसाठी ५५%, इतरांसाठी ४५%. यासाठी जमीन व खात्रीशीर जलस्रोत आवश्यक; ही पशुधन योजना नाही."
+    }
+  },
+  "C_PKVY": {
+    "url": "https://pgsindia-ncof.gov.in",
+    "en": {
+      "name": "Paramparagat Krishi Vikas Yojana",
+      "short": "Support for clusters of at least 20 farmers converting to organic farming, with up to Rs 15,000 per hectare paid directly to the farmer. Needs your own land under crops."
+    },
+    "mr": {
+      "name": "परंपरागत कृषी विकास योजना",
+      "short": "किमान २० शेतकऱ्यांच्या गटासाठी सेंद्रिय शेतीकडे वळण्यासाठी सहाय्य, प्रति हेक्टर कमाल १५,००० रुपये थेट शेतकऱ्याला. यासाठी स्वतःची पिकाखालील जमीन आवश्यक."
+    }
+  },
+  "C_SMAM": {
+    "url": "https://agrimachinery.nic.in",
+    "en": {
+      "name": "Sub-Mission on Agricultural Mechanization",
+      "short": "Subsidised farm machinery and Custom Hiring Centres, aimed mainly at small and marginal farmers. About equipment for cultivation, not animals."
+    },
+    "mr": {
+      "name": "कृषी यांत्रिकीकरण उपअभियान",
+      "short": "प्रामुख्याने अल्प व सीमांत शेतकऱ्यांसाठी अनुदानित शेती यंत्रसामग्री व कस्टम हायरिंग सेंटर. हे शेती अवजारांसाठी आहे, जनावरांसाठी नाही."
+    }
+  },
+  "C_CRM": {
+    "url": "https://agrimachinery.nic.in",
+    "en": {
+      "name": "Crop Residue Management",
+      "short": "In-situ crop-residue machinery support — but this runs only in Punjab, Haryana, Uttar Pradesh and Delhi. It does not apply in Maharashtra, so this card is included only for completeness."
+    },
+    "mr": {
+      "name": "पीक अवशेष व्यवस्थापन",
+      "short": "शेतातच पीक अवशेष व्यवस्थापनासाठी यंत्रसामग्री सहाय्य — पण ही योजना फक्त पंजाब, हरियाणा, उत्तर प्रदेश व दिल्लीत लागू आहे. महाराष्ट्रात लागू नाही, हे कार्ड केवळ पूर्णतेसाठी समाविष्ट केले आहे."
+    }
+  },
+  "C_AGROFORESTRY": {
+    "url": "https://rkvy.nic.in",
+    "en": {
+      "name": "Agroforestry",
+      "short": "Quality planting material and certification support for growing trees on your own farmland. Needs land under your name, and has nothing to do with animals."
+    },
+    "mr": {
+      "name": "कृषी-वनीकरण",
+      "short": "स्वतःच्या शेतजमिनीवर झाडे लावण्यासाठी दर्जेदार रोपसामग्री व प्रमाणीकरण सहाय्य. यासाठी स्वतःच्या नावावर जमीन आवश्यक, आणि याचा जनावरांशी काहीही संबंध नाही."
+    }
+  },
+  "C_NFSM": {
+    "url": "https://nfsm.gov.in",
+    "en": {
+      "name": "National Food Security Mission",
+      "short": "Support for growing rice, wheat, pulses, coarse cereals or millets in identified districts, including Maharashtra's millet mission. About crops you grow, not animals you keep."
+    },
+    "mr": {
+      "name": "राष्ट्रीय अन्न सुरक्षा अभियान",
+      "short": "निवडक जिल्ह्यांत भात, गहू, कडधान्ये, भरडधान्ये किंवा भरड तृणधान्ये पिकवण्यासाठी सहाय्य, महाराष्ट्राच्या भरडधान्य अभियानासह. हे तुम्ही पिकवत असलेल्या पिकांशी संबंधित आहे, पाळत असलेल्या जनावरांशी नाही."
+    }
+  },
+  "C_NMEO_OP": {
+    "url": "https://nmeo-oilpalm.gov.in",
+    "en": {
+      "name": "National Mission on Edible Oils — Oil Palm",
+      "short": "Promotes oil palm cultivation. Most of Maharashtra is agro-climatically marginal for oil palm, and this app has no crop-suitability data — treat this card as informational only, not a real recommendation."
+    },
+    "mr": {
+      "name": "राष्ट्रीय खाद्यतेल अभियान — तेल पाम",
+      "short": "तेल पाम लागवडीस प्रोत्साहन देणारी योजना. महाराष्ट्रातील बहुतांश भाग तेल पामसाठी हवामानदृष्ट्या फारसा योग्य नाही, आणि या अॅपकडे पीक-योग्यतेची माहिती नाही — हे कार्ड केवळ माहितीसाठी समजा, खरी शिफारस नाही."
+    }
+  },
+  "C_MIDH": {
+    "url": "https://midh.gov.in",
+    "en": {
+      "name": "Mission for Integrated Development of Horticulture",
+      "short": "Support for fruit, vegetable, spice and flower cultivation, orchard rejuvenation, and beekeeping for pollination. Needs your own land under horticulture crops."
+    },
+    "mr": {
+      "name": "फलोत्पादन एकात्मिक विकास अभियान",
+      "short": "फळे, भाजीपाला, मसाला व फुलपिकांच्या लागवडीसाठी, जुन्या फळबागांच्या पुनरुज्जीवनासाठी व परागीभवनासाठी मधुमक्षिकापालनासाठी सहाय्य. यासाठी स्वतःची फलोत्पादन पिकाखालील जमीन आवश्यक."
+    }
+  },
+  "C_NBM": {
+    "url": "https://midh.gov.in",
+    "en": {
+      "name": "National Bamboo Mission",
+      "short": "Support for bamboo nurseries, plantations and processing — now merged into the horticulture mission above. Needs your own non-forest land, and has nothing to do with animals."
+    },
+    "mr": {
+      "name": "राष्ट्रीय बांबू अभियान",
+      "short": "बांबू रोपवाटिका, लागवड व प्रक्रियेसाठी सहाय्य — आता वरील फलोत्पादन अभियानात विलीन. यासाठी स्वतःची बिगर-वन जमीन आवश्यक, आणि याचा जनावरांशी संबंध नाही."
+    }
+  },
+  "C_ISAM_ENAM": {
+    "url": "https://enam.gov.in",
+    "en": {
+      "name": "e-NAM (Integrated Scheme for Agriculture Marketing)",
+      "short": "Free registration on the electronic National Agriculture Market, so you can sell produce across mandis rather than only your local one. About selling produce, not animals."
+    },
+    "mr": {
+      "name": "e-NAM (एकात्मिक कृषी विपणन योजना)",
+      "short": "इलेक्ट्रॉनिक राष्ट्रीय कृषी बाजारपेठेत मोफत नोंदणी, जेणेकरून तुम्ही केवळ स्थानिक बाजाराऐवजी अनेक बाजार समित्यांमध्ये माल विकू शकता. हे माल विक्रीसंबंधी आहे, जनावरांसंबंधी नाही."
+    }
+  },
+  "C_SMAE_ATMA": {
+    "url": "https://extensionreforms.dac.gov.in",
+    "en": {
+      "name": "Agriculture Technology Management Agency (ATMA)",
+      "short": "District-level extension advice and training, including a dedicated Pashu Sakhi cadre for livestock-related guidance alongside the crop-focused Krishi Sakhi. A free advisory service, not a cash benefit."
+    },
+    "mr": {
+      "name": "कृषी तंत्रज्ञान व्यवस्थापन यंत्रणा (ATMA)",
+      "short": "जिल्हास्तरीय विस्तार सल्ला व प्रशिक्षण, ज्यात पीक-केंद्रित कृषी सखीसोबतच पशुधनविषयक मार्गदर्शनासाठी स्वतंत्र पशु सखी यंत्रणाही आहे. ही मोफत सल्ला सेवा आहे, रोख लाभ नाही."
+    }
+  },
+  "C_DIGITAL_AGRI": {
+    "url": "https://agriwelfare.gov.in",
+    "en": {
+      "name": "Digital Agriculture / AgriStack",
+      "short": "Government digital infrastructure — a farmer database linked to land records, crop surveys and soil mapping. Enabling infrastructure with no direct cash transfer."
+    },
+    "mr": {
+      "name": "डिजिटल कृषी / अॅग्रीस्टॅक",
+      "short": "जमिनीच्या नोंदींशी जोडलेला शेतकरी डेटाबेस, पीक सर्वेक्षण व मृदा मॅपिंगसह शासकीय डिजिटल पायाभूत सुविधा. ही सक्षमीकरण पायाभूत सुविधा आहे, थेट रोख लाभ नाही."
+    }
+  },
+  "C_PMDDKY": {
+    "url": "https://pmddky.niti.gov.in",
+    "en": {
+      "name": "PM Dhan-Dhaanya Krishi Yojana",
+      "short": "Approved July 2025 for 100 identified low-productivity districts. The official district list has not yet been loaded into this app, so this scheme will currently show as not eligible for everyone — that is a gap in the data, not a real answer about your district."
+    },
+    "mr": {
+      "name": "पीएम धन-धान्य कृषी योजना",
+      "short": "जुलै २०२५ मध्ये मंजूर, कमी उत्पादकता असलेल्या १०० निवडक जिल्ह्यांसाठी. अधिकृत जिल्हा यादी अद्याप या अॅपमध्ये समाविष्ट केलेली नाही, त्यामुळे सध्या ही योजना सर्वांसाठी 'अपात्र' दाखवेल — हा डेटामधील त्रुटी आहे, तुमच्या जिल्ह्याबाबतचे खरे उत्तर नाही."
+    }
+  },
+  "C_MOVCDNER": {
+    "url": "https://agriwelfare.gov.in",
+    "en": {
+      "name": "Mission Organic Value Chain Development for North Eastern Region",
+      "short": "Organic farming clusters for the eight north-eastern states only. It does not apply in Maharashtra, so this card is included only for completeness."
+    },
+    "mr": {
+      "name": "ईशान्य भारतासाठी सेंद्रिय मूल्यसाखळी विकास अभियान",
+      "short": "केवळ आठ ईशान्येकडील राज्यांसाठी सेंद्रिय शेती गट. महाराष्ट्रात लागू नाही, हे कार्ड केवळ पूर्णतेसाठी समाविष्ट केले आहे."
+    }
+  }
+}

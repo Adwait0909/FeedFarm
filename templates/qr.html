@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}QR Tag &mdash; {{ cow.cow_id }}{% endblock %}
+{% block content %}
+<section class="qr-sheet">
+  <div class="qr-ticket">
+    <div class="qr-ticket-main">
+      <p class="page-kicker">Passport tag generated</p>
+      <h1>{{ cow.cow_name }}</h1>
+      <p class="qr-id">Cow ID <strong>{{ cow.cow_id }}</strong></p>
+      <img class="qr-image" src="{{ url_for('static', filename='qr_codes/' + qr_filename) }}" alt="QR code for {{ cow.cow_id }}">
+      <p class="qr-url">{{ profile_url }}</p>
+    </div>
+    <div class="qr-ticket-stub">
+      <p>Attach this tag to the animal's ear tag or collar. Scanning it opens the passport below.</p>
+      <div class="qr-actions">
+        <a class="btn btn-primary" href="{{ url_for('cow_profile', cow_id=cow.cow_id) }}">View Cow Profile</a>
+        <a class="btn btn-outline" href="{{ url_for('static', filename='qr_codes/' + qr_filename) }}" download>Download QR</a>
+        <button class="btn btn-outline" onclick="window.print()">Print QR</button>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

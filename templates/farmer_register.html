@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Farmer Registration{% endblock %}
+{% block content %}
+<section class="auth-shell">
+  <div class="auth-card wide-card">
+    <p class="page-kicker">Farmer Registration</p>
+    <h1>Create your farm account</h1>
+    <form method="post" action="{{ url_for('farmer_register') }}" class="form-sheet compact">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="form-grid">
+        <label>Full name
+          <input type="text" name="full_name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Phone
+          <input type="tel" name="phone" required>
+        </label>
+        <label>Password
+          <input type="password" name="password" required>
+        </label>
+        <label>Confirm password
+          <input type="password" name="confirm_password" required>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary wide">Register Farmer</button>
+    </form>
+    <p class="auth-switch">Already registered? <a href="{{ url_for('farmer_login') }}">Login</a></p>
+  </div>
+</section>
+{% endblock %}

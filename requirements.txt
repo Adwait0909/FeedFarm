@@ -1,0 +1,37 @@
+# Core web app
+Flask==3.0.3
+Werkzeug==3.0.3
+qrcode==7.4.2
+Pillow==10.4.0
+certifi>=2023.7.22
+reportlab>=4.2,<5
+bcrypt>=4.2,<6
+python-dotenv>=1,<2
+pytest>=8,<10
+
+# Unified ASGI host and veterinary locator
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.6
+a2wsgi>=1.10.8
+SQLAlchemy>=2.0.44,<2.1
+aiosqlite>=0.19.0
+pydantic-settings>=2.2.1
+lxml>=5.2.2
+python-multipart>=0.0.9
+
+# Scheme advisor model compatibility
+scikit-learn==1.8.0
+joblib>=1.4.2
+pandas>=2.2.2,<3
+
+# AI cattle-image screening and scheme breed classifier (PyTorch)
+# macOS (Intel and Apple Silicon): the last PyTorch release that ships Intel-Mac
+# wheels is 2.2.2, and it needs NumPy 1.x and Python 3.8-3.12. Newer torch
+# (2.3+) has no Intel-Mac wheels, which causes:
+#   "Could not find a version that satisfies the requirement torch>=2.7.0"
+torch==2.2.2; sys_platform == "darwin"
+torchvision==0.17.2; sys_platform == "darwin"
+numpy>=1.26,<2; sys_platform == "darwin"
+# Linux / Windows / hosting platforms: scheme model requires these versions.
+torch>=2.4.0; sys_platform != "darwin"
+torchvision>=0.19.0; sys_platform != "darwin"

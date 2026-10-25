@@ -1,0 +1,168 @@
+{
+  "language": {
+    "english": "English",
+    "marathi": "मराठी"
+  },
+
+  "common": {
+    "close": "Close"
+  },
+
+  "veterinary": {
+    "title": "Veterinary & Animal Welfare Assistance",
+
+    "description": "Find nearby government veterinary facilities and search veterinary support across Maharashtra — powered by official DAHD data.",
+
+    "findNearMe": "Find Veterinary Help Near Me",
+    "gettingLocation": "Getting Location…",
+    "locationObtained": "Location obtained",
+
+    "searchByLocation": "Search Veterinary Help by Location",
+
+    "district": "District",
+    "taluka": "Taluka",
+    "optional": "optional",
+
+    "selectDistrict": "Select District…",
+    "allTalukas": "All Talukas",
+    "loadingTalukas": "Loading Talukas…",
+
+    "search": "Search",
+    "searching": "Searching…",
+
+    "filters": {
+      "all": "All",
+      "dispensaries": "Dispensaries",
+      "districtClinics": "District Clinics",
+      "talukaClinics": "Taluka Clinics"
+    },
+
+    "radius": "Radius",
+    "km": "km",
+    "meter": "m",
+
+    "facilityType": {
+      "dispensary": "Veterinary Dispensary",
+      "districtClinic": "District Veterinary Polyclinic",
+      "talukaClinic": "Taluka Veterinary Clinic",
+      "generalClinic": "District/Taluka Veterinary Clinic"
+    },
+
+    "nearMe": "Near Me",
+    "locationSearch": "Location Search",
+
+    "hideMap": "Hide Map",
+    "showMap": "Show Map",
+
+    "findingFacilities": "Finding veterinary facilities…",
+
+    "results": {
+      "nearby": "Nearby Veterinary Facilities ({{radius}} km radius)",
+      "district": "Veterinary Facilities in {{district}}",
+      "districtTaluka": "Veterinary Facilities in {{district}} — {{taluka}}",
+      "found": "found"
+    },
+
+    "empty": {
+      "title": "No facilities found",
+      "nearby": "No veterinary facilities were found within {{radius}} km. Try increasing the search radius.",
+      "location": "No facilities were found for the selected district or taluka. Try another location.",
+      "try": "Try {{radius}} km"
+    },
+
+    "errors": {
+      "search": "Search Error",
+      "nearby": "Unable to find nearby veterinary facilities.",
+      "location": "Unable to search veterinary facilities."
+    },
+
+    "stats": {
+      "totalFacilities": "Total Facilities",
+      "veterinaryDispensary": "Veterinary Dispensaries",
+      "districtClinic": "District Veterinary Polyclinics",
+      "talukaClinic": "Taluka Veterinary Clinics"
+    },
+
+    "location": {
+      "searching": "Searching in"
+    },
+
+    "or": "OR",
+
+    "ui": {
+      "or": "OR",
+      "radius": "Radius",
+      "found": "found",
+      "nearMe": "Near Me",
+      "locationSearch": "Location Search",
+      "hideMap": "Hide Map",
+      "showMap": "Show Map",
+      "findingFacilities": "Finding veterinary facilities…",
+      "searchError": "Search Error",
+      "searchingIn": "Searching in",
+      "locationObtained": "Location obtained",
+      "loading": "Loading…"
+    },
+
+    "card": {
+      "district": "District",
+      "address": "Address",
+      "away": "away",
+      "viewDetails": "View Details",
+      "getDirections": "Get Directions"
+    },
+
+    "modal": {
+      "fromYourLocation": "km from your location",
+      "district": "District",
+      "taluka": "Taluka",
+      "address": "Address",
+      "department": "Department",
+      "contact": "Contact",
+      "openingHours": "Opening Hours",
+      "coordinates": "Coordinates",
+      "getDirections": "Get Directions",
+      "viewOnMap": "View on Map",
+      "dataSource": "Data sourced from Maharashtra Animal Husbandry Department (DAHD).",
+      "verifyDetails": "Always verify details before visiting.",
+      "notAvailable": "Not available"
+    },
+
+    "map": {
+      "yourLocation": "Your Location",
+      "getDirections": "Get Directions",
+      "away": "away",
+      "veterinaryDispensary": "Veterinary Dispensary",
+      "districtTalukaClinic": "District/Taluka Clinic"
+    },
+
+    "diseaseRisk": {
+      "aiAssessment": "AI Assessment",
+
+      "low": {
+        "title": "Low Risk",
+        "message": "Continue monitoring the animal. No immediate action required."
+      },
+
+      "moderate": {
+        "title": "Moderate Risk",
+        "message": "Veterinary consultation is recommended for this animal.",
+        "findVet": "Find Nearby Vet"
+      },
+
+      "high": {
+        "title": "High Risk",
+        "message": "Immediate veterinary assistance is strongly recommended.",
+        "findVet": "Find Nearby Veterinary Help"
+      },
+
+      "critical": {
+        "title": "Critical Risk",
+        "message": "Seek immediate veterinary assistance without delay.",
+        "findVet": "Find Emergency Vet Now"
+      },
+
+      "disclaimer": "This AI assessment is for informational purposes only and does not replace professional veterinary advice."
+    }
+  }
+}

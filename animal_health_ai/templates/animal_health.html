@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cattle Disease Detector</title>
+<link rel="stylesheet" href="{{ url_for('animal_health.static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="brand">
+      <span class="brand-emoji">🐄</span>
+      <span id="navTitle" class="brand-title">Cattle Disease Detector</span>
+    </div>
+    <a class="back-link" href="/">Farm2Feed home</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="langEnBtn" data-lang="en">English</button>
+      <button class="lang-btn" id="langMrBtn" data-lang="mr">मराठी</button>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <p id="subtitle" class="subtitle"></p>
+
+  <div class="upload-card">
+    <label for="fileInput" class="upload-box" id="uploadBox">
+      <span class="upload-icon">⬆️</span>
+      <span id="uploadText">Choose a cow image</span>
+    </label>
+    <input type="file" id="fileInput" accept="image/jpeg,image/png" hidden>
+
+    <div id="previewWrap" class="preview-wrap" style="display:none;">
+      <img id="previewImg" class="preview-img" alt="Uploaded image">
+    </div>
+
+    <button id="analyzeBtn" class="analyze-btn" style="display:none;"></button>
+  </div>
+
+  <div id="promptMsg" class="info-msg"></div>
+
+  <div id="resultCard" class="card result-card" style="display:none;">
+    <h2 id="resultHeading"></h2>
+    <div id="predictionBadge" class="badge"></div>
+
+    <p id="confidenceLabel" class="section-label"></p>
+    <div id="confidenceBars" class="bars"></div>
+
+    <div id="severityBlock" class="severity-block" style="display:none;">
+      <b id="severityTitle"></b>
+      <p id="severityMsg"></p>
+      <span id="severityDisclaimer" class="disclaimer"></span>
+    </div>
+
+    <button id="downloadReportBtn" class="report-btn" style="display:none;"></button>
+  </div>
+
+  <div id="infoCard" class="card info-card" style="display:none;">
+    <h2 id="infoHeading"></h2>
+    <p id="infoSummary"></p>
+    <ul id="infoPoints"></ul>
+  </div>
+</main>
+
+<footer class="footer">
+  <p id="footerText"></p>
+  <p id="footerLine2" class="footer-sub"></p>
+</footer>
+
+<script src="{{ url_for('animal_health.static', filename='script.js') }}"></script>
+</body>
+</html>

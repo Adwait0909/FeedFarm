@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}Update Medical Record{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Medical Update</p>
+    <h1>{{ cow.cow_name }} ({{ cow.cow_id }})</h1>
+  </div>
+</section>
+
+<form class="form-sheet" method="post" action="{{ url_for('doctor_update', cow_id=cow.cow_id) }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <fieldset>
+    <legend>Doctor Information</legend>
+    <div class="form-grid">
+      <label>Doctor Name
+        <input type="text" name="doctor_name" value="{{ cow.doctor_name or '' }}" placeholder="e.g. Dr. Sharma">
+      </label>
+      <label>Health Status
+        <select name="health_status">
+          <option value="Healthy" {{ 'selected' if cow.health_status == 'Healthy' }}>Healthy</option>
+          <option value="Under Observation" {{ 'selected' if cow.health_status == 'Under Observation' }}>Under Observation</option>
+          <option value="Sick" {{ 'selected' if cow.health_status == 'Sick' }}>Sick</option>
+        </select>
+      </label>
+      <label>Health Score (0-100)
+        <input type="number" name="health_score" min="0" max="100" value="{{ cow.health_score if cow.health_score is not none else '' }}">
+      </label>
+      <label>Body Temperature (°C)
+        <input type="number" step="0.1" name="body_temperature" value="{{ cow.body_temperature if cow.body_temperature is not none else '' }}">
+      </label>
+      <label>Weight (kg)
+        <input type="number" step="0.1" name="weight_kg" value="{{ cow.weight_kg if cow.weight_kg is not none else '' }}">
+      </label>
+      <label>Pregnancy Status
+        <select name="pregnancy_status">
+          <option value="">Select</option>
+          <option value="Open" {{ 'selected' if cow.pregnancy_status == 'Open' }}>Open</option>
+          <option value="Pregnant" {{ 'selected' if cow.pregnancy_status == 'Pregnant' }}>Pregnant</option>
+          <option value="Lactating" {{ 'selected' if cow.pregnancy_status == 'Lactating' }}>Lactating</option>
+        </select>
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Vaccination &amp; Checkup</legend>
+    <div class="form-grid">
+      <label>Vaccination Status
+        <select name="vaccination_status">
+          <option value="Up to date" {{ 'selected' if cow.vaccination_status == 'Up to date' }}>Up to date</option>
+          <option value="Pending" {{ 'selected' if cow.vaccination_status == 'Pending' }}>Pending</option>
+          <option value="Overdue" {{ 'selected' if cow.vaccination_status == 'Overdue' }}>Overdue</option>
+        </select>
+      </label>
+      <label>Last Vaccination Date
+        <input type="date" name="last_vaccination_date" value="{{ cow.last_vaccination_date or '' }}">
+      </label>
+      <label>Last Health Check
+        <input type="date" name="last_health_check" value="{{ cow.last_health_check or '' }}">
+      </label>
+      <label>Next Checkup Date
+        <input type="date" name="next_checkup_date" value="{{ cow.next_checkup_date or '' }}">
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Medical History</legend>
+    <div class="form-grid">
+      <label class="span-2">Disease History
+        <textarea name="disease_history" rows="3">{{ cow.disease_history or '' }}</textarea>
+      </label>
+      <label class="span-2">Medical Record
+        <textarea name="medical_record" rows="3">{{ cow.medical_record or '' }}</textarea>
+      </label>
+      <label class="span-2">Treatment History
+        <textarea name="treatment_history" rows="3">{{ cow.treatment_history or '' }}</textarea>
+      </label>
+      <label>Last Treatment Date
+        <input type="date" name="last_treatment_date" value="{{ cow.last_treatment_date or '' }}">
+      </label>
+      <label>Milk Production (litres/day)
+        <input type="number" step="0.1" name="milk_production" value="{{ cow.milk_production if cow.milk_production is not none else '' }}">
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Notes</legend>
+    <div class="form-grid">
+      <label class="span-2">Additional Notes
+        <textarea name="notes" rows="4">{{ cow.notes or '' }}</textarea>
+      </label>
+    </div>
+  </fieldset>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Save Medical Record</button>
+    <a class="btn btn-outline" href="{{ url_for('cow_profile', cow_id=cow.cow_id) }}">Cancel</a>
+  </div>
+</form>
+{% endblock %}

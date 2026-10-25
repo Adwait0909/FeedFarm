@@ -1,0 +1,27 @@
+{
+  "model_label_cols": [
+    "elig_MH_DL_2MILCH",
+    "elig_MH_SL_2MILCH",
+    "elig_MH_GOAT_SHEEP_10_1",
+    "elig_MH_CHICKS_100",
+    "elig_MH_PULLETS_25_3",
+    "elig_MH_GOSHALA",
+    "elig_MH_SEXED_SEMEN",
+    "elig_MH_AGRI_STATUS",
+    "elig_C_RGM",
+    "elig_C_NLM_SLED",
+    "elig_C_KCC_AH",
+    "elig_C_DEDS",
+    "elig_C_LIVESTOCK_INS",
+    "elig_C_NADCP",
+    "elig_C_DIDF",
+    "elig_C_AHIDF"
+  ],
+  "validation": {
+    "validation_rows": 2965,
+    "labels": 16,
+    "mean_label_accuracy": 0.9932757166947723,
+    "exact_match_accuracy": 0.9197301854974705
+  },
+  "training_data": "stage2_scheme_eligibility_slim.csv"
+}

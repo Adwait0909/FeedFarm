@@ -1,0 +1,28 @@
+# Install with: pip install -r requirements.txt
+#
+# Version pins below use minimum bounds (>=) rather than exact pins (==), so pip
+# can pick whichever build actually has a wheel for your Python version. This
+# matters most for torch/torchvision and numpy/pandas, since their newest-Python
+# support lags a few months behind each CPython release.
+#
+# If you're on a brand-new Python version and something still fails to install,
+# the most reliable fix is a slightly older Python (3.11 or 3.12) in a dedicated
+# virtual environment — the ecosystem catches up to new Python releases with a
+# delay of several months, and 3.11/3.12 are supported by everything here today.
+
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.6
+torch>=2.4.0
+torchvision>=0.19.0
+# scikit-learn is pinned to an EXACT version (not >=) and must match the version
+# used in the Colab notebook's install cell — scikit-learn's saved models
+# (.joblib files) are not always compatible across versions, and a mismatch here
+# causes an AttributeError on startup (as you may have already hit). If you ever
+# change this pin, change it in the notebook's Section 1 install cell too, and
+# retrain Stage 2 (Sections 10-11) so the .joblib files match again.
+scikit-learn==1.8.0
+joblib>=1.4.2
+pandas>=2.2.2
+numpy>=1.26.4
+pillow>=10.4.0
+python-multipart>=0.0.9

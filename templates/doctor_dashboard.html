@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Doctor Portal{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Veterinary dashboard</p>
+    <h1>Doctor Portal</h1>
+  </div>
+  <div class="header-actions">
+    <a class="btn btn-outline" href="{{ url_for('doctor_scan') }}">QR / Search</a>
+    <a class="btn btn-primary" href="{{ url_for('doctor_assistance') }}">View Assistance Requests</a>
+    <a class="btn btn-outline" href="{{ url_for('doctor_logout') }}">Logout</a>
+  </div>
+</section>
+
+<section class="stat-row compact">
+  <div class="stat-tile">
+    <span class="stat-number" id="stat-follow-up">{{ follow_up_count or 0 }}</span>
+    <span class="stat-label">Due in 7 days</span>
+  </div>
+  <div class="stat-tile">
+    <span class="stat-number" id="stat-vaccination">{{ vaccination_count or 0 }}</span>
+    <span class="stat-label">Vaccination due</span>
+  </div>
+  <div class="stat-tile">
+    <span class="stat-number" id="stat-requests">{{ request_count or 0 }}</span>
+    <span class="stat-label">Pending requests</span>
+  </div>
+</section>
+
+<p class="live-status" id="live-status" role="status" aria-live="polite" data-state="ok">
+  <span id="live-status-text">Showing records from the database.</span>
+  <span id="live-demo-note">{% if demo_count %}{{ demo_count }} demonstration record{{ 's' if demo_count != 1 }} included (marked Demo).{% endif %}</span>
+  <button type="button" class="btn-link" id="live-refresh" hidden>Refresh now</button>
+</p>
+
+<section class="search-row">
+  <form method="get" action="{{ url_for('doctor_dashboard') }}" class="search-form">
+    <input type="text" name="q" value="{{ search }}" placeholder="Search by Cow UID, local number, or name">
+    <button type="submit" class="btn btn-outline">Search</button>
+    {% if search %}
+    <a href="{{ url_for('doctor_dashboard') }}" class="btn-link">Clear</a>
+    {% endif %}
+  </form>
+</section>
+
+<section class="cow-table-wrap" id="cow-section"
+         data-api="{{ url_for('doctor_dashboard_api') }}"
+         data-profile-url="{{ url_for('doctor_cow_profile', cow_id='__COW__') }}"
+         data-update-url="{{ url_for('doctor_update', cow_id='__COW__') }}"
+         data-search="{{ search }}"
+         data-request-version="{{ request_version }}">
+  {% if cows %}
+  <table class="cow-table" id="cow-table">
+    <thead>
+      <tr>
+        <th>Cow UID</th>
+        <th>Local No.</th>
+        <th>Name</th>
+        <th>Breed</th>
+        <th>Health</th>
+        <th>Next Checkup</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="cow-rows">
+      {% for cow in cows %}
+      <tr>
+        <td class="mono">{{ cow.cow_id }}</td>
+        <td>{{ cow.local_cow_number or '—' }}</td>
+        <td>{{ cow.cow_name }}{% if is_demo_cow_id(cow.cow_id) %} <span class="demo-tag" title="Demonstration record">Demo</span>{% endif %}</td>
+        <td>{{ cow.breed }}</td>
+        <td>
+          <span class="pill pill-{{ 'good' if (cow.health_score or 0) >= 80 else ('mid' if (cow.health_score or 0) >= 50 else 'low') }}">
+            {{ cow.health_status or 'Unknown' }}
+          </span>
+        </td>
+        <td>{{ cow.next_checkup_date or '—' }}</td>
+        <td class="table-actions">
+          <a href="{{ url_for('doctor_cow_profile', cow_id=cow.cow_id) }}">Profile</a>
+          <a href="{{ url_for('doctor_update', cow_id=cow.cow_id) }}">Update</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty-state" id="cow-empty">
+    <p>No cows match the current search.</p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{ url_for('static', filename='js/doctor_live.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Farm2Feed &mdash; Cow Digital Passport{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+{% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+{% block site_header %}
+<header class="site-header">
+  <a href="{{ url_for('index') }}" class="brand">
+    <span class="brand-mark">&#9678;</span>
+    <span class="brand-text">Farm2Feed <em>&mdash; Cow Passport</em></span>
+  </a>
+  <nav class="site-nav">
+    {% if session.get('doctor_id') %}
+    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+    {% endif %}
+    <a href="{{ url_for('farmer_dashboard') if session.get('farmer_id') else url_for('farmer_login') }}">Farmer</a>
+    <a href="{{ url_for('doctor_login') }}">Doctor Login</a>
+    <a href="{{ url_for('register_cow') }}">Register Cow</a>
+    <a href="{{ url_for('scan') }}">Scan QR</a>
+    <a href="{{ url_for('animal_health.index') }}">Animal Health AI</a>
+    <a href="/veterinary/">Find a Veterinarian</a>
+    {% if session.get('farmer_id') %}
+    <a href="/farmer/schemes/">Scheme Advisor</a>
+    {% endif %}
+    <a class="site-nav-kisaath" href="/kisaath/">Kisaath Tools <span aria-hidden="true">↗</span></a>
+    {% if session.get('farmer_id') %}
+    <a href="{{ url_for('farmer_logout') }}">Logout</a>
+    {% endif %}
+  </nav>
+</header>
+{% endblock %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <div class="flash-stack">
+    {% for category, message in messages %}
+    <div class="flash flash-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+{% endwith %}
+
+<main class="page">
+{% block content %}{% endblock %}
+</main>
+
+{% block site_footer %}
+<footer class="site-footer">
+  <p>Smart Farm Management System &mdash; Cow Identification Module (Demo)</p>
+</footer>
+{% endblock %}
+{% block scripts_extra %}{% endblock %}
+</body>
+</html>

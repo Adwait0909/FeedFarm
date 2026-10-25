@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Admin Dashboard</p>
+    <h1>Registered Cows</h1>
+  </div>
+  <a class="btn btn-primary" href="{{ url_for('register_cow') }}">+ Register New Cow</a>
+</section>
+
+<section class="stat-row">
+  <div class="stat-tile">
+    <span class="stat-number">{{ total }}</span>
+    <span class="stat-label">Total cows registered</span>
+  </div>
+</section>
+
+<section class="search-row">
+  <form method="get" action="{{ url_for('dashboard') }}" class="search-form">
+    <input type="text" name="q" value="{{ search }}" placeholder="Search by Cow ID or Name">
+    <button type="submit" class="btn btn-outline">Search</button>
+    {% if search %}
+    <a href="{{ url_for('dashboard') }}" class="btn-link">Clear</a>
+    {% endif %}
+  </form>
+</section>
+
+<section class="cow-table-wrap">
+  {% if cows %}
+  <table class="cow-table">
+    <thead>
+      <tr>
+        <th>Cow ID</th>
+        <th>Name</th>
+        <th>Breed</th>
+        <th>Owner</th>
+        <th>Health</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cow in cows %}
+      <tr>
+        <td class="mono">{{ cow.cow_id }}</td>
+        <td>{{ cow.cow_name }}</td>
+        <td>{{ cow.breed }}</td>
+        <td>{{ cow.owner_name }}</td>
+        <td>
+          <span class="pill pill-{{ 'good' if (cow.health_score or 0) >= 80 else ('mid' if (cow.health_score or 0) >= 50 else 'low') }}">
+            {{ cow.health_status or 'Unknown' }}
+          </span>
+        </td>
+        <td class="table-actions">
+          <a href="{{ url_for('cow_profile', cow_id=cow.cow_id) }}" title="View Profile">Profile</a>
+          <a href="{{ url_for('show_qr', cow_id=cow.cow_id) }}" title="View QR">QR</a>
+          <form method="post" action="{{ url_for('delete_cow', cow_id=cow.cow_id) }}"
+                onsubmit="return confirm('Remove {{ cow.cow_name }} ({{ cow.cow_id }}) from the registry?');" class="inline-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="link-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty-state">
+    <p>No cows match this search yet.</p>
+    <a class="btn btn-outline" href="{{ url_for('dashboard') }}">View all cows</a>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

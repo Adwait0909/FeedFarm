@@ -1,0 +1,3 @@
+# Optional: only needed if you set DB_TYPE=postgres in .env (the default, DB_TYPE=sqlite, does not need this).
+# Wheels exist for Windows 10/11 and macOS 12 (Intel and Apple Silicon) on Python 3.11/3.12.
+psycopg2-binary>=2.9.9,<3

@@ -1,0 +1,250 @@
+{
+  "en": {
+    "title": "Government Schemes for Farmers",
+    "back": "Back",
+    "search_placeholder": "Search schemes...",
+    "apply": "Apply",
+    "no_schemes_found": "No schemes found.",
+    "sections": [
+      {
+        "name": "Financial Assistance",
+        "schemes": [
+          {
+            "title": "PM-KISAN",
+            "info": "₹6,000 per year to small & marginal farmers in 3 equal installments.",
+            "link": "https://pmkisan.gov.in/"
+          },
+          {
+            "title": "Mahatma Phule Shetkari Karj Mukti Yojana",
+            "info": "Farm loan waiver scheme for eligible farmers in Maharashtra.",
+            "link": "https://sahakarayukta.maharashtra.gov.in/"
+          },
+          {
+            "title": "Maharashtra Namo Shetkari Maha Samman Nidhi Yojana",
+            "info": "State scheme to provide financial support to farmers in Maharashtra.",
+            "link": "https://www.govtschemes.in/allschemes/Maharashtra"
+          }
+        ]
+      },
+      {
+        "name": "Crop & Irrigation Support",
+        "schemes": [
+          {
+            "title": "Magel Tyala Shettale",
+            "info": "Assistance for constructing farm ponds for rainwater harvesting. (Subsidy upto ₹50,000).",
+            "link": "https://mahadbt.maharashtra.gov.in/"
+          },
+          {
+            "title": "Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)",
+            "info": "Promotes micro-irrigation (drip/sprinkler) systems with subsidy.",
+            "link": "https://pmksy.gov.in/"
+          },
+          {
+            "title": "Jalyukt Shivar Abhiyan",
+            "info": "Water conservation scheme in Maharashtra to make villages drought-free.",
+            "link": "https://wcd.maharashtra.gov.in"
+          }
+        ]
+      },
+      {
+        "name": "Technology & Modernization",
+        "schemes": [
+          {
+            "title": "State Agriculture Mechanization Scheme (Maha DBT)",
+            "info": "Subsidies for purchase of agricultural machinery in Maharashtra.",
+            "link": "https://mahadbt.maharashtra.gov.in/Farmer/SchemeData/SchemeData?str=E9DDFA703C38E51A147B39AD4D6A9082"
+          },
+          {
+            "title": "Krishi Samruddhi Yojana",
+            "info": "New 5-year scheme with ₹25,000 crore outlay focusing on infrastructure, productivity, technology, etc.",
+            "link": "https://economictimes.indiatimes.com/news/economy/agriculture/maharashtra-govt-brings-new-scheme-with-rs-25000-crore-outlay-to-boost-agri-sector/articleshow/122839349.cms"
+          }
+        ]
+      },
+      {
+        "name": "Market & Infrastructure",
+        "schemes": [
+          {
+            "title": "Agricultural Infrastructure Fund (AIF)",
+            "info": "Provides financing for post-harvest infrastructure like cold storage, warehouses, etc.",
+            "link": "https://www.nabard.org/"
+          },
+          {
+            "title": "APMC / Market Development Schemes",
+            "info": "Schemes to improve mandi infrastructure, direct marketing, grading, storage.",
+            "link": "https://www.govtschemes.in/allschemes/Maharashtra"
+          }
+        ]
+      },
+      {
+        "name": "Animal Husbandry & Dairy",
+        "schemes": [
+          {
+            "title": "National Livestock Mission (NLM)",
+            "info": "Scheme for livestock development, breed improvement, fodder, etc.",
+            "link": "https://dahd.nic.in/"
+          },
+          {
+            "title": "Rashtriya Gokul Mission",
+            "info": "Promotes conservation & development of indigenous bovine breeds.",
+            "link": "https://dahd.nic.in/"
+          },
+          {
+            "title": "Two Milch Animals Subsidy (SC/ST)",
+            "info": "State scheme for giving two cross-bred cattle to SC/ST beneficiaries in Maharashtra.",
+            "link": "#"
+          }
+        ]
+      },
+      {
+        "name": "Insurance & Risk Management",
+        "schemes": [
+          {
+            "title": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+            "info": "Crop insurance scheme covering losses from natural calamities, pests, etc.",
+            "link": "https://pmfby.gov.in/"
+          }
+        ]
+      },
+      {
+        "name": "Training & Skill Development",
+        "schemes": [
+          {
+            "title": "Group Farming (Gat Sheti Yojana)",
+            "info": "Farmers pool land and resources, get support & credit.",
+            "link": "#"
+          },
+          {
+            "title": "Dr. Babasaheb Ambedkar Krushi Swavalamban Yojna",
+            "info": "Subsidy for new wells, pump sets, micro-irrigation for small / marginal farmers.",
+            "link": "#"
+          }
+        ]
+      }
+    ]
+  },
+  "mr": {
+    "title": "शासकीय योजना (शेतकरी साठी)",
+    "back": "मागे",
+    "search_placeholder": "योजना शोधा...",
+    "apply": "अर्ज करा",
+    "no_schemes_found": "कोणतीही योजना सापडली नाही",
+    "sections": [
+      {
+        "name": "आर्थिक सहाय्य",
+        "schemes": [
+          {
+            "title": "PM-KISAN",
+            "info": "लहान व मर्यादित शेतकऱ्यांसाठी ₹6,000 वार्षिक सहाय्य.",
+            "link": "https://pmkisan.gov.in/"
+          },
+          {
+            "title": "महात्मा फुले शेतकरी कर्जमुक्ती योजना",
+            "info": "महाराष्ट्रातील पात्र शेतकऱ्यांसाठी कर्जमाफी.",
+            "link": "https://sahakarayukta.maharashtra.gov.in/"
+          },
+          {
+            "title": "नमो शेतकरी महासन्मान निधी",
+            "info": "महाराष्ट्रात शेतकऱ्यांना आर्थिक पुरवठा.",
+            "link": "https://www.govtschemes.in/allschemes/Maharashtra"
+          }
+        ]
+      },
+      {
+        "name": "पीक व सिंचन सहाय्य",
+        "schemes": [
+          {
+            "title": "मागेल त्याला शेततळे",
+            "info": "पावसाचे पाणी साठवण्यासाठी शेततळे बांधण्याची मदत.",
+            "link": "https://mahadbt.maharashtra.gov.in/"
+          },
+          {
+            "title": "प्रधानमंत्री कृषि सिंचाई योजना (PMKSY)",
+            "info": "ड्रिप / स्प्रिंकलर सिंचनास अनुदान.",
+            "link": "https://pmksy.gov.in/"
+          },
+          {
+            "title": "जलगुक्त शिवार अभियान",
+            "info": "महाराष्ट्रातील जलसंधारण उपक्रम.",
+            "link": "https://wcd.maharashtra.gov.in"
+          }
+        ]
+      },
+      {
+        "name": "तंत्रज्ञान व आधुनिकीकरण",
+        "schemes": [
+          {
+            "title": "राज्य कृषी यंत्रसामग्री योजना (Maha DBT)",
+            "info": "महाराष्ट्रातील यंत्र खरेदीस अनुदान.",
+            "link": "https://mahadbt.maharashtra.gov.in/Farmer/SchemeData/SchemeData?str=E9DDFA703C38E51A147B39AD4D6A9082"
+          },
+          {
+            "title": "कृषी समृद्धी योजना",
+            "info": "₹25,000 कोटीचा पाच वर्षांचा उपक्रम, तंत्रज्ञान व उत्पादन वाढीस लक्ष्य.",
+            "link": "https://economictimes.indiatimes.com/news/economy/agriculture/maharashtra-govt-brings-new-scheme-with-rs-25000-crore-outlay-to-boost-agri-sector/articleshow/122839349.cms"
+          }
+        ]
+      },
+      {
+        "name": "बाजार व पायाभूत सुविधा",
+        "schemes": [
+          {
+            "title": "कृषी पायाभूत सुविधा निधी (AIF)",
+            "info": "उत्पादनानंतरची इन्फ्रास्ट्रक्चर जसे गोदाम, थंड साठे यासाठी वित्त.",
+            "link": "https://www.nabard.org/"
+          },
+          {
+            "title": "APMC / बाजार विकास योजना",
+            "info": "मंडी इन्फ्रास्ट्रक्चर, थेट विक्री, साठवण सुधारणा यासाठी.",
+            "link": "https://www.govtschemes.in/allschemes/Maharashtra"
+          }
+        ]
+      },
+      {
+        "name": "पशुधन व दुग्धउद्योग",
+        "schemes": [
+          {
+            "title": "National Livestock Mission (NLM)",
+            "info": "पशुधन विकास, जात सुधारणा, चारा इ. उपक्रम.",
+            "link": "https://dahd.nic.in/"
+          },
+          {
+            "title": "राष्ट्रिय गोकुळ मिशन",
+            "info": "देशी गाई-गोव्दाने सुधारणा व संवर्धन.",
+            "link": "https://dahd.nic.in/"
+          },
+          {
+            "title": "दोन दुग्धधर प्राणी कार्यक्रम (SC/ST)",
+            "info": "SC/ST लाभार्थ्यांना दोन पशू वितरण राज्य योजना.",
+            "link": "#"
+          }
+        ]
+      },
+      {
+        "name": "विमा व धोका व्यवस्थापन",
+        "schemes": [
+          {
+            "title": "प्रधानमंत्री फसल विमा योजना (PMFBY)",
+            "info": "नैसर्गिक आपत्ती, कीटक इ. नुकसानासाठी फसल विमा.",
+            "link": "https://pmfby.gov.in/"
+          }
+        ]
+      },
+      {
+        "name": "प्रशिक्षण व कौशल्य विकास",
+        "schemes": [
+          {
+            "title": "गट शेती योजना",
+            "info": "शेतकरी समूह बनवून संसाधन सामायिक आणि सहाय्य मिळवणे.",
+            "link": "#"
+          },
+          {
+            "title": "डा. बाबासाहेब आंबेडकर कृषी स्वावलंबन योजना",
+            "info": "नव्या विहिरी, पंपसेट, सूक्ष्म सिंचनासाठी अनुदान.",
+            "link": "#"
+          }
+        ]
+      }
+    ]
+  }
+}

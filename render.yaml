@@ -1,0 +1,41 @@
+# Render Blueprint for Farm2Feed - one web service that serves everything from a single address:
+#   /            cow passport + farmer/doctor portals     /kisaath/      Kisaath tools (React)
+#   /veterinary/ veterinary locator (React + API)         /farmer/schemes/ livestock scheme advisor
+#   /animal-health/ AI cattle-image screening             /api/...       marketplace + scheme + vet APIs
+# Nothing points at localhost: QR codes use this service's public URL (RENDER_EXTERNAL_URL) unless you
+# set SITE_BASE_URL yourself (custom domain). See RENDER_DEPLOY.md for the step-by-step guide.
+services:
+  - type: web
+    name: farm2feed
+    runtime: python
+    region: singapore          # closest Render region to India; cannot be changed after creation
+    plan: standard             # 2 GB RAM. PyTorch + the AI models do not fit in 512 MB. Persistent disks need a paid plan.
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: python scripts/render_bootstrap.py && uvicorn asgi:application --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'
+    healthCheckPath: /
+    autoDeploy: true
+    disk:
+      name: farm2feed-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION    # Pillow 10.4 / scikit-learn / PyTorch pins in requirements.txt need Python 3.11-3.12
+        value: 3.12.8
+      - key: PYTHONUTF8
+        value: "1"
+      - key: DB_TYPE
+        value: sqlite
+      - key: DATA_DIR          # database, cow photos and marketplace data live on the persistent disk
+        value: /var/data
+      - key: DATABASE_URL      # veterinary locator database, also on the disk (4 slashes = absolute path)
+        value: sqlite+aiosqlite:////var/data/veterinary.sqlite3
+      - key: SECRET_KEY        # signs login sessions; generated once by Render and kept
+        generateValue: true
+      - key: MARKETPLACE_JWT_SECRET
+        generateValue: true
+      - key: VET_IMPORT_TOKEN  # enables POST /api/veterinary/import (header X-Admin-Token)
+        generateValue: true
+      - key: DOCTOR_PASSWORD   # password of doctor@farmcare.local on a brand-new database. Type it in the Render dashboard.
+        sync: false
+      - key: SEED_DEMO_DATA    # set to 1 to load the synthetic demo data once (see RENDER_DEPLOY.md before enabling)
+        value: "0"

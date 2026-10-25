@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Report Found Cow &mdash; {{ cow.cow_id }}{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Lost Cow Recovery</p>
+    <h1>Report Found Cow</h1>
+    <p>You're reporting a sighting of <strong>{{ cow.cow_name }}</strong> ({{ cow.cow_id }}),
+       registered at {{ cow.registered_location or 'a registered farm' }}.</p>
+  </div>
+</section>
+
+<form class="form-sheet form-sheet-narrow" method="post" action="{{ url_for('report_found', cow_id=cow.cow_id) }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="form-grid">
+    <label>Your Name <span class="req">*</span>
+      <input type="text" name="finder_name" value="{{ form.finder_name if form else '' }}" required>
+    </label>
+    <label>Your Contact Number <span class="req">*</span>
+      <input type="tel" name="finder_contact" value="{{ form.finder_contact if form else '' }}" required>
+    </label>
+    <label class="span-2">Current Area <span class="hint">(where you saw the cow)</span>
+      <input type="text" name="current_area" value="{{ form.current_area if form else '' }}">
+    </label>
+    <label class="span-2">Message
+      <textarea name="message" rows="3" placeholder="Any details that would help the owner">{{ form.message if form else '' }}</textarea>
+    </label>
+  </div>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Notify Owner</button>
+    <a class="btn btn-outline" href="{{ url_for('cow_profile', cow_id=cow.cow_id) }}">Cancel</a>
+  </div>
+</form>
+{% endblock %}

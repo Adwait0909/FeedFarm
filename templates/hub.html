@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block title %}Smart Farm Feature Hub{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/hub.css') }}">
+<script src="{{ url_for('static', filename='js/hub.js') }}" defer></script>
+{% endblock %}
+{% block content %}
+<header class="hub-header">
+  <div class="hub-brand">
+    <h1>{{ 'Smart Farm Feature Hub' if lang == 'en' else 'स्मार्ट फार्म वैशिष्ट्य केंद्र' }}</h1>
+    <p class="hub-sub">{{ 'Quick access to Farmer tools and QR passport' if lang == 'en' else 'शेतकरी साधने व क्यूआर पासपोर्टकडे जलद प्रवेश' }}</p>
+  </div>
+  <div class="hub-lang">
+    <a href="{{ url_for('set_language', lang='en') }}" class="lang-link{% if lang=='en' %} active{% endif %}">English</a>
+    <span class="sep">|</span>
+    <a href="{{ url_for('set_language', lang='mr') }}" class="lang-link{% if lang=='mr' %} active{% endif %}">मराठी</a>
+  </div>
+</header>
+<section class="hub-welcome">
+  <h2>{{ 'Welcome' if lang == 'en' else 'स्वागत आहे' }}</h2>
+  <p class="prompt">{{ 'What do you want to do today?' if lang == 'en' else 'आज तुम्हाला काय करायचे आहे?' }}</p>
+</section>
+<section class="hub-main-actions">
+  <div class="actions-grid">
+    <a class="card primary" href="{{ url_for('farmer_login') }}" role="button" tabindex="0">
+      <div class="icon" aria-hidden="true">👨‍🌾</div>
+      <h3>{{ 'Farmer' if lang=='en' else 'शेतकरी' }}</h3>
+      <p>{{ 'Manage your farm and cows' if lang=='en' else 'शेत आणि गायी व्यवस्थापित करा' }}</p>
+      <div class="meta">
+        <div class="cta">{{ 'Farmer Login' if lang=='en' else 'शेतकरी लॉगिन' }}</div>
+      </div>
+    </a>
+
+    <a class="card primary" href="{{ url_for('doctor_login') }}" role="button" tabindex="0">
+      <div class="icon" aria-hidden="true">🩺</div>
+      <h3>{{ 'Veterinarian' if lang=='en' else 'डॉक्टर' }}</h3>
+      <p>{{ 'Update cow health records' if lang=='en' else 'गायींचे आरोग्य नोंदी अपडेट करा' }}</p>
+      <div class="meta">
+        <div class="cta">{{ 'Doctor Login' if lang=='en' else 'डॉक्टर लॉगिन' }}</div>
+      </div>
+    </a>
+
+    <a class="card primary" href="{{ url_for('scan') }}" role="button" tabindex="0">
+      <div class="icon" aria-hidden="true">🔍</div>
+      <h3>{{ 'QR Cow Passport' if lang=='en' else 'गायीचे डिजिटल पासपोर्ट' }}</h3>
+      <p>{{ 'Scan a cow\'s QR to view its digital profile' if lang=='en' else 'कुऱ्‍याचा क्यूआर स्कॅन करून माहिती पहा' }}</p>
+      <div class="meta">
+        <div class="cta">{{ 'Scan QR' if lang=='en' else 'क्यूआर स्कॅन' }}</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="hub-categories">
+  <div class="category">
+    <h4>{{ 'Animal & Health' if lang=='en' else 'प्राणी व आरोग्य' }}</h4>
+    <div class="tags">
+      <a class="tag animal-health-link" href="{{ url_for('animal_health.index') }}">
+        <div class="tag-icon">🐄</div>
+        <div class="tag-text">
+          <strong>{{ 'Animal Disease Detection' if lang=='en' else 'प्राणी रोग तपासणी' }}</strong>
+          <span>{{ 'Screen a cow image for common disease indicators' if lang=='en' else 'सामान्य आजारांच्या लक्षणांसाठी गायीचा फोटो तपासा' }}</span>
+        </div>
+        <div class="pill">{{ 'Open' if lang=='en' else 'उघडा' }}</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="category">
+    <h4>{{ 'Farm Management' if lang=='en' else 'शेत व्यवस्थापन' }}</h4>
+    <div class="tags">
+      <div class="tag disabled">
+        <div class="tag-icon">⚙️</div>
+        <div class="tag-text">
+          <strong>{{ 'Smart Farming' if lang=='en' else 'स्मार्ट शेती' }}</strong>
+          <span>{{ 'Manage your farm digitally' if lang=='en' else 'आपले शेत डिजिटलपणे व्यवस्थापित करा' }}</span>
+        </div>
+        <div class="pill">Coming Soon</div>
+      </div>
+
+      <div class="tag disabled">
+        <div class="tag-icon">🌦️</div>
+        <div class="tag-text">
+          <strong>{{ 'Weather' if lang=='en' else 'हवामान' }}</strong>
+          <span>{{ 'View local weather information' if lang=='en' else 'स्थानिक हवामान पहा' }}</span>
+        </div>
+        <div class="pill">Coming Soon</div>
+      </div>
+
+      <div class="tag disabled">
+        <div class="tag-icon">📅</div>
+        <div class="tag-text">
+          <strong>{{ 'Crop Calendar' if lang=='en' else 'पीक दिनदर्शिका' }}</strong>
+          <span>{{ 'Plan crop activities' if lang=='en' else 'पीक क्रिया योजनाबद्ध करा' }}</span>
+        </div>
+        <div class="pill">Coming Soon</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category">
+    <h4>{{ 'Farmer Services' if lang=='en' else 'शेतकरी सेवा' }}</h4>
+    <div class="tags">
+      <a class="tag" href="/farmer/schemes/">
+        <div class="tag-icon">🏛️</div>
+        <div class="tag-text">
+          <strong>{{ 'Livestock Scheme Advisor' if lang=='en' else 'पशुधन योजना सल्लागार' }}</strong>
+          <span>{{ 'Sign in as a farmer to find eligible livestock schemes' if lang=='en' else 'पात्र पशुधन योजना शोधण्यासाठी शेतकरी म्हणून लॉगिन करा' }}</span>
+        </div>
+        <div class="pill">{{ 'Farmer login' if lang=='en' else 'शेतकरी लॉगिन' }}</div>
+      </a>
+
+      <a class="tag" href="/veterinary/">
+        <div class="tag-icon">🛒</div>
+        <div class="tag-text">
+          <strong>{{ 'Veterinary Facility Finder' if lang=='en' else 'पशुवैद्यकीय केंद्र शोधक' }}</strong>
+          <span>{{ 'Find nearby veterinary clinics and dispensaries' if lang=='en' else 'जवळील पशुवैद्यकीय दवाखाने आणि दवाखाने शोधा' }}</span>
+        </div>
+        <div class="pill">{{ 'Open to everyone' if lang=='en' else 'सर्वांसाठी खुले' }}</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="category">
+    <h4>{{ 'Intelligent Features' if lang=='en' else 'बुद्धिमान वैशिष्ट्ये' }}</h4>
+    <div class="tags">
+      <div class="tag disabled">
+        <div class="tag-icon">🤖</div>
+        <div class="tag-text">
+          <strong>{{ 'ML Prediction 1' if lang=='en' else 'एमएल भाकीत 1' }}</strong>
+          <span>{{ 'Get intelligent predictions' if lang=='en' else 'बुद्धिमान भाकीती मिळवा' }}</span>
+        </div>
+        <div class="pill">Coming Soon</div>
+      </div>
+
+      <div class="tag disabled">
+        <div class="tag-icon">🔮</div>
+        <div class="tag-text">
+          <strong>{{ 'ML Prediction 2' if lang=='en' else 'एमएल भाकीत 2' }}</strong>
+          <span>{{ 'Get intelligent predictions' if lang=='en' else 'बुद्धिमान भाकीती मिळवा' }}</span>
+        </div>
+        <div class="pill">Coming Soon</div>
+      </div>
+
+      <div class="tag disabled">
+        <div class="tag-icon">📡</div>
+        <div class="tag-text">
+          <strong>{{ 'IoT / Smart Sensors' if lang=='en' else 'आयओटी / स्मार्ट सेन्सर' }}</strong>
+          <span>{{ 'Monitor farm conditions' if lang=='en' else 'शेतीची स्थिती पहा' }}</span>
+        </div>
+        <div class="pill">Coming Soon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="hub-foot">
+  <p>{{ 'Quick access to core tools. Other features coming soon.' if lang=='en' else 'मुख्य साधनांपर्यंत जलद प्रवेश. इतर वैशिष्ट्ये लवकरच येतील.' }}</p>
+</footer>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Health Report{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Health report</p>
+    <h1>{{ cow.cow_name }}</h1>
+  </div>
+  <a href="{{ url_for('farmer_cow_detail', cow_id=cow.cow_id) }}" class="btn btn-outline">Back to cow</a>
+</section>
+
+<section class="passport-card">
+  <h2>Current status</h2>
+  <dl>
+    <div><dt>UID</dt><dd>{{ cow.cow_id }}</dd></div>
+    <div><dt>Health status</dt><dd>{{ cow.health_status or 'Healthy' }}</dd></div>
+    <div><dt>Health score</dt><dd>{{ cow.health_score or 0 }} / 100</dd></div>
+    <div><dt>Vaccination</dt><dd>{{ cow.vaccination_status or 'Unknown' }}</dd></div>
+    <div><dt>Next checkup</dt><dd>{{ cow.next_checkup_date or '—' }}</dd></div>
+  </dl>
+</section>
+
+<section class="passport-card span-full">
+  <h2>Verified medical history</h2>
+  {% if history %}
+  <div class="history-list">
+    {% for item in history %}
+    <article class="history-item">
+      <div class="history-meta"><strong>{{ item.record_type or 'Medical update' }}</strong><span>{{ item.created_at }}</span></div>
+      <p><strong>Doctor:</strong> {{ item.doctor_name or '—' }}</p>
+      <p><strong>Summary:</strong> {{ item.summary or '—' }}</p>
+      <p><strong>Diagnosis:</strong> {{ item.diagnosis or '—' }}</p>
+      <p><strong>Treatment:</strong> {{ item.treatment or '—' }}</p>
+      <p><strong>Follow-up:</strong> {{ item.next_follow_up or '—' }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No verified medical history exists yet.</p>
+  {% endif %}
+</section>
+{% endblock %}

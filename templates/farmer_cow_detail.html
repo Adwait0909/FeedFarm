@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}Cow Detail{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Cow Passport</p>
+    <h1>{{ cow.cow_name }} ({{ cow.cow_id }})</h1>
+  </div>
+  <div class="header-actions">
+    <a class="btn btn-primary" href="{{ url_for('show_qr', cow_id=cow.cow_id) }}">View QR</a>
+    <a class="btn btn-outline" href="{{ url_for('farmer_health_report', cow_id=cow.cow_id) }}">Health report</a>
+  </div>
+</section>
+
+<section class="passport-grid">
+  <div class="passport-card cow-photo-card">
+    <h2>Photo</h2>
+    {% set photo = cow_photo_url(cow.image_path) %}
+    {% if photo %}
+    <img src="{{ photo }}" alt="Photo of {{ cow.cow_name }}">
+    {% elif cow.image_path %}
+    <p class="photo-missing">A photo was recorded for this cow, but the image file is not available on this server.</p>
+    {% else %}
+    <p class="photo-missing">No photo has been uploaded for this cow.</p>
+    {% endif %}
+  </div>
+  <div class="passport-card">
+    <h2>Identity</h2>
+    <dl>
+      <div><dt>Cow UID</dt><dd>{{ cow.cow_id }}</dd></div>
+      <div><dt>Local number</dt><dd>{{ cow.local_cow_number or '—' }}</dd></div>
+      <div><dt>Farm ID</dt><dd>{{ cow.farm_identity or '—' }}</dd></div>
+      <div><dt>QR code</dt><dd>{{ cow.qr_code_value or '—' }}</dd></div>
+      <div><dt>Owner</dt><dd>{{ cow.owner_name or '—' }}</dd></div>
+      <div><dt>Location</dt><dd>{{ cow.registered_location or '—' }}</dd></div>
+    </dl>
+  </div>
+
+  <div class="passport-card">
+    <h2>Basic details</h2>
+    <dl>
+      <div><dt>Breed</dt><dd>{{ cow.breed or '—' }}</dd></div>
+      <div><dt>Type</dt><dd>{{ cow.cow_type or '—' }}</dd></div>
+      <div><dt>Gender</dt><dd>{{ cow.gender or '—' }}</dd></div>
+      <div><dt>Date of birth</dt><dd>{{ cow.date_of_birth or '—' }}</dd></div>
+      <div><dt>Age</dt><dd>{{ cow.age or '—' }}</dd></div>
+      <div><dt>Color</dt><dd>{{ cow.color or '—' }}</dd></div>
+    </dl>
+  </div>
+
+  <div class="passport-card">
+    <h2>Health</h2>
+    <dl>
+      <div><dt>Status</dt><dd>{{ cow.health_status or 'Healthy' }}</dd></div>
+      <div><dt>Health score</dt><dd>{{ cow.health_score or 0 }} / 100</dd></div>
+      <div><dt>Vaccination</dt><dd>{{ cow.vaccination_status or 'Unknown' }}</dd></div>
+      <div><dt>Next checkup</dt><dd>{{ cow.next_checkup_date or '—' }}</dd></div>
+      <div><dt>Milk production</dt><dd>{{ cow.milk_production or '—' }}</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="passport-card span-full">
+  <h2>Doctor-updated record</h2>
+  {% if history %}
+    {% for item in history %}
+    <article class="history-item">
+      <div class="history-meta">
+        <strong>{{ item.record_type or 'Medical update' }}</strong>
+        <span>{{ item.created_at }}</span>
+      </div>
+      <p><strong>Doctor:</strong> {{ item.doctor_name or '—' }}</p>
+      <p><strong>Summary:</strong> {{ item.summary or '—' }}</p>
+      <p><strong>Diagnosis:</strong> {{ item.diagnosis or '—' }}</p>
+      <p><strong>Treatment:</strong> {{ item.treatment or '—' }}</p>
+      <p><strong>Follow-up:</strong> {{ item.next_follow_up or '—' }}</p>
+    </article>
+    {% endfor %}
+  {% else %}
+    <p>No verified doctor records yet. The cow is currently stable.</p>
+  {% endif %}
+</section>
+
+<section class="passport-card span-full">
+  <h2>Found-cow reports</h2>
+  {% if found_reports %}
+    {% for report in found_reports %}
+    <article class="history-item">
+      <div class="history-meta"><strong>{{ report.finder_name }}</strong><span>{{ report.created_at }}</span></div>
+      <p><strong>Contact:</strong> {{ report.finder_contact }}</p>
+      <p><strong>Current area:</strong> {{ report.current_area or '—' }}</p>
+      <p><strong>Message:</strong> {{ report.message or '—' }}</p>
+    </article>
+    {% endfor %}
+  {% else %}
+    <p>No one has reported finding this cow.</p>
+  {% endif %}
+</section>
+{% endblock %}

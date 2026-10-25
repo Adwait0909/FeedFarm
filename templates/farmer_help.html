@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Vet Help{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Veterinary Support</p>
+    <h1>Request help and find support</h1>
+  </div>
+</section>
+
+<section class="form-sheet">
+  <h2>Submit assistance request</h2>
+  <form method="post" action="{{ url_for('farmer_help') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="form-grid">
+      <label>Cow
+        <select name="cow_id">
+          <option value="">Select cow</option>
+          {% for cow in cows %}
+          <option value="{{ cow.cow_id }}">{{ cow.cow_name }} ({{ cow.cow_id }})</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>Request type
+        <select name="request_type">
+          <option value="General help">General help</option>
+          <option value="Vaccination">Vaccination</option>
+          <option value="Injury">Injury</option>
+          <option value="Breeding review">Breeding review</option>
+        </select>
+      </label>
+      <label class="span-2">Describe the issue
+        <textarea name="description" rows="4" required></textarea>
+      </label>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Submit request</button>
+    </div>
+  </form>
+</section>
+
+<section class="passport-card span-full">
+  <h2>Service providers near your farm</h2>
+  {% if vets %}
+  <div class="history-list">
+    {% for vet in vets %}
+    <article class="history-item">
+      <p><strong>{{ vet.full_name }}</strong> · {{ vet.clinic_name or 'Veterinary service' }}</p>
+      <p>{{ vet.specialization or 'General veterinary care' }}</p>
+      <p>{{ vet.city or '' }} · {{ vet.district or '' }}</p>
+      <p>{{ vet.phone or '—' }} · {{ vet.email or '—' }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No nearby registered provider found for this district yet.</p>
+  {% endif %}
+</section>
+
+<section class="passport-card span-full">
+  <h2>My requests</h2>
+  {% if requests %}
+  <div class="history-list">
+    {% for request in requests %}
+    <article class="history-item">
+      <div class="history-meta"><strong>{{ request.request_type or 'Help request' }}</strong><span>{{ request.status }}</span></div>
+      <p>{{ request.description }}</p>
+      {% if request.doctor_response %}<p><strong>Veterinarian reply:</strong> {{ request.doctor_response }}</p>{% endif %}
+      <form method="post" action="{{ url_for('farmer_assistance_status', request_id=request.id) }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <select name="status">
+          <option value="pending" {{ 'selected' if request.status == 'pending' }}>Pending</option>
+          <option value="accepted" {{ 'selected' if request.status == 'accepted' }}>Accepted</option>
+          <option value="in_progress" {{ 'selected' if request.status == 'in_progress' }}>In Progress</option>
+          <option value="resolved" {{ 'selected' if request.status == 'resolved' }}>Resolved</option>
+        </select>
+        <button type="submit" class="btn btn-outline">Update</button>
+      </form>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No requests submitted yet.</p>
+  {% endif %}
+</section>
+{% endblock %}

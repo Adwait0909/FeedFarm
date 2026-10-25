@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Doctor Cow Search{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">Search and lookup</p>
+    <h1>Find a Cow</h1>
+  </div>
+</section>
+
+<section class="form-sheet">
+  <form method="post" action="{{ url_for('doctor_scan') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="form-grid single-column">
+      <label>Scan / paste QR result or Cow UID
+        <input type="text" name="qr_value" placeholder="COW001, C-001, or QR URL" required>
+      </label>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Search Cow</button>
+      <a href="{{ url_for('doctor_dashboard') }}" class="btn btn-outline">Back to dashboard</a>
+    </div>
+  </form>
+
+  {% if error %}
+  <div class="flash flash-error">{{ error }}</div>
+  {% endif %}
+
+  {% if cow %}
+  <div class="search-result">
+    <h2>Match found</h2>
+    <div class="passport-card">
+      <dl>
+        <div><dt>Cow UID</dt><dd>{{ cow.cow_id }}</dd></div>
+        <div><dt>Local Number</dt><dd>{{ cow.local_cow_number or '—' }}</dd></div>
+        <div><dt>Name</dt><dd>{{ cow.cow_name }}</dd></div>
+        <div><dt>Breed</dt><dd>{{ cow.breed or '—' }}</dd></div>
+        <div><dt>Health Status</dt><dd>{{ cow.health_status or 'Unknown' }}</dd></div>
+      </dl>
+      <div class="doctor-actions">
+        <a class="btn btn-primary" href="{{ url_for('doctor_cow_profile', cow_id=cow.cow_id) }}">Open profile</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

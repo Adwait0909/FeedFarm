@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block title %}Register a Cow{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div>
+    <p class="page-kicker">New Entry</p>
+    <h1>Register a Cow</h1>
+  </div>
+</section>
+
+<form class="form-sheet" method="post" action="{{ url_for('register_cow') }}" enctype="multipart/form-data" data-live-review data-lang="en">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <fieldset>
+    <legend>Basic Information</legend>
+    <div class="form-grid">
+      <label>Cow ID <span class="req">*</span>
+        <input type="text" name="cow_id" placeholder="e.g. COW004" value="{{ form.cow_id if form else '' }}" required>
+      </label>
+      <label>Cow Name <span class="req">*</span>
+        <input type="text" name="cow_name" placeholder="e.g. Gauri" value="{{ form.cow_name if form else '' }}" required>
+      </label>
+      <label>Breed <span class="req">*</span>
+        <input type="text" name="breed" placeholder="e.g. Gir" value="{{ form.breed if form else '' }}" required>
+      </label>
+      <label>Cow Type <span class="req">*</span>
+        <select name="cow_type" required>
+          <option value="">Select type</option>
+          <option value="Dairy" {{ 'selected' if form and form.cow_type=='Dairy' }}>Dairy</option>
+          <option value="Draught" {{ 'selected' if form and form.cow_type=='Draught' }}>Draught</option>
+          <option value="Dual Purpose" {{ 'selected' if form and form.cow_type=='Dual Purpose' }}>Dual Purpose</option>
+        </select>
+      </label>
+      <label>Gender <span class="req">*</span>
+        <select name="gender" required>
+          <option value="">Select gender</option>
+          <option value="Female" {{ 'selected' if form and form.gender=='Female' }}>Female</option>
+          <option value="Male" {{ 'selected' if form and form.gender=='Male' }}>Male</option>
+        </select>
+      </label>
+      <label>Age (years)
+        <input type="number" name="age" min="0" max="30">
+      </label>
+      <label>Date of Birth
+        <input type="date" name="date_of_birth">
+      </label>
+      <label>Color
+        <input type="text" name="color" placeholder="e.g. Reddish Brown">
+      </label>
+      <label class="span-2">Cow Image <small>(PNG or JPG, up to 4 MB)</small>
+        <input type="file" name="cow_image" accept=".png,.jpg,.jpeg">
+      </label>
+      <div class="photo-feedback span-2" data-photo-feedback>
+        <img data-photo-img alt="" hidden>
+        <span data-photo-name></span>
+        <button type="button" data-photo-remove hidden>Remove photo</button>
+        <span class="photo-error" data-photo-error role="alert"></span>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Registration Information</legend>
+    <div class="form-grid">
+      <label class="span-2">Registered Location
+        <input type="text" name="registered_location" placeholder="Farm / village / district">
+      </label>
+      <label>Owner Name <span class="req">*</span>
+        <input type="text" name="owner_name" required>
+      </label>
+      <label>Owner Contact <span class="req">*</span>
+        <input type="tel" name="owner_contact" placeholder="10-digit mobile number" required>
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Health Information</legend>
+    <div class="form-grid">
+      <label>Health Status
+        <select name="health_status">
+          <option value="Healthy">Healthy</option>
+          <option value="Under Observation">Under Observation</option>
+          <option value="Sick">Sick</option>
+        </select>
+      </label>
+      <label>Health Score (0&ndash;100)
+        <input type="number" name="health_score" min="0" max="100" placeholder="e.g. 90">
+      </label>
+      <label>Last Health Check
+        <input type="date" name="last_health_check">
+      </label>
+      <label class="span-2">Disease History
+        <textarea name="disease_history" rows="2" placeholder="None, or brief history"></textarea>
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Vaccination</legend>
+    <div class="form-grid">
+      <label>Vaccination Status
+        <select name="vaccination_status">
+          <option value="Up to date">Up to date</option>
+          <option value="Pending">Pending</option>
+          <option value="Overdue">Overdue</option>
+        </select>
+      </label>
+      <label>Last Vaccination Date
+        <input type="date" name="last_vaccination_date">
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Production &amp; Notes</legend>
+    <div class="form-grid">
+      <label>Milk Production per Day (litres)
+        <input type="number" step="0.1" name="milk_production" min="0">
+      </label>
+      <label class="span-2">Additional Notes
+        <textarea name="notes" rows="3"></textarea>
+      </label>
+    </div>
+  </fieldset>
+
+  <section class="review-box" aria-label="Live review">
+    <h2>Review</h2>
+    <p class="review-note">This summary updates as you fill in the form.</p>
+    <p class="review-progress" data-review-progress aria-live="polite"></p>
+    <div class="review-grid">
+      <div><span>Cow ID</span><strong data-review="cow_id">—</strong></div>
+      <div><span>Cow name</span><strong data-review="cow_name">—</strong></div>
+      <div><span>Breed</span><strong data-review="breed">—</strong></div>
+      <div><span>Type</span><strong data-review="cow_type">—</strong></div>
+      <div><span>Gender</span><strong data-review="gender">—</strong></div>
+      <div><span>Age (years)</span><strong data-review="age">—</strong></div>
+      <div><span>Color</span><strong data-review="color">—</strong></div>
+      <div><span>Owner</span><strong data-review="owner_name">—</strong></div>
+      <div><span>Owner contact</span><strong data-review="owner_contact">—</strong></div>
+      <div><span>Location</span><strong data-review="registered_location">—</strong></div>
+      <div><span>Health status</span><strong data-review="health_status">—</strong></div>
+      <div><span>Vaccination</span><strong data-review="vaccination_status">—</strong></div>
+      <div><span>Milk per day (L)</span><strong data-review="milk_production">—</strong></div>
+      <div><span>Photo</span><strong data-review-photo>—</strong></div>
+    </div>
+  </section>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Save &amp; Generate Passport</button>
+    <a class="btn btn-outline" href="{{ url_for('dashboard') }}">Cancel</a>
+  </div>
+</form>
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{ url_for('static', filename='js/cow_register.js') }}" defer></script>
+{% endblock %}

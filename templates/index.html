@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Cow Digital Passport &mdash; Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="hero-kicker">Smart Farm Management System</p>
+    <h1>Every cow carries a passport now.</h1>
+    <p class="hero-lede">
+      Register a cow once, and a printable QR tag links straight to its health
+      record, vaccination history and owner details. Scan it from any phone
+      and the passport opens in the browser &mdash; no app to install.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ url_for('register_cow') }}">Register a Cow</a>
+      <a class="btn btn-outline" href="{{ url_for('scan') }}">Scan a QR Tag</a>
+    </div>
+  </div>
+  <div class="hero-stamp" aria-hidden="true">
+    <div class="stamp-ring">
+      <span class="stamp-line">DIGITAL</span>
+      <span class="stamp-line stamp-line-big">PASSPORT</span>
+      <span class="stamp-line">VERIFIED ID</span>
+    </div>
+  </div>
+</section>
+
+<section class="flow">
+  <h2>How the passport works</h2>
+  <ol class="flow-steps">
+    <li>
+      <span class="flow-index">1</span>
+      <h3>Register</h3>
+      <p>Enter the cow's details and photo into the registry.</p>
+    </li>
+    <li>
+      <span class="flow-index">2</span>
+      <h3>Tag</h3>
+      <p>A unique QR tag is generated and printed for the cow.</p>
+    </li>
+    <li>
+      <span class="flow-index">3</span>
+      <h3>Scan</h3>
+      <p>Anyone with a phone camera can scan the tag in the field.</p>
+    </li>
+    <li>
+      <span class="flow-index">4</span>
+      <h3>Verify</h3>
+      <p>The passport opens instantly with health and owner records.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="quick-links">
+  <a href="{{ url_for('dashboard') }}" class="quick-card">
+    <h3>Admin Dashboard</h3>
+    <p>See every registered cow, search records, and manage QR tags.</p>
+  </a>
+  <a href="{{ url_for('register_cow') }}" class="quick-card">
+    <h3>Register Cow</h3>
+    <p>Add a new animal to the registry and generate its passport.</p>
+  </a>
+  <a href="{{ url_for('scan') }}" class="quick-card">
+    <h3>Scan Cow QR</h3>
+    <p>Open the camera scanner and pull up a cow's passport instantly.</p>
+  </a>
+</section>
+{% endblock %}

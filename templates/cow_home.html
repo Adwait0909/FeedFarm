@@ -1,0 +1,420 @@
+{% extends "base.html" %}
+{% set mr = (lang == 'mr') %}
+{% block title %}{{ 'Farm2Feed — Smart tools for every farmer' if not mr else 'Farm2Feed — प्रत्येक शेतकऱ्यासाठी स्मार्ट साधने' }}{% endblock %}
+{% block body_class %}home-body{% endblock %}
+{% block head %}
+<meta name="description" content="Scan cow QR passports, screen animal health, find a vet, check weather and government schemes — all in one simple place, in English and Marathi.">
+<meta name="theme-color" content="#14402c">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/portal-home.css') }}">
+<script src="{{ url_for('static', filename='js/voice-nav.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/home.js') }}" defer></script>
+{% endblock %}
+
+{# ---------- Custom header for the home page ---------- #}
+{% block site_header %}
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-cow" viewBox="0 0 24 24"><path d="M4 8l2-3 2 2h8l2-2 2 3-1 3v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-5L4 8zM9 13h.01M15 13h.01M10 17h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-vet" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10zM12 9v5M9.5 11.5h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><path d="M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zM4 10h16M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.2 10.5a1 1 0 0 0 1 .8h8.6a1 1 0 0 0 1-.8L19 8H6M9 20h.01M17 20h.01" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-15 0 10-5 15-13 15M5 19c2-4 5-7 9-9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><path d="M9 9h6v6H9zM4 9h2M4 15h2M18 9h2M18 15h2M9 4v2M15 4v2M9 18v2M15 18v2M7 6h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zM6 11a6 6 0 0 0 12 0M12 17v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM21 21l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2 2a16 16 0 0 1-15-15a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#main-content">{{ 'Skip to content' if not mr else 'मुख्य मजकुराकडे जा' }}</a>
+
+<header class="hm-header" id="top">
+  <div class="hm-header-inner">
+    <a href="{{ url_for('index') }}" class="hm-brand" aria-label="Farm2Feed">
+      <span class="hm-logo"><svg width="22" height="22"><use href="#i-leaf"/></svg></span>
+      <span class="hm-brand-text">Farm2Feed<small>{{ 'Smart farm companion' if not mr else 'स्मार्ट शेती सोबती' }}</small></span>
+    </a>
+
+    <nav class="hm-nav" id="hm-nav" aria-label="Main">
+      <a href="#need">{{ 'What I need' if not mr else 'मला काय हवे' }}</a>
+      <a href="#tools">{{ 'All tools' if not mr else 'सर्व साधने' }}</a>
+      <a href="#how">{{ 'How it works' if not mr else 'कसे वापरावे' }}</a>
+      <a href="#help">{{ 'Help' if not mr else 'मदत' }}</a>
+      <a href="/kisaath/" class="hm-nav-kisaath">{{ 'Kisaath tools' if not mr else 'किसाथ साधने' }} <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+    </nav>
+
+    <div class="hm-header-tools">
+      <div class="hm-lang" role="group" aria-label="Language">
+        <a href="{{ url_for('set_language', lang='en') }}" class="{{ 'active' if not mr }}" lang="en" {% if not mr %}aria-current="true"{% endif %}>EN</a>
+        <a href="{{ url_for('set_language', lang='mr') }}" class="{{ 'active' if mr }}" lang="mr" {% if mr %}aria-current="true"{% endif %}>मराठी</a>
+      </div>
+      <button type="button" class="hm-size" id="text-size-btn" aria-pressed="false" title="{{ 'Larger text' if not mr else 'मोठे अक्षर' }}">
+        <span aria-hidden="true">A<sup>+</sup></span><span class="sr-only">{{ 'Toggle larger text' if not mr else 'मोठे अक्षर चालू/बंद' }}</span>
+      </button>
+      <a class="hm-login" href="{{ url_for('farmer_dashboard') if session.get('farmer_id') else url_for('farmer_login') }}">
+        {{ ('My farm' if session.get('farmer_id') else 'Farmer login') if not mr else ('माझे शेत' if session.get('farmer_id') else 'शेतकरी लॉगिन') }}
+      </a>
+      <button type="button" class="hm-burger" id="nav-toggle" aria-controls="hm-nav" aria-expanded="false" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <div class="hm-flash">
+    {% for category, message in messages %}<div class="flash flash-{{ category }}">{{ message }}</div>{% endfor %}
+  </div>
+  {% endif %}
+{% endwith %}
+{% endblock %}
+
+{% block content %}
+<div class="hm" id="main-content">
+
+  {# ================= HERO ================= #}
+  <section class="hm-hero">
+    <div class="hm-hero-bg" aria-hidden="true"></div>
+    <div class="hm-wrap hm-hero-grid">
+      <div class="hm-hero-copy">
+        <span class="hm-pill"><span class="hm-pulse"></span>{{ 'Free to use · English & मराठी' if not mr else 'वापरण्यास मोफत · English & मराठी' }}</span>
+        <h1>
+          {% if not mr %}Every animal accounted for.<br><em>Every season in reach.</em>
+          {% else %}प्रत्येक जनावराची नोंद.<br><em>प्रत्येक हंगामाची साथ.</em>{% endif %}
+        </h1>
+        <p class="hm-lede">
+          {{ 'Check your animals’ health, find a vet, plan your crops and discover government support — simple tools made for farmers, on one page.' if not mr else 'जनावरांचे आरोग्य तपासा, पशुवैद्य शोधा, पिकांचे नियोजन करा आणि सरकारी योजना जाणून घ्या — शेतकऱ्यांसाठी सोपी साधने, एकाच ठिकाणी.' }}
+        </p>
+
+        <form class="hm-search" id="tool-search-form" role="search" autocomplete="off">
+          <label class="sr-only" for="tool-search">{{ 'Search farm tools' if not mr else 'साधन शोधा' }}</label>
+          <svg class="hm-search-ico" width="22" height="22" aria-hidden="true"><use href="#i-search"/></svg>
+          <input id="tool-search" type="search" inputmode="search"
+                 placeholder="{{ 'What do you need? e.g. vet, rain, scheme' if not mr else 'काय हवे? उदा. डॉक्टर, पाऊस, योजना' }}">
+          <button type="button" class="hm-mic" id="voice-btn" hidden aria-label="{{ 'Speak to search' if not mr else 'बोलून शोधा' }}" title="{{ 'Speak to search' if not mr else 'बोलून शोधा' }}">
+            <svg width="22" height="22"><use href="#i-mic"/></svg>
+          </button>
+        </form>
+        <p class="hm-search-hint" id="search-hint" aria-live="polite"></p>
+
+        <div class="hm-big-actions">
+          <a class="hm-big hm-big-primary" href="{{ url_for('scan') }}">
+            <span class="hm-big-ico"><svg width="30" height="30"><use href="#i-scan"/></svg></span>
+            <span class="hm-big-txt"><strong>{{ 'Scan cow QR' if not mr else 'गायीचा QR स्कॅन करा' }}</strong><small>{{ 'See health & identity' if not mr else 'आरोग्य व ओळख पहा' }}</small></span>
+          </a>
+          <a class="hm-big" href="{{ url_for('animal_health.index') }}">
+            <span class="hm-big-ico"><svg width="30" height="30"><use href="#i-cow"/></svg></span>
+            <span class="hm-big-txt"><strong>{{ 'Animal looks sick?' if not mr else 'जनावर आजारी वाटते?' }}</strong><small>{{ 'Check with a photo' if not mr else 'फोटोने तपासा' }}</small></span>
+          </a>
+          <a class="hm-big" href="/veterinary/">
+            <span class="hm-big-ico"><svg width="30" height="30"><use href="#i-pin"/></svg></span>
+            <span class="hm-big-txt"><strong>{{ 'Find a vet nearby' if not mr else 'जवळचा पशुवैद्य शोधा' }}</strong><small>{{ 'Clinics & dispensaries' if not mr else 'दवाखाने व औषधालये' }}</small></span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hm-hero-side" aria-label="{{ 'Today on your farm' if not mr else 'आज तुमच्या शेतात' }}">
+        <div class="hm-photo" role="img" aria-label="{{ 'Golden wheat field under a blue sky' if not mr else 'निळ्या आकाशाखालील सोनेरी गव्हाचे शेत' }}">
+          <div class="hm-photo-tag">
+            <svg width="18" height="18"><use href="#i-check"/></svg>
+            {{ 'One scan away' if not mr else 'फक्त एक स्कॅन दूर' }}
+          </div>
+        </div>
+
+        <div class="hm-weather" id="weather-card" data-lang="{{ lang }}">
+          <div class="hm-weather-head">
+            <span>{{ 'Today’s weather' if not mr else 'आजचे हवामान' }}</span>
+            <button type="button" id="weather-locate" class="hm-link-btn">
+              <svg width="14" height="14"><use href="#i-pin"/></svg>
+              <span id="weather-place">{{ 'Use my location' if not mr else 'माझे स्थान वापरा' }}</span>
+            </button>
+          </div>
+          <div class="hm-weather-body" id="weather-body">
+            <div class="hm-weather-temp" id="w-temp">--°</div>
+            <div class="hm-weather-meta">
+              <strong id="w-desc">{{ 'Loading…' if not mr else 'लोड होत आहे…' }}</strong>
+              <span id="w-rain">&nbsp;</span>
+            </div>
+          </div>
+          <p class="hm-weather-advice" id="w-advice" aria-live="polite"></p>
+          <a class="hm-weather-more" href="/kisaath/weather">{{ 'Full forecast' if not mr else 'संपूर्ण अंदाज' }} <svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="hm-wrap">
+      <ul class="hm-trust" aria-label="{{ 'Highlights' if not mr else 'वैशिष्ट्ये' }}">
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>{{ 'Works on any phone' if not mr else 'कोणत्याही मोबाईलवर चालते' }}</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>{{ 'Marathi & English' if not mr else 'मराठी व इंग्रजी' }}</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>{{ 'No account for health check & vet finder' if not mr else 'आरोग्य तपासणी व पशुवैद्य शोधासाठी खाते नको' }}</li>
+        <li><svg width="18" height="18"><use href="#i-check"/></svg>{{ 'Voice search' if not mr else 'बोलून शोधा' }}</li>
+      </ul>
+    </div>
+  </section>
+
+  {# ================= NEED CHOOSER ================= #}
+  <section class="hm-section" id="need">
+    <div class="hm-wrap">
+      <div class="hm-head">
+        <span class="hm-eyebrow">{{ 'START HERE' if not mr else 'येथून सुरू करा' }}</span>
+        <h2>{{ 'What do you need help with today?' if not mr else 'आज तुम्हाला कशात मदत हवी आहे?' }}</h2>
+        <p>{{ 'Tap one — we will show you exactly where to go.' if not mr else 'एकावर दाबा — कुठे जायचे ते आम्ही दाखवतो.' }}</p>
+      </div>
+
+      <div class="hm-need" id="need-widget">
+        <div class="hm-need-tabs" role="tablist" aria-label="{{ 'Choose a need' if not mr else 'गरज निवडा' }}">
+          <button role="tab" class="hm-need-tab is-active" id="tab-sick" aria-controls="panel-sick" aria-selected="true">
+            <svg width="26" height="26"><use href="#i-cow"/></svg><span>{{ 'My animal looks sick' if not mr else 'माझे जनावर आजारी दिसते' }}</span>
+          </button>
+          <button role="tab" class="hm-need-tab" id="tab-id" aria-controls="panel-id" aria-selected="false" tabindex="-1">
+            <svg width="26" height="26"><use href="#i-scan"/></svg><span>{{ 'Identify / register a cow' if not mr else 'गायीची ओळख / नोंदणी' }}</span>
+          </button>
+          <button role="tab" class="hm-need-tab" id="tab-crop" aria-controls="panel-crop" aria-selected="false" tabindex="-1">
+            <svg width="26" height="26"><use href="#i-cal"/></svg><span>{{ 'Plan my crop' if not mr else 'पिकाचे नियोजन' }}</span>
+          </button>
+          <button role="tab" class="hm-need-tab" id="tab-money" aria-controls="panel-money" aria-selected="false" tabindex="-1">
+            <svg width="26" height="26"><use href="#i-bank"/></svg><span>{{ 'Find a scheme or support' if not mr else 'योजना / अनुदान शोधा' }}</span>
+          </button>
+          <button role="tab" class="hm-need-tab" id="tab-sell" aria-controls="panel-sell" aria-selected="false" tabindex="-1">
+            <svg width="26" height="26"><use href="#i-cart"/></svg><span>{{ 'Buy or sell produce' if not mr else 'माल खरेदी / विक्री' }}</span>
+          </button>
+        </div>
+
+        <div class="hm-need-panels">
+          <div role="tabpanel" class="hm-need-panel is-active" id="panel-sick" aria-labelledby="tab-sick">
+            <h3>{{ 'Two quick steps for a sick animal' if not mr else 'आजारी जनावरासाठी दोन सोपी पावले' }}</h3>
+            <p>{{ 'First, upload a clear photo to screen for common disease signs and download a report. Then find the nearest vet to confirm and treat.' if not mr else 'आधी स्पष्ट फोटो अपलोड करून सामान्य आजाराची लक्षणे तपासा आणि अहवाल डाउनलोड करा. नंतर खात्री व उपचारासाठी जवळचा पशुवैद्य शोधा.' }}</p>
+            <div class="hm-need-cta">
+              <a class="hm-btn hm-btn-primary" href="{{ url_for('animal_health.index') }}">1 · {{ 'Check with a photo' if not mr else 'फोटोने तपासा' }} <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+              <a class="hm-btn hm-btn-ghost" href="/veterinary/">2 · {{ 'Find a vet' if not mr else 'पशुवैद्य शोधा' }}</a>
+            </div>
+            <p class="hm-note">{{ 'This is a screening aid, not a diagnosis. In an emergency, call a vet right away.' if not mr else 'ही केवळ प्राथमिक तपासणी आहे, निदान नाही. आपत्कालीन स्थितीत लगेच पशुवैद्याला बोलवा.' }}</p>
+          </div>
+
+          <div role="tabpanel" class="hm-need-panel" id="panel-id" aria-labelledby="tab-id" hidden>
+            <h3>{{ 'Every cow gets a digital passport' if not mr else 'प्रत्येक गायीला डिजिटल पासपोर्ट' }}</h3>
+            <p>{{ 'Register a cow to create a printable QR tag. Scan it any time with your phone camera to see identity and health records.' if not mr else 'गाय नोंदवून छापता येणारा QR टॅग तयार करा. मोबाईल कॅमेऱ्याने केव्हाही स्कॅन करून ओळख व आरोग्य नोंदी पहा.' }}</p>
+            <div class="hm-need-cta">
+              <a class="hm-btn hm-btn-primary" href="{{ url_for('scan') }}">{{ 'Scan a QR tag' if not mr else 'QR टॅग स्कॅन करा' }} <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+              <a class="hm-btn hm-btn-ghost" href="{{ url_for('register_cow') }}">{{ 'Register a cow' if not mr else 'गाय नोंदवा' }}</a>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="hm-need-panel" id="panel-crop" aria-labelledby="tab-crop" hidden>
+            <h3>{{ 'Sow, spray and harvest at the right time' if not mr else 'योग्य वेळी पेरणी, फवारणी आणि कापणी' }}</h3>
+            <p>{{ 'See what to do each month and check the weather before you plan field work. Explore modern techniques to raise your yield.' if not mr else 'दर महिन्याला काय करायचे ते पहा आणि शेतीकामापूर्वी हवामान तपासा. उत्पादन वाढवण्यासाठी आधुनिक पद्धती जाणून घ्या.' }}</p>
+            <div class="hm-need-cta">
+              <a class="hm-btn hm-btn-primary" href="/kisaath/crop-calendar">{{ 'Crop calendar' if not mr else 'पीक दिनदर्शिका' }} <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+              <a class="hm-btn hm-btn-ghost" href="/kisaath/weather">{{ 'Weather' if not mr else 'हवामान' }}</a>
+              <a class="hm-btn hm-btn-ghost" href="/kisaath/modern-farming">{{ 'Modern farming' if not mr else 'आधुनिक शेती' }}</a>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="hm-need-panel" id="panel-money" aria-labelledby="tab-money" hidden>
+            <h3>{{ 'Find support you may be eligible for' if not mr else 'तुम्ही पात्र असू शकता अशा योजना शोधा' }}</h3>
+            <p>{{ 'Sign in as a farmer to see livestock schemes that may fit your farm, or browse general government schemes without an account.' if not mr else 'तुमच्या शेतीला लागू होणाऱ्या पशुधन योजना पाहण्यासाठी शेतकरी म्हणून लॉगिन करा, किंवा खात्याशिवाय सर्वसाधारण सरकारी योजना पहा.' }}</p>
+            <div class="hm-need-cta">
+              <a class="hm-btn hm-btn-primary" href="/farmer/schemes/">{{ 'Livestock scheme advisor' if not mr else 'पशुधन योजना सल्लागार' }} <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+              <a class="hm-btn hm-btn-ghost" href="/kisaath/government">{{ 'Government schemes' if not mr else 'सरकारी योजना' }}</a>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="hm-need-panel" id="panel-sell" aria-labelledby="tab-sell" hidden>
+            <h3>{{ 'Reach buyers and sellers directly' if not mr else 'थेट खरेदीदार व विक्रेत्यांपर्यंत पोहोचा' }}</h3>
+            <p>{{ 'List your produce or browse what other farmers are offering in the marketplace.' if not mr else 'तुमचा माल यादीत टाका किंवा इतर शेतकरी काय विकत आहेत ते मार्केटप्लेसवर पहा.' }}</p>
+            <div class="hm-need-cta">
+              <a class="hm-btn hm-btn-primary" href="/kisaath/marketplace">{{ 'Open marketplace' if not mr else 'मार्केटप्लेस उघडा' }} <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ================= ALL TOOLS ================= #}
+  {% set tools = [
+    ('cat-animal','i-scan',   'Scan a QR tag','QR टॅग स्कॅन करा','Open a cow’s digital passport using your phone camera.','मोबाईल कॅमेऱ्याने गायीचा डिजिटल पासपोर्ट उघडा.', url_for('scan'),'Open','उघडा','qr scan passport camera cow स्कॅन पासपोर्ट गाय'),
+    ('cat-animal','i-plus',   'Register a cow','गाय नोंदवा','Add details and create a printable QR code.','माहिती भरा आणि छापता येणारा QR कोड तयार करा.', url_for('register_cow'),'Open','उघडा','register add new cow tag नोंदणी नवीन गाय'),
+    ('cat-animal','i-cow',    'Animal health check (AI)','जनावर आरोग्य तपासणी (AI)','Upload a photo to screen for disease signs. Get a PDF report.','फोटो अपलोड करून आजाराची लक्षणे तपासा. PDF अहवाल मिळवा.', url_for('animal_health.index'),'No login','लॉगिन नको','sick disease ai photo health animal report lumpy आजार रोग तपासणी फोटो जनावर'),
+    ('cat-animal','i-pin',    'Find a veterinarian','पशुवैद्य शोधा','Search Maharashtra clinics and dispensaries near you.','तुमच्या जवळील महाराष्ट्रातील दवाखाने व औषधालये शोधा.', '/veterinary/','No login','लॉगिन नको','vet doctor clinic dispensary hospital nearby map डॉक्टर पशुवैद्य दवाखाना जवळ'),
+    ('cat-animal','i-vet',    'Veterinarian login','पशुवैद्य लॉगिन','Review animals and add care or vaccination notes.','जनावरांची माहिती पहा आणि उपचार/लसीकरण नोंदी जोडा.', url_for('doctor_login'),'Vet login','डॉक्टर लॉगिन','vet doctor login vaccination record लसीकरण डॉक्टर नोंद'),
+    ('cat-farm','i-home',     'My farm & herd','माझे शेत व गोठा','Keep farm, herd and help requests in one place.','शेत, गायी आणि मदत विनंत्या एकाच ठिकाणी ठेवा.', url_for('farmer_login'),'Farmer login','शेतकरी लॉगिन','farm herd my cows dashboard farmer login शेत गोठा गायी'),
+    ('cat-farm','i-sun',      'Weather','हवामान','Rain and temperature forecast for your area.','तुमच्या परिसरातील पाऊस व तापमानाचा अंदाज.', '/kisaath/weather','Open','उघडा','weather rain temperature forecast हवामान पाऊस तापमान'),
+    ('cat-farm','i-cal',      'Crop calendar','पीक दिनदर्शिका','Month-by-month guide for sowing, care and harvest.','पेरणी, निगा आणि कापणीसाठी महिन्यानुसार मार्गदर्शन.', '/kisaath/crop-calendar','Open','उघडा','crop calendar sowing harvest season पीक पेरणी कापणी दिनदर्शिका'),
+    ('cat-farm','i-chip',     'Modern farming','आधुनिक शेती','Drip, sensors, drones and other ways to grow more.','ठिबक, सेन्सर, ड्रोन आणि अधिक उत्पादनाच्या पद्धती.', '/kisaath/modern-farming','Open','उघडा','modern farming drip sensor drone hydroponics ठिबक आधुनिक शेती ड्रोन'),
+    ('cat-money','i-bank',    'Livestock scheme advisor','पशुधन योजना सल्लागार','Find livestock support schemes that may fit you.','तुम्हाला लागू होणाऱ्या पशुधन योजना शोधा.', '/farmer/schemes/','Farmer login','शेतकरी लॉगिन','scheme subsidy loan livestock advisor योजना अनुदान कर्ज पशुधन'),
+    ('cat-money','i-bank',    'Government schemes','सरकारी योजना','Browse agriculture schemes and how to apply.','शेतीविषयक योजना व अर्ज कसा करायचा ते पहा.', 'https://farmer-scheme-app.onrender.com/','Open','उघडा','government scheme subsidy pm kisan सरकारी योजना अनुदान'),
+    ('cat-farm','i-leaf',    'Crop Disease Detection','पीक रोग निदान','Upload a crop photo to check for disease signs.','पिकाचा फोटो अपलोड करून रोगाची लक्षणे तपासा.', 'https://disease-detectorr-f9b4ee.netlify.app/','Open','उघडा','crop disease detection plant leaf photo diagnosis पीक रोग निदान पिक रोग'),
+    ('cat-money','i-cart',    'Marketplace','मार्केटप्लेस','List produce or browse what farmers are selling.','माल यादीत टाका किंवा शेतकरी काय विकत आहेत ते पहा.', '/kisaath/marketplace','Open','उघडा','market sell buy produce price बाजार विक्री खरेदी माल'),
+    ('cat-farm','i-list',     'Browse all cow records','सर्व गायींच्या नोंदी','Search the registry and open saved QR passports.','नोंदणी शोधा आणि जतन केलेले QR पासपोर्ट उघडा.', url_for('dashboard'),'Vet login','डॉक्टर लॉगिन','registry records all cows list search नोंदी यादी'),
+  ] %}
+  <section class="hm-section hm-section-alt" id="tools">
+    <div class="hm-wrap">
+      <div class="hm-head hm-head-row">
+        <div>
+          <span class="hm-eyebrow">{{ 'ALL TOOLS' if not mr else 'सर्व साधने' }}</span>
+          <h2>{{ 'Everything for your farm, in one place' if not mr else 'तुमच्या शेतासाठी सर्व काही, एकाच ठिकाणी' }}</h2>
+        </div>
+        <div class="hm-filters" role="group" aria-label="{{ 'Filter tools' if not mr else 'साधने फिल्टर करा' }}">
+          <button class="hm-filter is-active" data-filter="all" aria-pressed="true">{{ 'All' if not mr else 'सर्व' }}</button>
+          <button class="hm-filter" data-filter="cat-animal" aria-pressed="false">{{ 'Animals' if not mr else 'जनावरे' }}</button>
+          <button class="hm-filter" data-filter="cat-farm" aria-pressed="false">{{ 'Farm' if not mr else 'शेती' }}</button>
+          <button class="hm-filter" data-filter="cat-money" aria-pressed="false">{{ 'Money & market' if not mr else 'पैसा व बाजार' }}</button>
+        </div>
+      </div>
+
+      <div class="hm-tools" id="tools-grid">
+        {% for cat, icon, en_t, mr_t, en_d, mr_d, href, en_tag, mr_tag, kw in tools %}
+        <a class="hm-tool reveal" href="{{ href }}" data-cat="{{ cat }}" data-keywords="{{ en_t|lower }} {{ kw }}">
+          <span class="hm-tool-ico"><svg width="26" height="26"><use href="#{{ icon }}"/></svg></span>
+          <span class="hm-tool-body">
+            <strong>{{ en_t if not mr else mr_t }}</strong>
+            <small>{{ en_d if not mr else mr_d }}</small>
+          </span>
+          <span class="hm-tool-foot">
+            <span class="hm-badge">{{ en_tag if not mr else mr_tag }}</span>
+            <svg class="hm-tool-arrow" width="20" height="20"><use href="#i-arrow"/></svg>
+          </span>
+        </a>
+        {% endfor %}
+      </div>
+      <p class="hm-empty" id="tools-empty" hidden>
+        {{ 'No tool matches that. Try “vet”, “rain”, “scheme” or “market”.' if not mr else 'यासाठी साधन सापडले नाही. “डॉक्टर”, “पाऊस”, “योजना” किंवा “बाजार” असे शोधा.' }}
+      </p>
+    </div>
+  </section>
+
+  {# ================= HOW IT WORKS ================= #}
+  <section class="hm-section" id="how">
+    <div class="hm-wrap">
+      <div class="hm-head">
+        <span class="hm-eyebrow">{{ 'HOW IT WORKS' if not mr else 'कसे वापरावे' }}</span>
+        <h2>{{ 'Simple as 1-2-3' if not mr else 'अगदी सोपे: १-२-३' }}</h2>
+      </div>
+      <ol class="hm-steps">
+        <li class="reveal"><span class="hm-step-n">1</span>
+          <h3>{{ 'Register your cow' if not mr else 'गाय नोंदवा' }}</h3>
+          <p>{{ 'Enter a few details and get a printable QR tag for the animal.' if not mr else 'थोडी माहिती भरा आणि जनावरासाठी छापता येणारा QR टॅग मिळवा.' }}</p></li>
+        <li class="reveal"><span class="hm-step-n">2</span>
+          <h3>{{ 'Scan any time' if not mr else 'केव्हाही स्कॅन करा' }}</h3>
+          <p>{{ 'Point your phone at the tag to see identity and health history.' if not mr else 'टॅगवर मोबाईल धरा आणि ओळख व आरोग्याचा इतिहास पहा.' }}</p></li>
+        <li class="reveal"><span class="hm-step-n">3</span>
+          <h3>{{ 'Act with confidence' if not mr else 'निश्चिंतपणे निर्णय घ्या' }}</h3>
+          <p>{{ 'Check health, call the vet, follow the weather and apply for schemes.' if not mr else 'आरोग्य तपासा, पशुवैद्याला बोलवा, हवामान पाहा आणि योजनांसाठी अर्ज करा.' }}</p></li>
+      </ol>
+    </div>
+  </section>
+
+  {# ================= KISAATH BAND ================= #}
+  <section class="hm-section hm-section-tight">
+    <div class="hm-wrap">
+      <div class="hm-band">
+        <div class="hm-band-copy">
+          <span class="hm-eyebrow hm-eyebrow-light">{{ 'KISAATH FARM TOOLS' if not mr else 'किसाथ शेती साधने' }}</span>
+          <h2>{{ 'From animal care to crop decisions — without switching apps.' if not mr else 'जनावरांच्या निगेपासून पीक निर्णयांपर्यंत — अॅप न बदलता.' }}</h2>
+          <div class="hm-band-links">
+            <a href="/kisaath/weather">{{ 'Weather' if not mr else 'हवामान' }}</a>
+            <a href="/kisaath/crop-calendar">{{ 'Crop calendar' if not mr else 'पीक दिनदर्शिका' }}</a>
+            <a href="/kisaath/marketplace">{{ 'Marketplace' if not mr else 'मार्केटप्लेस' }}</a>
+            <a href="/kisaath/government">{{ 'Schemes' if not mr else 'योजना' }}</a>
+            <a href="/kisaath/modern-farming">{{ 'Modern farming' if not mr else 'आधुनिक शेती' }}</a>
+            <a href="/kisaath/about">{{ 'About' if not mr else 'आमच्याबद्दल' }}</a>
+          </div>
+          <a class="hm-btn hm-btn-light" href="/kisaath/">{{ 'Explore Kisaath' if not mr else 'किसाथ पहा' }} <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="hm-band-img" role="img" aria-label="{{ 'Modern farming techniques' if not mr else 'आधुनिक शेती पद्धती' }}"></div>
+      </div>
+    </div>
+  </section>
+
+  {# ================= HELP / FAQ ================= #}
+  <section class="hm-section" id="help">
+    <div class="hm-wrap hm-help">
+      <div>
+        <div class="hm-head">
+          <span class="hm-eyebrow">{{ 'HELP' if not mr else 'मदत' }}</span>
+          <h2>{{ 'Common questions' if not mr else 'नेहमीचे प्रश्न' }}</h2>
+        </div>
+        <div class="hm-faq">
+          <details>
+            <summary>{{ 'Do I need an account?' if not mr else 'मला खाते लागेल का?' }}</summary>
+            <p>{{ 'No. The animal health check, vet finder, weather, crop calendar and schemes are open to everyone. Create a farmer account only to manage your farm and herd.' if not mr else 'नाही. जनावर आरोग्य तपासणी, पशुवैद्य शोध, हवामान, पीक दिनदर्शिका आणि योजना सर्वांसाठी खुल्या आहेत. शेत व गोठा व्यवस्थापनासाठीच शेतकरी खाते तयार करा.' }}</p>
+          </details>
+          <details>
+            <summary>{{ 'How do I scan a cow’s QR tag?' if not mr else 'गायीचा QR टॅग कसा स्कॅन करायचा?' }}</summary>
+            <p>{{ 'Tap “Scan cow QR”, allow camera access and hold the phone steadily over the tag. The cow’s passport opens automatically.' if not mr else '“गायीचा QR स्कॅन करा” दाबा, कॅमेरा परवानगी द्या आणि फोन टॅगवर स्थिर धरा. गायीचा पासपोर्ट आपोआप उघडेल.' }}</p>
+          </details>
+          <details>
+            <summary>{{ 'Is the AI health check a diagnosis?' if not mr else 'AI आरोग्य तपासणी म्हणजे निदान आहे का?' }}</summary>
+            <p>{{ 'No. It only highlights possible signs from a photo. Always confirm with a veterinarian before treatment.' if not mr else 'नाही. ती फोटोवरून संभाव्य लक्षणे दाखवते. उपचारापूर्वी नेहमी पशुवैद्याकडून खात्री करा.' }}</p>
+          </details>
+          <details>
+            <summary>{{ 'How do I switch to Marathi?' if not mr else 'भाषा इंग्रजीत कशी बदलायची?' }}</summary>
+            <p>{{ 'Use the EN / मराठी buttons at the top right of any page. Your choice is remembered.' if not mr else 'कोणत्याही पानाच्या वर उजवीकडील EN / मराठी बटणे वापरा. तुमची निवड लक्षात ठेवली जाते.' }}</p>
+          </details>
+        </div>
+      </div>
+
+      <div class="hm-helpcard">
+        <span class="hm-helpcard-ico"><svg width="28" height="28"><use href="#i-phone"/></svg></span>
+        <h3>{{ 'Prefer to talk to someone?' if not mr else 'कोणाशी बोलायचे आहे?' }}</h3>
+        <p>{{ 'The Kisan Call Centre offers free farming advice by phone.' if not mr else 'किसान कॉल सेंटर फोनवर मोफत शेती सल्ला देते.' }}</p>
+        <a class="hm-btn hm-btn-light hm-btn-block" href="tel:18001801551"><svg width="18" height="18"><use href="#i-phone"/></svg> 1800-180-1551</a>
+        <small>{{ 'Toll-free. Please confirm hours with the call centre.' if not mr else 'टोल-फ्री. वेळ कॉल सेंटरकडून तपासा.' }}</small>
+      </div>
+    </div>
+  </section>
+</div>
+
+{# Mobile quick bar #}
+<nav class="hm-bottombar" aria-label="{{ 'Quick actions' if not mr else 'जलद कृती' }}">
+  <a href="{{ url_for('scan') }}"><svg width="24" height="24"><use href="#i-scan"/></svg><span>{{ 'Scan' if not mr else 'स्कॅन' }}</span></a>
+  <a href="{{ url_for('animal_health.index') }}"><svg width="24" height="24"><use href="#i-cow"/></svg><span>{{ 'Health' if not mr else 'आरोग्य' }}</span></a>
+  <a href="/veterinary/"><svg width="24" height="24"><use href="#i-pin"/></svg><span>{{ 'Vet' if not mr else 'डॉक्टर' }}</span></a>
+  <a href="/kisaath/weather"><svg width="24" height="24"><use href="#i-sun"/></svg><span>{{ 'Weather' if not mr else 'हवामान' }}</span></a>
+</nav>
+{% endblock %}
+
+{% block site_footer %}
+<footer class="hm-footer">
+  <div class="hm-wrap hm-footer-grid">
+    <div>
+      <a href="{{ url_for('index') }}" class="hm-brand hm-brand-light"><span class="hm-logo"><svg width="22" height="22"><use href="#i-leaf"/></svg></span><span class="hm-brand-text">Farm2Feed</span></a>
+      <p>{{ 'Smart tools that help farmers care for animals, plan crops and reach support.' if not mr else 'शेतकऱ्यांना जनावरांची निगा, पीक नियोजन आणि मदत मिळवण्यासाठी स्मार्ट साधने.' }}</p>
+    </div>
+    <div>
+      <h4>{{ 'Animals' if not mr else 'जनावरे' }}</h4>
+      <a href="{{ url_for('scan') }}">{{ 'Scan QR' if not mr else 'QR स्कॅन' }}</a>
+      <a href="{{ url_for('register_cow') }}">{{ 'Register a cow' if not mr else 'गाय नोंदवा' }}</a>
+      <a href="{{ url_for('animal_health.index') }}">Animal Health AI</a>
+      <a href="/veterinary/">{{ 'Find a vet' if not mr else 'पशुवैद्य शोधा' }}</a>
+    </div>
+    <div>
+      <h4>{{ 'Farm' if not mr else 'शेती' }}</h4>
+      <a href="/kisaath/weather">{{ 'Weather' if not mr else 'हवामान' }}</a>
+      <a href="/kisaath/crop-calendar">{{ 'Crop calendar' if not mr else 'पीक दिनदर्शिका' }}</a>
+      <a href="/kisaath/marketplace">{{ 'Marketplace' if not mr else 'मार्केटप्लेस' }}</a>
+      <a href="/kisaath/government">{{ 'Schemes' if not mr else 'योजना' }}</a>
+    </div>
+    <div>
+      <h4>{{ 'Accounts' if not mr else 'खाती' }}</h4>
+      <a href="{{ url_for('farmer_login') }}">{{ 'Farmer login' if not mr else 'शेतकरी लॉगिन' }}</a>
+      <a href="{{ url_for('doctor_login') }}">{{ 'Veterinarian login' if not mr else 'पशुवैद्य लॉगिन' }}</a>
+    </div>
+  </div>
+  <div class="hm-wrap hm-footer-bottom">
+    <span>© Farm2Feed · {{ 'Smart Farm Management System' if not mr else 'स्मार्ट शेती व्यवस्थापन प्रणाली' }}</span>
+    <a href="#top">{{ 'Back to top ↑' if not mr else 'वर जा ↑' }}</a>
+  </div>
+</footer>
+{% endblock %}

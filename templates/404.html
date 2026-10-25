@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Cow Not Found{% endblock %}
+{% block content %}
+<section class="not-found">
+  <p class="page-kicker">404</p>
+  <h1>No cow matches that tag.</h1>
+  <p>The QR code or ID doesn't match any record in the registry. It may have been removed.</p>
+  <a class="btn btn-primary" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</section>
+{% endblock %}
